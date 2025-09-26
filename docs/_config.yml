@@ -1,0 +1,57 @@
+# Know Your Damned Computer - Interactive Web Version
+# Jekyll configuration for GitHub Pages
+
+title: "Know Your Damned Computer"
+description: "Interactive Digital Humanities Computer Skills Guide"
+author: "TCU Digital Commons & Data Analysis"
+baseurl: "/know_your_damned_computer"
+url: "https://tcu-dcda.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections for organized content
+collections:
+  guides:
+    output: true
+    permalink: /:collection/:name/
+  exercises:
+    output: true
+    permalink: /exercises/:name/
+
+# Exclude files from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata
+
+# Default layouts for different content types
+defaults:
+  - scope:
+      path: ""
+      type: "guides"
+    values:
+      layout: "guide"
+  - scope:
+      path: ""
+      type: "exercises"
+    values:
+      layout: "exercise"
+
+# Custom variables for the site
+course_info:
+  level: "Beginner"
+  focus: "Digital Humanities"
+  tools: ["Python", "VS Code", "Command Line"]

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    
+    <!-- SEO and Meta -->
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta name="author" content="{{ site.author }}">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <a href="{{ '/' | relative_url }}" class="site-title">
+                    <i class="fas fa-laptop-code"></i>
+                    Know Your Damned Computer
+                </a>
+                
+                <div class="nav-links">
+                    <a href="{{ '/' | relative_url }}">Home</a>
+                    <a href="{{ '/guides/' | relative_url }}">Guides</a>
+                    <a href="{{ '/exercises/' | relative_url }}">Exercises</a>
+                    <a href="{{ '/progress/' | relative_url }}">Progress</a>
+                </div>
+                
+                <div class="nav-controls">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        {{ content }}
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About This Guide</h3>
+                    <p>Interactive computer skills training for digital humanities students.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="{{ '/guides/file-management/' | relative_url }}">File Management</a></li>
+                        <li><a href="{{ '/guides/file-paths/' | relative_url }}">File Paths</a></li>
+                        <li><a href="{{ '/guides/command-line/' | relative_url }}">Command Line</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://github.com/TCU-DCDA/know_your_damned_computer">GitHub Repository</a></li>
+                        <li><a href="#feedback">Feedback</a></li>
+                        <li><a href="#help">Get Help</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; {{ 'now' | date: "%Y" }} {{ site.author }}. Licensed under MIT.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/progress.js' | relative_url }}"></script>
+    
+    {% if page.layout == 'exercise' or page.interactive %}
+    <script src="{{ '/assets/js/quiz-engine.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/terminal-sim.js' | relative_url }}"></script>
+    {% endif %}
+</body>
+</html>

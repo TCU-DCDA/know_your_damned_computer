@@ -1,0 +1,144 @@
+---
+layout: default
+---
+
+<div class="exercise-container">
+    <!-- Exercise Header -->
+    <header class="exercise-header">
+        <div class="exercise-meta">
+            <span class="exercise-type">{{ page.exercise_type | default: 'Interactive Exercise' }}</span>
+            <span class="difficulty-badge difficulty-{{ page.difficulty | default: 'beginner' }}">
+                {{ page.difficulty | default: 'Beginner' | capitalize }}
+            </span>
+            <span class="time-estimate">
+                <i class="fas fa-stopwatch"></i>
+                {{ page.time_estimate | default: '10 min' }}
+            </span>
+        </div>
+        
+        <h1>{{ page.title }}</h1>
+        
+        {% if page.description %}
+        <p class="exercise-description">{{ page.description }}</p>
+        {% endif %}
+        
+        <!-- Exercise Objectives -->
+        {% if page.objectives %}
+        <div class="exercise-objectives">
+            <h3>Objectives:</h3>
+            <ul>
+                {% for objective in page.objectives %}
+                <li>{{ objective }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        
+        <!-- Prerequisites -->
+        {% if page.prerequisites %}
+        <div class="prerequisites">
+            <h4><i class="fas fa-info-circle"></i> Before You Start:</h4>
+            <ul>
+                {% for prereq in page.prerequisites %}
+                <li>{{ prereq }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </header>
+
+    <!-- Exercise Progress -->
+    <div class="exercise-progress">
+        <div class="progress-header">
+            <h3>Progress</h3>
+            <span class="progress-counter">
+                <span id="current-step">0</span> / <span id="total-steps">0</span>
+            </span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="exercise-progress-fill"></div>
+        </div>
+    </div>
+
+    <!-- Exercise Content -->
+    <div class="exercise-content">
+        {{ content }}
+    </div>
+
+    <!-- Exercise Controls -->
+    <div class="exercise-controls">
+        <button id="prev-step" class="btn btn-secondary" disabled>
+            <i class="fas fa-arrow-left"></i> Previous
+        </button>
+        
+        <button id="hint-btn" class="btn btn-outline">
+            <i class="fas fa-lightbulb"></i> Hint
+        </button>
+        
+        <button id="reset-btn" class="btn btn-outline">
+            <i class="fas fa-redo"></i> Reset
+        </button>
+        
+        <button id="next-step" class="btn btn-primary">
+            Next <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- Hint Modal -->
+    <div id="hint-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-lightbulb"></i> Hint</h3>
+                <button class="modal-close" onclick="closeHint()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="hint-text">Hint will appear here...</p>
+            </div>
+        </div>
+        <div class="modal-overlay" onclick="closeHint()"></div>
+    </div>
+
+    <!-- Completion Modal -->
+    <div id="completion-modal" class="modal" style="display: none;">
+        <div class="modal-content success">
+            <div class="modal-header">
+                <h3><i class="fas fa-trophy"></i> Exercise Complete!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Great job! You've completed this exercise.</p>
+                <div class="completion-stats">
+                    <div class="stat">
+                        <strong id="completion-time">0</strong>
+                        <span>minutes</span>
+                    </div>
+                    <div class="stat">
+                        <strong id="attempts-count">0</strong>
+                        <span>attempts</span>
+                    </div>
+                    <div class="stat">
+                        <strong id="hints-used">0</strong>
+                        <span>hints used</span>
+                    </div>
+                </div>
+                <div class="completion-actions">
+                    <button class="btn btn-primary" onclick="goToNextExercise()">
+                        Next Exercise <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-secondary" onclick="retryExercise()">
+                        <i class="fas fa-redo"></i> Try Again
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-overlay"></div>
+    </div>
+</div>
+
+<script>
+// Initialize exercise when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    initializeExercise();
+});
+</script>
