@@ -62,17 +62,54 @@ class KnowYourComputer {
 
     // Mobile Menu
     setupMobileMenu() {
-        const menuToggle = document.getElementById('menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
         
-        if (!menuToggle || !navLinks) return;
+        if (!menuToggle || !mobileMenu) return;
 
         menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = menuToggle.querySelector('i');
-            icon.className = navLinks.classList.contains('active') ? 
-                           'fas fa-times' : 'fas fa-bars';
+            this.toggleMobileMenu();
         });
+        
+        menuToggle.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            this.toggleMobileMenu();
+        });
+        
+        // Close mobile menu when clicking on links
+        const mobileLinks = mobileMenu.querySelectorAll('.nav-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                this.closeMobileMenu();
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                this.closeMobileMenu();
+            }
+        });
+    }
+    
+    toggleMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuToggle = document.querySelector('.menu-toggle');
+        
+        if (mobileMenu && menuToggle) {
+            mobileMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        }
+    }
+    
+    closeMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuToggle = document.querySelector('.menu-toggle');
+        
+        if (mobileMenu && menuToggle) {
+            mobileMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
     }
 
     // Table of Contents Generation
@@ -419,6 +456,13 @@ function startInteractiveMode() {
     }
 }
 
+// Global mobile menu toggle function
+function toggleMobileMenu() {
+    if (window.kydc) {
+        window.kydc.toggleMobileMenu();
+    }
+}
+
 // Global feedback function (called from templates)
 function submitFeedback(guideSlug, feedbackType) {
     if (window.kydc) {
@@ -430,66 +474,3 @@ function submitFeedback(guideSlug, feedbackType) {
 document.addEventListener('DOMContentLoaded', () => {
     window.kydc = new KnowYourComputer();
 });
-
-// Add notification styles to head
-const notificationStyles = `
-<style>
-.notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    color: white;
-    font-weight: 500;
-    z-index: 10000;
-    transform: translateX(400px);
-    transition: transform 0.3s ease-in-out;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.notification.show {
-    transform: translateX(0);
-}
-
-.notification-success {
-    background-color: var(--color-success);
-}
-
-.notification-info {
-    background-color: var(--color-info);
-}
-
-.notification-warning {
-    background-color: var(--color-warning);
-}
-
-.notification-danger {
-    background-color: var(--color-danger);
-}
-
-.tooltip {
-    position: absolute;
-    background-color: var(--color-gray-900);
-    color: white;
-    padding: 0.5rem;
-    border-radius: 4px;
-    font-size: 0.875rem;
-    z-index: 1000;
-    transform: translateX(-50%);
-    pointer-events: none;
-}
-
-.tooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 5px solid transparent;
-    border-top-color: var(--color-gray-900);
-}
-</style>
-`;
-
-document.head.insertAdjacentHTML('beforeend', notificationStyles);

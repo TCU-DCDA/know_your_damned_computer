@@ -418,21 +418,51 @@ Try exploring the sample DH project structure!`;
             }
         });
 
+        // Enhanced touch support for mobile devices
         clearBtn.addEventListener('click', () => {
+            this.clearOutput();
+        });
+        
+        clearBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
             this.clearOutput();
         });
 
         resetBtn.addEventListener('click', () => {
             this.reset();
         });
+        
+        resetBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            this.reset();
+        });
 
-        // Focus input when clicking on terminal
+        // Focus input when clicking/touching terminal
         this.container.addEventListener('click', () => {
             input.focus();
         });
+        
+        this.container.addEventListener('touchstart', () => {
+            input.focus();
+        });
 
-        // Auto-focus input
-        input.focus();
+        // Mobile keyboard support
+        if (this.isMobileDevice()) {
+            input.setAttribute('autocomplete', 'off');
+            input.setAttribute('autocorrect', 'off');
+            input.setAttribute('autocapitalize', 'off');
+            input.setAttribute('spellcheck', 'false');
+        }
+
+        // Auto-focus input on desktop only
+        if (!this.isMobileDevice()) {
+            input.focus();
+        }
+    }
+
+    isMobileDevice() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+               (navigator.maxTouchPoints > 0 && window.matchMedia('(pointer: coarse)').matches);
     }
 
     handleCommand(commandLine) {

@@ -137,15 +137,42 @@ class QuizEngine {
                     opt.classList.remove('correct', 'incorrect');
                 });
             });
+            
+            // Add touch support for mobile devices
+            const label = option.closest('label') || option.parentElement;
+            if (label) {
+                label.addEventListener('touchend', (e) => {
+                    // Prevent double-firing of events
+                    if (e.cancelable) {
+                        e.preventDefault();
+                    }
+                    // Ensure the radio button gets selected
+                    const radio = label.querySelector('input[type="radio"]');
+                    if (radio) {
+                        radio.checked = true;
+                        radio.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
+                });
+            }
         });
 
-        // Handle submit
-        submitBtn.addEventListener('click', () => {
+        // Handle submit with touch support
+        submitBtn.addEventListener('click', (e) => {
+            this.submitQuiz(quiz.id, container);
+        });
+        
+        submitBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
             this.submitQuiz(quiz.id, container);
         });
 
-        // Handle reset
-        resetBtn.addEventListener('click', () => {
+        // Handle reset with touch support
+        resetBtn.addEventListener('click', (e) => {
+            this.resetQuiz(quiz.id, container);
+        });
+        
+        resetBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
             this.resetQuiz(quiz.id, container);
         });
     }

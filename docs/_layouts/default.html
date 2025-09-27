@@ -23,26 +23,37 @@
     <header class="site-header">
         <nav class="main-nav">
             <div class="nav-container">
-                <a href="{{ '/' | relative_url }}" class="site-title">
-                    <i class="fas fa-laptop-code"></i>
-                    Know Your Damned Computer
-                </a>
+                <div class="navbar">
+                    <a href="{{ '/' | relative_url }}" class="nav-brand">
+                        <i class="fas fa-laptop-code"></i>
+                        Know Your Damned Computer
+                    </a>
+                    
+                    <div class="nav-controls">
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMobileMenu()">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
                 
                 <div class="nav-links">
-                    <a href="{{ '/' | relative_url }}">Home</a>
-                    <a href="{{ '/guides/' | relative_url }}">Guides</a>
-                    <a href="{{ '/exercises/' | relative_url }}">Exercises</a>
-                    <a href="{{ '/progress/' | relative_url }}">Progress</a>
+                    <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
+                    <a href="#guides" class="nav-link">Guides</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="https://github.com/TCU-DCDA/know_your_damned_computer" class="nav-link" target="_blank">GitHub</a>
                 </div>
-                
-                <div class="nav-controls">
-                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
+            </div>
+            
+            <div class="mobile-menu" id="mobile-menu">
+                <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
+                <a href="#guides" class="nav-link">Guides</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="https://github.com/TCU-DCDA/know_your_damned_computer" class="nav-link" target="_blank">GitHub</a>
             </div>
         </nav>
     </header>
