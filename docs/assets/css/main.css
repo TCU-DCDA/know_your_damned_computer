@@ -622,13 +622,19 @@ a:focus {
 .guide-footer {
   margin-top: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
   gap: var(--space-md);
 }
 
+.guide-footer .progress-bar {
+  flex: 1;
+  max-width: 60%;
+}
+
 .guide-footer .btn {
-  align-self: flex-end;
-  margin-top: var(--space-sm);
+  flex-shrink: 0;
 }
 
 /* ========================================
