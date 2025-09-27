@@ -21,6 +21,31 @@ interactive: true
 
 The command line might seem intimidating, but it's an essential tool for digital humanities work. When you start using Python for text analysis, data visualization, and mapping, you'll find that many tasks are easier and faster with command line skills.
 
+This guide will take you from command line beginner to confident user, with a focus on the tasks that matter most for DH projects. By the end, you'll be comfortable installing Python packages, running scripts, managing files, and using basic Git commands for version control.
+
+## What You'll Accomplish
+
+<div class="learning-outcomes">
+  <h4>🎯 By the end of this guide, you'll be able to:</h4>
+  <ul>
+    <li><strong>Navigate efficiently</strong> through your file system using commands</li>
+    <li><strong>Install Python libraries</strong> quickly with pip</li>
+    <li><strong>Run Python scripts</strong> and handle common errors</li>
+    <li><strong>Use Git</strong> for version control in your projects</li>
+    <li><strong>Troubleshoot issues</strong> that commonly arise in DH workflows</li>
+    <li><strong>Work confidently</strong> with both Mac and PC command line environments</li>
+  </ul>
+</div>
+
+<div class="prerequisite-check">
+  <h4>📋 What You Need</h4>
+  <ul>
+    <li>A computer (Mac or PC) - we'll cover both platforms</li>
+    <li>No prior command line experience required</li>
+    <li>Willingness to type commands and experiment safely</li>
+  </ul>
+</div>
+
 ## Why Learn the Command Line?
 
 <div class="quiz" data-quiz="cli-motivation">
