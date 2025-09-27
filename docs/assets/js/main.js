@@ -345,29 +345,62 @@ class KnowYourComputer {
 function toggleReadingMode() {
     const overlay = document.getElementById('reading-mode-overlay');
     const content = document.querySelector('.guide-content .guide-body');
-    
-    if (!overlay || !content) return;
-    
+
+    console.log('Reading mode toggle clicked');
+    console.log('Overlay found:', !!overlay);
+    console.log('Content found:', !!content);
+
+    if (!overlay) {
+        console.error('Reading mode overlay not found');
+        return;
+    }
+
+    if (!content) {
+        console.error('Guide content not found');
+        return;
+    }
+
     if (overlay.style.display === 'none' || !overlay.style.display) {
         // Enter reading mode
+        console.log('Entering reading mode');
         const readingContent = overlay.querySelector('.reading-content');
-        readingContent.innerHTML = content.innerHTML;
-        overlay.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+        if (readingContent) {
+            readingContent.innerHTML = content.innerHTML;
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            console.log('Reading mode activated');
+        } else {
+            console.error('Reading content container not found');
+        }
     } else {
         // Exit reading mode
+        console.log('Exiting reading mode');
         overlay.style.display = 'none';
         document.body.style.overflow = '';
     }
 }
 
 function startInteractiveMode() {
-    // This would launch interactive exercises for the current guide
-    const guideSlug = document.querySelector('[data-guide]')?.getAttribute('data-guide');
-    if (guideSlug) {
-        window.location.href = `/exercises/${guideSlug}/`;
+    // Enable interactive features on the current page
+    const quizzes = document.querySelectorAll('.quiz');
+    const exercises = document.querySelectorAll('.exercise');
+    const terminals = document.querySelectorAll('.terminal-simulator');
+
+    if (quizzes.length || exercises.length || terminals.length) {
+        // Highlight interactive elements
+        quizzes.forEach(quiz => quiz.classList.add('highlight-interactive'));
+        exercises.forEach(exercise => exercise.classList.add('highlight-interactive'));
+        terminals.forEach(terminal => terminal.classList.add('highlight-interactive'));
+
+        // Scroll to first interactive element
+        const firstInteractive = document.querySelector('.quiz, .exercise, .terminal-simulator');
+        if (firstInteractive) {
+            firstInteractive.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        window.kydc.showNotification('Interactive mode activated! Quizzes and exercises are now highlighted.', 'success');
     } else {
-        kydc.showNotification('Interactive exercises coming soon!', 'info');
+        window.kydc.showNotification('No interactive elements found on this page.', 'info');
     }
 }
 

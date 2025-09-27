@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Know Your Damned Computer - Interactive DH Skills Guide"
-description: "Master essential computer skills for digital humanities work with interactive exercises, real-world examples, and hands-on practice."
+description: "Learn essential computer skills for digital humanities work with interactive exercises, real-world examples, and hands-on practice."
 ---
 
 <div class="hero-section">
@@ -11,7 +11,7 @@ description: "Master essential computer skills for digital humanities work with 
             Know Your Damned Computer
         </h1>
         <p class="hero-subtitle">
-            Master essential computer skills for digital humanities work
+            Learn essential computer skills for digital humanities work
         </p>
         <p class="hero-description">
             Interactive guides designed specifically for DH students who need to understand their computers better to work effectively with Python, VS Code, text analysis, data visualization, and mapping tools.
@@ -45,6 +45,54 @@ description: "Master essential computer skills for digital humanities work with 
     </div>
 </div>
 
+<!-- About Section - Moved higher for better UX -->
+<section id="about" class="about-section-enhanced">
+    <div class="section-header">
+        <h2>About This Guide</h2>
+        <p>"Know Your Damned Computer" builds essential computer literacy skills for digital humanities students</p>
+    </div>
+
+    <div class="about-cards">
+        <div class="about-card main-about">
+            <div class="card-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3>Built for DH Students</h3>
+            <p>
+                Created specifically for digital humanities students who need foundational computer skills. Whether you're preparing for text analysis, data visualization, or digital mapping, this guide builds the knowledge you need to work confidently with modern DH tools.
+            </p>
+        </div>
+
+        <div class="about-card skills-card">
+            <div class="card-icon">
+                <i class="fas fa-list-check"></i>
+            </div>
+            <h3>What You'll Learn</h3>
+            <ul>
+                <li><strong>File Management:</strong> Organize research materials professionally</li>
+                <li><strong>Path Navigation:</strong> Understand how computers find files</li>
+                <li><strong>File Formats:</strong> Choose the right formats for Python analysis</li>
+                <li><strong>Command Line:</strong> Use terminal commands for development work</li>
+                <li><strong>Text Encoding:</strong> Handle multilingual and historical texts</li>
+            </ul>
+        </div>
+
+        <div class="about-card audience-card">
+            <div class="card-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <h3>Perfect For</h3>
+            <ul>
+                <li>Digital humanities students at all levels</li>
+                <li>Researchers new to computational methods</li>
+                <li>Anyone preparing to work with Python and VS Code</li>
+                <li>Students in text analysis, data viz, or mapping courses</li>
+                <li>Self-directed learners building DH skills</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
 <section id="guides" class="guides-section">
     <div class="section-header">
         <h2>Interactive Learning Guides</h2>
@@ -67,7 +115,7 @@ description: "Master essential computer skills for digital humanities work with 
             
             <div class="guide-content">
                 <h3>File Management Fundamentals</h3>
-                <p>Learn to organize your digital research materials like a pro. Master naming conventions, folder structures, and backup strategies.</p>
+                <p>Learn to organize your digital research materials like a pro. Learn naming conventions, folder structures, and backup strategies.</p>
                 
                 <div class="guide-skills">
                     <span class="skill-tag">Organization</span>
@@ -91,7 +139,7 @@ description: "Master essential computer skills for digital humanities work with 
                 <div class="progress-bar">
                     <div class="progress-fill" data-guide-progress="file-management"></div>
                 </div>
-                <a href="/guides/file-management/" class="btn btn-primary">
+                <a href="{{ site.baseurl }}/guides/file-management/" class="btn btn-primary">
                     Start Guide <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -112,7 +160,7 @@ description: "Master essential computer skills for digital humanities work with 
             
             <div class="guide-content">
                 <h3>Understanding File Paths</h3>
-                <p>Master the addressing system your computer uses to find files. Essential for command line work and Python programming.</p>
+                <p>Learn the addressing system your computer uses to find files. Essential for command line work and Python programming.</p>
                 
                 <div class="guide-skills">
                     <span class="skill-tag">Navigation</span>
@@ -136,7 +184,7 @@ description: "Master essential computer skills for digital humanities work with 
                 <div class="progress-bar">
                     <div class="progress-fill" data-guide-progress="file-paths"></div>
                 </div>
-                <a href="/guides/file-paths/" class="btn btn-primary">
+                <a href="{{ site.baseurl }}/guides/file-paths/" class="btn btn-primary">
                     Start Guide <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -181,7 +229,7 @@ description: "Master essential computer skills for digital humanities work with 
                 <div class="progress-bar">
                     <div class="progress-fill" data-guide-progress="file-formats"></div>
                 </div>
-                <a href="/guides/file-formats/" class="btn btn-primary">
+                <a href="{{ site.baseurl }}/guides/file-formats/" class="btn btn-primary">
                     Start Guide <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -226,7 +274,7 @@ description: "Master essential computer skills for digital humanities work with 
                 <div class="progress-bar">
                     <div class="progress-fill" data-guide-progress="command-line"></div>
                 </div>
-                <a href="/guides/command-line/" class="btn btn-primary">
+                <a href="{{ site.baseurl }}/guides/command-line/" class="btn btn-primary">
                     Start Guide <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -271,7 +319,7 @@ description: "Master essential computer skills for digital humanities work with 
                 <div class="progress-bar">
                     <div class="progress-fill" data-guide-progress="text-encoding"></div>
                 </div>
-                <a href="/guides/text-encoding/" class="btn btn-primary">
+                <a href="{{ site.baseurl }}/guides/text-encoding/" class="btn btn-primary">
                     Start Guide <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -292,7 +340,7 @@ description: "Master essential computer skills for digital humanities work with 
             
             <div class="guide-content">
                 <h3>Working with Compressed Files</h3>
-                <p>Master ZIP files and other compressed formats. Essential for data sharing, backup, and working with DH datasets.</p>
+                <p>Learn ZIP files and other compressed formats. Essential for data sharing, backup, and working with DH datasets.</p>
                 
                 <div class="guide-skills">
                     <span class="skill-tag">ZIP Files</span>
@@ -316,7 +364,7 @@ description: "Master essential computer skills for digital humanities work with 
                 <div class="progress-bar">
                     <div class="progress-fill" data-guide-progress="compression"></div>
                 </div>
-                <a href="/guides/compression/" class="btn btn-primary">
+                <a href="{{ site.baseurl }}/guides/compression/" class="btn btn-primary">
                     Start Guide <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -381,56 +429,6 @@ description: "Master essential computer skills for digital humanities work with 
     </div>
 </section>
 
-<section id="about" class="about-section">
-    <div class="about-content">
-        <div class="about-text">
-            <h2>About This Guide</h2>
-            <p>
-                "Know Your Damned Computer" was created specifically for digital humanities students who need to develop essential computer literacy skills. Whether you're preparing for text analysis projects, data visualization work, or digital mapping, this guide builds the foundational knowledge you need to work confidently with modern DH tools.
-            </p>
-            
-            <h3>What You'll Learn</h3>
-            <ul class="learning-objectives">
-                <li><strong>File Management:</strong> Organize research materials professionally</li>
-                <li><strong>Path Navigation:</strong> Understand how computers find files</li>
-                <li><strong>Format Selection:</strong> Choose the right formats for Python analysis</li>
-                <li><strong>Command Line:</strong> Use terminal commands for development work</li>
-                <li><strong>Text Encoding:</strong> Handle multilingual and historical texts</li>
-                <li><strong>Data Sharing:</strong> Compress and share research materials effectively</li>
-            </ul>
-            
-            <h3>Perfect For</h3>
-            <ul class="target-audience">
-                <li>Digital humanities students at all levels</li>
-                <li>Researchers new to computational methods</li>
-                <li>Anyone preparing to work with Python and VS Code</li>
-                <li>Students in text analysis, data viz, or mapping courses</li>
-                <li>Self-directed learners building DH skills</li>
-            </ul>
-        </div>
-        
-        <div class="about-sidebar">
-            <div class="quick-start-card">
-                <h3>Quick Start</h3>
-                <ol>
-                    <li>Start with <strong>File Management</strong> to build good habits</li>
-                    <li>Learn <strong>File Paths</strong> for navigation skills</li>
-                    <li>Master <strong>File Formats</strong> for Python work</li>
-                    <li>Practice <strong>Command Line</strong> basics</li>
-                    <li>Understand <strong>Text Encoding</strong> to avoid problems</li>
-                    <li>Learn <strong>Compression</strong> for data sharing</li>
-                </ol>
-                <a href="/guides/file-management/" class="btn btn-primary">
-                    Start Now <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            
-            <div class="progress-overview" data-progress-dashboard>
-                <!-- Progress dashboard will be inserted here by JavaScript -->
-            </div>
-        </div>
-    </div>
-</section>
 
 <section class="getting-started-section">
     <div class="getting-started-content">
@@ -450,7 +448,7 @@ description: "Master essential computer skills for digital humanities work with 
                     <div class="step">3. File Formats</div>
                     <div class="step">4. Compression</div>
                 </div>
-                <a href="/guides/file-management/" class="btn btn-primary">Start Here</a>
+                <a href="{{ site.baseurl }}/guides/file-management/" class="btn btn-primary">Start Here</a>
             </div>
             
             <div class="path-card">
@@ -465,7 +463,7 @@ description: "Master essential computer skills for digital humanities work with 
                     <div class="step">3. Text Encoding</div>
                     <div class="step">4. File Paths</div>
                 </div>
-                <a href="/guides/file-formats/" class="btn btn-primary">Start Here</a>
+                <a href="{{ site.baseurl }}/guides/file-formats/" class="btn btn-primary">Start Here</a>
             </div>
             
             <div class="path-card">
@@ -489,16 +487,30 @@ description: "Master essential computer skills for digital humanities work with 
 <style>
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
     color: white;
     padding: var(--space-2xl) 0;
     text-align: center;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1;
 }
 
 .hero-content {
     max-width: 800px;
     margin: 0 auto;
     padding: 0 var(--space-md);
+    position: relative;
+    z-index: 2;
 }
 
 .hero-title {
@@ -509,20 +521,24 @@ description: "Master essential computer skills for digital humanities work with 
     align-items: center;
     justify-content: center;
     gap: var(--space-md);
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
     font-weight: 400;
     margin-bottom: var(--space-md);
-    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .hero-description {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: var(--space-xl);
-    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .hero-actions {
@@ -535,6 +551,7 @@ description: "Master essential computer skills for digital humanities work with 
 .btn-large {
     padding: var(--space-md) var(--space-xl);
     font-size: 1.1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .hero-stats {
@@ -552,11 +569,14 @@ description: "Master essential computer skills for digital humanities work with 
     display: block;
     font-size: 1.5rem;
     font-weight: 700;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .hero-stats .stat span {
     font-size: 0.875rem;
-    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Sections */
@@ -808,6 +828,79 @@ description: "Master essential computer skills for digital humanities work with 
     
     .learning-paths {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Enhanced About Section */
+.about-section-enhanced {
+    padding: var(--space-2xl) 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+    background: var(--bg-primary);
+}
+
+.about-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+}
+
+.about-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    text-align: center;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+}
+
+.about-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+.about-card .card-icon {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+}
+
+.about-card h3 {
+    margin-bottom: var(--space-md);
+    color: var(--text-primary);
+}
+
+.about-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.about-card ul {
+    text-align: left;
+    margin: 0;
+    padding-left: var(--space-md);
+}
+
+.about-card li {
+    margin-bottom: var(--space-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .about-cards {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .about-card {
+        padding: var(--space-lg);
     }
 }
 </style>

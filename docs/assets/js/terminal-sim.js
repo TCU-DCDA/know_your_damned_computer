@@ -257,6 +257,90 @@ class TerminalSimulator {
                 return '';
             },
 
+            zip: (args = []) => {
+                if (args.length < 2) {
+                    return 'zip: missing arguments\nUsage: zip archive.zip file1 file2... or zip -r archive.zip directory/';
+                }
+
+                const archiveName = args[0];
+                const targets = args.slice(1);
+                const isRecursive = args.includes('-r');
+                const currentDir = this.getCurrentDirectory();
+
+                if (!currentDir || currentDir.type !== 'directory') {
+                    return 'zip: error accessing current directory';
+                }
+
+                let output = '';
+                let filesAdded = 0;
+
+                for (const target of targets.filter(t => t !== '-r')) {
+                    if (currentDir.contents[target]) {
+                        const item = currentDir.contents[target];
+                        if (item.type === 'directory' && !isRecursive) {
+                            output += `zip warning: directory ${target} not added (use -r to recurse)\n`;
+                        } else {
+                            output += `  adding: ${target}${item.type === 'directory' ? '/' : ''} (stored 0%)\n`;
+                            filesAdded++;
+                        }
+                    } else {
+                        output += `zip warning: ${target} not found\n`;
+                    }
+                }
+
+                if (filesAdded > 0) {
+                    currentDir.contents[archiveName] = {
+                        type: 'file',
+                        size: `${(Math.random() * 5 + 1).toFixed(1)}MB`
+                    };
+                    output += `Archive ${archiveName} created successfully`;
+                }
+
+                return output;
+            },
+
+            unzip: (args = []) => {
+                if (args.length === 0) {
+                    return 'unzip: missing archive name\nUsage: unzip archive.zip [-l to list contents]';
+                }
+
+                const archiveName = args[0];
+                const listOnly = args.includes('-l');
+                const currentDir = this.getCurrentDirectory();
+
+                if (!currentDir || currentDir.type !== 'directory') {
+                    return 'unzip: error accessing current directory';
+                }
+
+                if (!currentDir.contents[archiveName]) {
+                    return `unzip: cannot find ${archiveName}`;
+                }
+
+                if (listOnly) {
+                    return `Archive:  ${archiveName}
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     1234  09-27-2024 10:30   sample-data.txt
+     5678  09-27-2024 10:30   research-notes.md
+      987  09-27-2024 10:30   metadata.json
+---------                     -------
+     7899                     3 files`;
+                }
+
+                const extractedFiles = ['sample-data.txt', 'research-notes.md', 'metadata.json'];
+                let output = `Archive:  ${archiveName}\n`;
+
+                extractedFiles.forEach(file => {
+                    output += `  inflating: ${file}\n`;
+                    currentDir.contents[file] = {
+                        type: 'file',
+                        size: `${(Math.random() * 10 + 1).toFixed(1)}KB`
+                    };
+                });
+
+                return output + `\nExtraction complete! ${extractedFiles.length} files extracted.`;
+            },
+
             help: () => {
                 return `Available commands:
   pwd          - Print working directory
@@ -267,6 +351,8 @@ class TerminalSimulator {
   cat <file>   - Display file contents
   python <file>- Run Python script
   pip <cmd>    - Python package manager
+  zip <args>   - Create zip archives
+  unzip <file> - Extract zip archives (-l to list contents)
   clear        - Clear terminal
   help         - Show this help message
 
@@ -274,6 +360,12 @@ Navigation tips:
   cd ..        - Go up one directory
   cd ~         - Go to home directory
   cd /         - Go to root directory
+
+Compression examples:
+  zip data.zip *.txt       - Compress text files (simulated)
+  zip -r project.zip docs/ - Compress directory recursively
+  unzip -l dataset.zip     - List archive contents
+  unzip dataset.zip        - Extract files
 
 Try exploring the sample DH project structure!`;
             }
@@ -524,11 +616,64 @@ function createTerminalSimulator(selector, options = {}) {
 
 // Auto-initialize terminal simulators
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🔍 Looking for terminal simulators...');
+    console.log('DOMContentLoaded event fired');
+    console.log('Document ready state:', document.readyState);
+
     const terminals = document.querySelectorAll('[data-terminal]');
-    terminals.forEach(terminal => {
-        createTerminalSimulator(terminal);
+    console.log('Found terminals:', terminals.length);
+    console.log('Terminal elements:', terminals);
+
+    terminals.forEach((terminal, index) => {
+        console.log(`Initializing terminal ${index + 1}:`, terminal);
+        console.log('Terminal data-terminal value:', terminal.getAttribute('data-terminal'));
+        try {
+            const simulator = createTerminalSimulator(terminal);
+            console.log('Terminal simulator created:', simulator);
+        } catch (error) {
+            console.error('Error creating terminal simulator:', error);
+        }
     });
+
+    if (terminals.length === 0) {
+        console.log('No terminals found with [data-terminal] attribute');
+        console.log('All elements with data attributes:', document.querySelectorAll('[data-*]'));
+
+        // Show visible error message
+        const terminalElements = document.querySelectorAll('[data-terminal]');
+        if (terminalElements.length === 0) {
+            console.error('CRITICAL: No terminal elements found even after DOM loaded');
+            // Try to find the terminal div a different way
+            setTimeout(() => {
+                const retryTerminals = document.querySelectorAll('[data-terminal]');
+                console.log('Retry search found:', retryTerminals.length, 'terminals');
+                if (retryTerminals.length > 0) {
+                    retryTerminals.forEach((terminal, index) => {
+                        console.log(`Late initializing terminal ${index + 1}:`, terminal);
+                        createTerminalSimulator(terminal);
+                    });
+                }
+            }, 2000);
+        }
+    }
 });
+
+// Backup initialization in case DOMContentLoaded already fired
+if (document.readyState === 'loading') {
+    console.log('Document still loading, waiting for DOMContentLoaded');
+} else {
+    console.log('Document already loaded, initializing immediately');
+    setTimeout(() => {
+        const terminals = document.querySelectorAll('[data-terminal]');
+        console.log('Backup initialization found:', terminals.length, 'terminals');
+        terminals.forEach((terminal, index) => {
+            if (!terminal.querySelector('.terminal-simulator')) {
+                console.log(`Backup initializing terminal ${index + 1}:`, terminal);
+                createTerminalSimulator(terminal);
+            }
+        });
+    }, 100);
+}
 
 // Add terminal-specific styles
 const terminalStyles = `
