@@ -618,6 +618,19 @@ a:focus {
   margin-top: auto;
 }
 
+/* Guide footer with button positioning */
+.guide-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.guide-footer .btn {
+  align-self: flex-end;
+  margin-top: var(--space-sm);
+}
+
 /* ========================================
    Guide Layout - Mobile First
    ======================================== */
