@@ -288,12 +288,27 @@ class KnowYourComputer {
         }
 
         // Update guide-specific progress
-        const guideProgress = document.querySelector('[data-guide]');
-        if (guideProgress) {
-            const guideSlug = guideProgress.getAttribute('data-guide');
-            const isComplete = this.userProgress.guides[guideSlug]?.completed || false;
-            guideProgress.style.width = isComplete ? '100%' : '0%';
-        }
+        // Update in-guide progress bars
+        const guideProgressBars = document.querySelectorAll('.progress-fill[data-guide]');
+        guideProgressBars.forEach(bar => {
+            const guideSlug = bar.getAttribute('data-guide');
+            const guideData = this.userProgress.guides[guideSlug] || {};
+            const progress = typeof guideData.progress === 'number'
+                ? guideData.progress
+                : (guideData.completed ? 100 : 0);
+            bar.style.width = `${Math.max(0, Math.min(progress, 100))}%`;
+        });
+
+        // Update homepage guide cards
+        const overviewProgressBars = document.querySelectorAll('.progress-fill[data-guide-progress]');
+        overviewProgressBars.forEach(bar => {
+            const guideSlug = bar.getAttribute('data-guide-progress');
+            const guideData = this.userProgress.guides[guideSlug] || {};
+            const progress = typeof guideData.progress === 'number'
+                ? guideData.progress
+                : (guideData.completed ? 100 : 0);
+            bar.style.width = `${Math.max(0, Math.min(progress, 100))}%`;
+        });
     }
 
     // Utility Functions
