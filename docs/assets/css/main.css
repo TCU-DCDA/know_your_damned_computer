@@ -303,6 +303,7 @@ blockquote {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-md);
+  align-items: stretch;
 }
 
 .guide-card {
@@ -316,6 +317,8 @@ blockquote {
   border: 1px solid var(--border-color);
   height: auto;
   min-height: 420px;
+  width: 100%;
+  justify-self: stretch;
 }
 
 .guide-card:hover {
