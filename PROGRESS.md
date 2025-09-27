@@ -123,6 +123,16 @@ All six essential computer skills guides have been successfully converted to int
    - Test screen reader compatibility
    - Ensure mobile responsiveness for all exercises
 
+## 🚨 Known Issues
+
+### Homepage Display Issues
+- **File Management Card Layout** (September 27, 2025)
+  - File Management card displays incorrectly on both mobile and desktop views
+  - Issue persists despite CSS conflicts resolution and guide card styling fixes
+  - Card sizing, alignment, or content rendering not matching other guide cards
+  - Requires further investigation and targeted CSS debugging
+  - **Status:** Documented for future resolution
+
 ## Technical Architecture
 
 ### File Structure
