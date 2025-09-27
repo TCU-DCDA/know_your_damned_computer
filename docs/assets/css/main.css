@@ -211,10 +211,23 @@ a:focus {
 }
 
 .nav-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
   font-size: var(--font-size-lg);
   font-weight: 600;
   color: var(--text-primary);
   text-decoration: none;
+}
+
+.nav-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-brand-text {
+  white-space: nowrap;
 }
 
 .nav-links {
