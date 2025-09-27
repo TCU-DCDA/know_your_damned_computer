@@ -95,6 +95,88 @@
 }
 
 /* ========================================
+   Dark Theme Variables
+   ======================================== */
+[data-theme="dark"] {
+  /* Dark Colors */
+  --color-primary: #1a252f;
+  --color-primary-light: #2c3e50;
+  --color-primary-dark: #0f1419;
+  --color-secondary: #5dade2;
+  --color-secondary-light: #85c1e9;
+  --color-secondary-dark: #3498db;
+
+  /* Dark Backgrounds */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3a3a3a;
+  --bg-dark: #000000;
+  --bg-code: #2d2d2d;
+
+  /* Dark Text */
+  --text-primary: #e8e8e8;
+  --text-secondary: #b8b8b8;
+  --text-muted: #888888;
+  --text-light: #ffffff;
+  --text-code: #ff6b9d;
+
+  /* Dark Borders */
+  --border-color: #3a3a3a;
+  --border-color-light: #2d2d2d;
+  --border-color-dark: #555555;
+}
+
+/* ========================================
+   Dark Theme Specific Overrides
+   ======================================== */
+[data-theme="dark"] .site-header {
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .hero-section {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+}
+
+[data-theme="dark"] .guide-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .guide-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .sidebar-content {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .quiz-container {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .terminal-container {
+  background: #0d1117;
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .reading-mode-content {
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] .close-reading-mode {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .notification {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================
    Base Styles - Mobile First
    ======================================== */
 *,
