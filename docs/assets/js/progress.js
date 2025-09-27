@@ -305,10 +305,10 @@ class ProgressTracker {
         }
         
         // All guides completed
-        if (completedGuides === 6 && !this.hasAchievement('guide-master')) {
+        if (completedGuides === 6 && !this.hasAchievement('guide-expert')) {
             achievements.push({
-                id: 'guide-master',
-                title: 'Guide Master',
+                id: 'guide-expert',
+                title: 'Guide Expert',
                 description: 'Completed all guides',
                 icon: '🏆',
                 earnedAt: new Date().toISOString()

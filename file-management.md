@@ -185,7 +185,7 @@ Both Mac and PC allow you to add metadata to files:
 
 ## Next Steps
 
-Once you've mastered basic file management, you're ready to learn about [file paths and navigation](./file-paths.md), which will help you understand exactly where your well-organized files live on your computer.
+Once you've learned basic file management, you're ready to learn about [file paths and navigation](./file-paths.md), which will help you understand exactly where your well-organized files live on your computer.
 
 ---
 

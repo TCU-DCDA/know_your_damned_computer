@@ -7,6 +7,9 @@ author: "TCU Digital Commons & Data Analysis"
 baseurl: "/know_your_damned_computer"
 url: "https://tcu-dcda.github.io"
 
+# GitHub Pages settings
+repository: "TCU-DCDA/know_your_damned_computer"
+
 # Build settings
 markdown: kramdown
 highlighter: rouge

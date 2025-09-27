@@ -498,22 +498,22 @@ Some useful environment variables for paths:
 
 ## Knowledge Check
 
-<div class="quiz" data-quiz="paths-mastery">
-  <h3>Mastery Check: File Paths</h3>
+<div class="quiz" data-quiz="paths-proficiency">
+  <h3>Proficiency Check: File Paths</h3>
   <p>You're working in <code>/Users/student/DH-Project/analysis/</code> and need to access a file at <code>/Users/student/DH-Project/data/raw/manuscript.txt</code>. What's the shortest relative path?</p>
   
   <label class="quiz-option">
-    <input type="radio" name="mastery-quiz" value="long">
+    <input type="radio" name="proficiency-quiz" value="long">
     <code>../../../student/DH-Project/data/raw/manuscript.txt</code>
   </label>
   
   <label class="quiz-option" data-correct>
-    <input type="radio" name="mastery-quiz" value="correct">
+    <input type="radio" name="proficiency-quiz" value="correct">
     <code>../data/raw/manuscript.txt</code>
   </label>
   
   <label class="quiz-option">
-    <input type="radio" name="mastery-quiz" value="wrong">
+    <input type="radio" name="proficiency-quiz" value="wrong">
     <code>./data/raw/manuscript.txt</code>
   </label>
   
@@ -562,7 +562,7 @@ Some useful environment variables for paths:
 
 ---
 
-Understanding file paths is crucial for effective digital humanities work. With these concepts mastered, you're ready to learn about [working with compressed files]({{ site.baseurl }}/guides/compression/), which will expand your file management toolkit.
+Understanding file paths is crucial for effective digital humanities work. With these concepts learned, you're ready to learn about [working with compressed files]({{ site.baseurl }}/guides/compression/), which will expand your file management toolkit.
 
 <script>
 function checkPathType(button, selectedType, isCorrect) {

@@ -1,6 +1,6 @@
 # Know Your Damned Computer: A Digital Humanities Student's Guide
 
-Welcome to "Know Your Damned Computer" - a comprehensive resource designed to help college students master the essential computer skills needed for successful digital humanities work.
+Welcome to "Know Your Damned Computer" - a comprehensive resource designed to help college students learn the essential computer skills needed for successful digital humanities work.
 
 ## About This Guide
 
@@ -20,7 +20,7 @@ This guide provides equal coverage for both Mac and PC users, with specific inst
 ## Guide Structure
 
 ### [File Management Fundamentals](./file-management.md)
-Master the basics of organizing your digital research materials
+Learn the basics of organizing your digital research materials
 
 ### [Understanding File Paths](./file-paths.md)
 Learn how your computer organizes files and how to navigate efficiently
@@ -56,4 +56,4 @@ Each section includes practical exercises and real-world examples relevant to DH
 
 ---
 
-*Remember: These skills form the foundation for all your digital humanities work. Take time to master them, and your future self will thank you!*
+*Remember: These skills form the foundation for all your digital humanities work. Take time to learn them thoroughly, and your future self will thank you!*

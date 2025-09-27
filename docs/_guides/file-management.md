@@ -2,7 +2,7 @@
 layout: guide
 title: "File Management Fundamentals"
 slug: file-management
-description: "Master the basics of organizing your digital research materials with hands-on exercises and real DH examples."
+description: "Learn the basics of organizing your digital research materials with hands-on exercises and real DH examples."
 difficulty: beginner
 time_estimate: "20 min"
 learning_objectives:
@@ -424,7 +424,7 @@ Both Mac and PC allow you to add metadata to files:
 
 ## Next Steps
 
-Once you've mastered basic file management, you're ready to learn about [file paths and navigation]({{ site.baseurl }}/guides/file-paths/), which will help you understand exactly where your well-organized files live on your computer.
+Once you've learned basic file management, you're ready to learn about [file paths and navigation]({{ site.baseurl }}/guides/file-paths/), which will help you understand exactly where your well-organized files live on your computer.
 
 ---
 
@@ -602,18 +602,24 @@ function checkName(button, correctAnswer) {
 }
 
 .pro-tip {
-  background: linear-gradient(135deg, var(--color-info), var(--color-primary));
-  color: white;
+  background: var(--bg-secondary);
+  border: 2px solid var(--color-primary);
+  border-left: 6px solid var(--color-primary);
+  color: var(--text-primary);
   padding: var(--space-lg);
   border-radius: var(--border-radius-lg);
   margin: var(--space-lg) 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .pro-tip h4 {
   margin-top: 0;
+  margin-bottom: var(--space-md);
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  color: var(--color-primary);
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"http://127.0.0.1:4000/know_your_damned_computer/guides/compression/\")",
+      "Bash(curl -s \"http://127.0.0.1:4000/know_your_damned_computer/assets/js/terminal-sim.js\")",
+      "Bash(curl -s \"http://127.0.0.1:4000/know_your_damned_computer/guides/file-management/\")",
+      "Bash(open \"http://127.0.0.1:4000/know_your_damned_computer/guides/file-management/\")",
+      "Bash(open \"http://127.0.0.1:4000/know_your_damned_computer/\")",
+      "Bash(git add CLAUDE.md PROGRESS.md docs/_guides/compression.md docs/assets/css/main.css docs/assets/js/main.js docs/assets/js/terminal-sim.js docs/index.html docs/_layouts/guide.html docs/Gemfile docs/Gemfile.lock)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
