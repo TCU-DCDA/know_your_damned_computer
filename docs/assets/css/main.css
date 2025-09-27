@@ -430,11 +430,17 @@ a:focus {
   box-shadow: var(--shadow-lg);
 }
 
-.guide-header {
+/* Guide card header (for homepage cards) */
+.guide-card .guide-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: var(--space-md);
+}
+
+/* Guide page header (for individual guide pages) */
+.guide-content .guide-header {
+  margin-bottom: var(--space-xl);
 }
 
 .guide-icon {
