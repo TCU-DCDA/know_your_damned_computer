@@ -732,21 +732,21 @@ pre code {
   
   /* Guide layout improvements */
   .guide-container {
-    grid-template-columns: 1fr 280px;
+    grid-template-columns: 280px 1fr;
     max-width: 1200px;
     padding: 0 var(--space-lg);
   }
-  
+
   .guide-sidebar {
     position: sticky;
     top: 100px;
     height: fit-content;
-    order: 2;
+    order: 1;
   }
-  
+
   .guide-content {
     padding: var(--space-xl);
-    order: 1;
+    order: 2;
   }
 }
 
@@ -789,7 +789,7 @@ pre code {
   
   /* Guide sidebar positioning */
   .guide-container {
-    grid-template-columns: 1fr 320px;
+    grid-template-columns: 320px 1fr;
   }
   
   .guide-sidebar {
@@ -806,7 +806,7 @@ pre code {
   }
   
   .guide-container {
-    grid-template-columns: 1fr 360px;
+    grid-template-columns: 360px 1fr;
   }
 }
 
