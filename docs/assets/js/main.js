@@ -65,9 +65,18 @@ class KnowYourComputer {
         const menuToggle = document.querySelector('.menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         
-        if (!menuToggle || !mobileMenu) return;
+        if (!menuToggle) {
+            console.log('Menu toggle not found');
+            return;
+        }
+        
+        if (!mobileMenu) {
+            console.log('Mobile menu not found');
+            return;
+        }
 
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
             this.toggleMobileMenu();
         });
         
@@ -90,6 +99,8 @@ class KnowYourComputer {
                 this.closeMobileMenu();
             }
         });
+        
+        console.log('Mobile menu setup complete');
     }
     
     toggleMobileMenu() {
@@ -97,8 +108,19 @@ class KnowYourComputer {
         const menuToggle = document.querySelector('.menu-toggle');
         
         if (mobileMenu && menuToggle) {
-            mobileMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
+            const isActive = mobileMenu.classList.contains('active');
+            
+            if (isActive) {
+                mobileMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            } else {
+                mobileMenu.classList.add('active');
+                menuToggle.classList.add('active');
+            }
+            
+            console.log('Mobile menu toggled:', !isActive);
+        } else {
+            console.log('Mobile menu elements not found for toggle');
         }
     }
     
