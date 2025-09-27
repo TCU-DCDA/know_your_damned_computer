@@ -377,6 +377,21 @@ a:focus {
   text-decoration: none;
 }
 
+/* Secondary buttons in sidebar context */
+.sidebar-content .btn-secondary {
+  background: transparent;
+  border-color: var(--border-color-dark);
+  color: var(--text-primary);
+}
+
+.sidebar-content .btn-secondary:hover,
+.sidebar-content .btn-secondary:focus {
+  background: var(--bg-tertiary);
+  border-color: var(--color-secondary);
+  color: var(--color-secondary-dark);
+  text-decoration: none;
+}
+
 .btn-large {
   padding: var(--space-md) var(--space-lg);
   font-size: var(--font-size-lg);
