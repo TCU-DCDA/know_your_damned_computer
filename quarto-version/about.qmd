@@ -1,0 +1,90 @@
+---
+title: "About This Guide"
+---
+
+## Purpose
+
+"Know Your Damned Computer" is an interactive educational resource designed specifically for digital humanities students who need to build technical skills for digital research projects.
+
+## Learning Philosophy
+
+We believe that:
+
+- **Technical skills are learnable** - No prior experience required
+- **Hands-on practice matters** - Every guide includes exercises
+- **Context helps** - Examples come from real DH projects
+- **Both platforms matter** - Equal support for Mac and PC users
+- **Accessibility is essential** - Screen reader support and keyboard navigation
+
+## Who This Is For
+
+This guide is designed for:
+
+- Digital humanities students with little to no technical background
+- Researchers starting digital projects
+- Anyone who needs to organize digital research materials
+- Students learning command line basics
+- Scholars working with digital archives and text analysis
+
+## What You'll Learn
+
+::: {.grid}
+::: {.g-col-12 .g-col-md-6}
+### Fundamentals
+- File management and organization
+- Understanding file paths
+- File formats and compression
+- Text encoding basics
+:::
+
+::: {.g-col-12 .g-col-md-6}
+### Practical Skills
+- Command line navigation
+- Organizing research files
+- Version control concepts
+- Cross-platform compatibility
+:::
+:::
+
+## About the Author
+
+**Curt Rode** teaches in the Digital Culture & Data Analytics Program at Texas Christian University. This guide emerged from years of helping humanities students develop the technical skills they need for digital research projects.
+
+## Credits
+
+- **Development**: Curt Rode
+- **Program**: TCU Digital Culture & Data Analytics
+- **Built with**: [Quarto](https://quarto.org) - an open-source scientific publishing system
+
+## License
+
+This work is licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+You are free to:
+
+- **Share** - copy and redistribute the material
+- **Adapt** - remix, transform, and build upon the material
+
+Under these terms:
+
+- **Attribution** - Give appropriate credit
+- **NonCommercial** - Not for commercial purposes
+- **ShareAlike** - Distribute contributions under the same license
+
+## Contribute
+
+Found an error? Have a suggestion?
+
+- [Report an issue](https://github.com/TCU-DCDA/know_your_damned_computer/issues)
+- [Suggest an edit](https://github.com/TCU-DCDA/know_your_damned_computer) (see "Edit this page" in the sidebar)
+
+## Acknowledgments
+
+Thanks to the students in TCU's Digital Humanities courses who provided feedback and helped refine these materials.
+
+---
+
+::: {.callout-note}
+## Version Note
+This is a Quarto implementation created to compare with the original Jekyll version. Both versions are actively maintained.
+:::

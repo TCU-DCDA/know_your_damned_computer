@@ -1,0 +1,403 @@
+---
+title: "File Management Fundamentals"
+subtitle: "Organize Your Digital Research Like a Pro"
+author: "Curt Rode"
+date: last-modified
+difficulty: beginner
+time-estimate: "20 minutes"
+format:
+  html:
+    code-tools: false
+    toc: true
+    number-sections: true
+---
+
+::: {.callout-note appearance="minimal"}
+## Learning Objectives
+By the end of this guide, you will be able to:
+
+- Develop consistent file naming conventions
+- Create logical folder structures for DH projects
+- Implement effective backup strategies
+- Navigate files efficiently on Mac and PC
+:::
+
+## Why File Management Matters for DH Students
+
+File management is the foundation of effective digital humanities work. Poor file organization leads to lost research, duplicated effort, and frustration. This guide will help you develop habits that will serve you throughout your academic and professional career.
+
+In digital humanities, you'll work with:
+
+- Multiple versions of text files and datasets
+- Research notes and drafts
+- Images, audio, and video files
+- Code and scripts
+- Collaboration materials shared with team members
+
+Good file management ensures you can always find what you need and that your work is reproducible and shareable.
+
+::: {.callout-tip}
+## Quick Check
+**Why is file management especially important in DH work?**
+
+While file size and backups matter, the main challenge is managing the **complexity** of DH projects—multiple file types, versions, and collaborators all need clear organization.
+:::
+
+## Core Principles
+
+### Consistent Naming Conventions {#sec-naming}
+
+**Good naming habits save hours of searching later.**
+
+#### File Naming Best Practices
+
+- Use descriptive names: `medieval-manuscript-transcription-draft-2024-09-26.txt` not `document1.txt`
+- Use hyphens or underscores instead of spaces: `research_notes.txt` not `research notes.txt`
+- Include dates in YYYY-MM-DD format for version control: `2024-09-26_interview-transcript.txt`
+- Use consistent capitalization (recommend lowercase for compatibility)
+
+::: {.callout-important}
+## Exercise: Fix These File Names
+
+Your research partner sent you these poorly named files. How would you improve them?
+
+**Original:** `My Research Paper (Final Version).docx`
+**Better:** `victorian-poetry-analysis-final-2024-09-26.docx`
+
+**Original:** `data file.csv`
+**Better:** `survey-responses-2024-09-26.csv`
+
+**Why these are better:**
+- Descriptive content
+- No spaces or special characters
+- Dates in sortable format (YYYY-MM-DD)
+- Lowercase for compatibility
+:::
+
+#### Platform-Specific Considerations
+
+::: {.panel-tabset}
+## Mac Users
+
+- File names are case-sensitive in some contexts, case-insensitive in others
+- Avoid special characters: `/ : < > | * ? "`
+- Maximum filename length: 255 characters
+
+## PC Users
+
+- File names are case-insensitive
+- Avoid special characters: `\ / : * ? " < > |`
+- Maximum filename length: 260 characters (including full path)
+:::
+
+### Folder Structure and Hierarchy {#sec-folders}
+
+Create a logical, consistent folder structure that makes sense for your work.
+
+#### Recommended DH Project Structure
+
+```default
+Your-DH-Project/
+├── 01-raw-data/
+│   ├── texts/
+│   ├── images/
+│   └── metadata/
+├── 02-processed-data/
+│   ├── cleaned-texts/
+│   └── analysis-ready/
+├── 03-analysis/
+│   ├── scripts/
+│   └── outputs/
+├── 04-documentation/
+│   ├── research-notes/
+│   └── methodology/
+├── 05-drafts/
+└── 06-final-outputs/
+```
+
+#### Benefits of This Structure
+
+- **Numbered folders** ensure consistent ordering across platforms
+- **Descriptive names** make purpose clear
+- **Separation by stage** prevents confusion between raw and processed data
+- **Documentation folder** keeps important notes accessible
+
+::: {.callout-note}
+## Cross-Reference
+This folder structure works seamlessly with the path navigation techniques covered in our [File Paths guide](file-paths.qmd).
+:::
+
+### Version Control Through Naming {#sec-versions}
+
+Until you learn formal version control (Git), use naming conventions:
+
+#### For Documents
+
+Less reliable approach:
+```
+paper-draft-v1.docx
+paper-draft-v2.docx
+paper-draft-final.docx
+paper-draft-final-FINAL.docx  (we've all been there!)
+```
+
+#### Better Approach with Dates
+
+```
+paper-draft-2024-09-26.docx
+paper-draft-2024-10-03.docx
+paper-draft-2024-10-15-submitted.docx
+```
+
+::: {.callout-tip}
+## Best Practice
+**Dates in YYYY-MM-DD format** provide clear chronological order and never repeat. They sort correctly and avoid confusion about which version is newest.
+:::
+
+## Platform-Specific File Management
+
+### Mac File Management
+
+#### Using Finder Effectively
+
+1. **View Options**: Use List view (⌘+2) for detailed file info
+2. **Column View** (⌘+3): Great for navigating deep folder structures
+3. **Tags**: Color-code files by project or status
+4. **Smart Folders**: Create saved searches for file types or dates
+
+#### Essential Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `⌘+Space` | Open Spotlight search |
+| `⌘+Shift+G` | Go to specific folder path |
+| `⌘+I` | Get info on selected file |
+| `⌘+Delete` | Move to Trash |
+
+: Mac Finder Shortcuts {#tbl-mac-shortcuts}
+
+#### Pro Tips for Mac Users
+
+- Use **Stacks** on Desktop to auto-organize files by type
+- Enable **filename extensions** in Finder preferences
+- Use **AirDrop** for easy file sharing between Mac devices
+
+### PC File Management
+
+#### Using File Explorer Effectively
+
+1. **Details View**: Shows file size, type, and modification date
+2. **Quick Access**: Pin frequently used folders
+3. **Ribbon Interface**: Access file operations quickly
+4. **Search**: Use search operators like `type:pdf` or `modified:today`
+
+#### Essential Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Windows+E` | Open File Explorer |
+| `Ctrl+Shift+N` | Create new folder |
+| `F2` | Rename selected file |
+| `Alt+Enter` | File properties |
+
+: Windows File Explorer Shortcuts {#tbl-windows-shortcuts}
+
+#### Pro Tips for PC Users
+
+- Use **Libraries** to group related folders from different locations
+- Enable **file extensions** in View options
+- Use **OneDrive** integration for cloud storage and sync
+
+## Common File Management Mistakes to Avoid
+
+### Desktop Dumping {.unnumbered}
+
+**Problem:** Saving everything to the desktop
+**Solution:** Use desktop only for temporary files; move to proper folders daily
+
+### Generic Folder Names {.unnumbered}
+
+**Problem:** Folders named "Stuff," "Misc," "New Folder"
+**Solution:** Always use descriptive names that indicate content
+
+### Deep Folder Nesting {.unnumbered}
+
+**Problem:** Folders buried 8+ levels deep
+**Solution:** Keep structure 3-5 levels deep maximum
+
+### Inconsistent Naming {.unnumbered}
+
+**Problem:** Mixing naming conventions within a project
+**Solution:** Establish conventions early and stick to them
+
+### No Backup Strategy {.unnumbered}
+
+**Problem:** Keeping only one copy of important files
+**Solution:** Follow the 3-2-1 rule (3 copies, 2 different media, 1 offsite)
+
+::: {.callout-warning}
+## Spot the Problems
+
+Look at this folder structure and identify the issues:
+
+```
+Desktop/
+  ├── Untitled folder/
+  ├── My Stuff/
+  │   └── More Stuff/
+  │       └── Research Things/
+  │           └── Important/
+  │               └── Really Important/
+  │                   └── SUPER IMPORTANT/
+  │                       └── document.txt
+  ├── New folder/
+  ├── New folder (2)/
+  ├── thesis final.docx
+  ├── thesis final FINAL.docx
+  └── thesis final FINAL v2.docx
+```
+
+**Problems identified:**
+
+- ✓ Files stored on desktop
+- ✓ Generic folder names ("My Stuff", "New folder")
+- ✓ Too many nested levels (7 deep!)
+- ✓ Spaces in file names
+- ✓ Poor version control ("final FINAL v2")
+:::
+
+## Practical Exercises
+
+### Exercise 1: Create Your DH Project Structure
+
+Let's practice creating a proper folder structure for a digital humanities project.
+
+::: {.callout-note icon=false}
+## 📁 Your Mission: Victorian Literature Analysis Project
+
+You're starting a project analyzing Victorian novels. Create a folder structure that will keep everything organized.
+
+**Steps:**
+
+1. ☐ Create main project folder with descriptive name
+2. ☐ Add numbered subfolders for different stages
+3. ☐ Create folders for raw texts, processed data, and analysis
+4. ☐ Add documentation and outputs folders
+5. ☐ Create a README file explaining your structure
+
+**Recommended Structure:**
+
+```
+victorian-literature-analysis-2024/
+├── 01-raw-data/
+│   ├── novels/
+│   ├── author-biographies/
+│   └── historical-context/
+├── 02-processed-data/
+│   ├── cleaned-texts/
+│   └── word-frequencies/
+├── 03-analysis/
+│   ├── python-scripts/
+│   └── results/
+├── 04-documentation/
+│   ├── research-notes/
+│   ├── bibliography/
+│   └── methodology/
+├── 05-drafts/
+└── 06-final-outputs/
+    └── README.md
+```
+:::
+
+### Exercise 2: File Naming Challenge
+
+Practice creating better file names for common DH scenarios.
+
+::: {.callout-tip icon=false}
+## Scenario 1: Research Interview
+
+You interviewed Dr. Sarah Johnson about Victorian women writers on September 26, 2024.
+
+**Bad name:** `interview.mp3`
+**Better name:** `interview-sarah-johnson-victorian-women-writers-2024-09-26.mp3`
+
+**Why it's better:** Includes who, what, and when in a sortable, searchable format.
+:::
+
+::: {.callout-tip icon=false}
+## Scenario 2: Data Analysis Script
+
+Python script that analyzes word frequency in your text corpus.
+
+**Bad name:** `script.py`
+**Better name:** `analyze-word-frequency-victorian-corpus.py`
+
+**Why it's better:** Describes function and data set; easy to find later.
+:::
+
+## Advanced Tips
+
+### Metadata and File Properties
+
+Both Mac and PC allow you to add metadata to files:
+
+- **Tags/Keywords**: For easy searching
+- **Comments**: Brief descriptions of file contents
+- **Custom properties**: Project names, authors, etc.
+
+### Automation Tools
+
+- **Mac**: Use Automator for repetitive file tasks
+- **PC**: Use PowerToys or batch renaming tools
+- **Both**: Consider tools like Hazel (Mac) or File Juggler (PC) for automatic file organization
+
+::: {.callout-tip}
+## 💡 The Two-Minute Rule
+
+If organizing a file takes less than two minutes, do it immediately. This prevents the accumulation of messy files and keeps your system clean.
+:::
+
+## Knowledge Check
+
+::: {.callout-important icon=false}
+## Final Assessment
+
+Which of these demonstrates good file management for a DH project?
+
+**Option A:** `Desktop/New folder/stuff.txt`
+
+**Option B:** `DH-Projects/medieval-manuscripts-2024/01-raw-data/manuscript-images/ms-001-folio-12r-2024-09-26.jpg`
+
+**Option C:** `My Documents/Research/Final Project/Data/file1.csv`
+
+<details>
+<summary>Show Answer</summary>
+
+**Option B is correct!** This filename shows all the best practices:
+
+- Descriptive project folder name
+- Numbered organization system
+- Clear subfolder purposes
+- Descriptive filename with date
+- No spaces (using hyphens)
+- Follows conventions discussed in @sec-naming and @sec-folders
+
+</details>
+:::
+
+## Questions for Reflection
+
+1. How much time do you currently spend looking for files?
+2. What types of files do you work with most in your DH projects?
+3. How do you currently handle different versions of the same document?
+4. What file management habits from this guide would help you most?
+
+## Next Steps
+
+Once you've learned basic file management, you're ready to learn about [file paths and navigation](file-paths.qmd), which will help you understand exactly where your well-organized files live on your computer.
+
+---
+
+::: {.callout-note appearance="simple"}
+*Remember: Good file management is a skill that improves with practice. Start with small improvements and build better habits gradually.*
+:::

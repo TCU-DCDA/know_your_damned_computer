@@ -1,0 +1,127 @@
+/*-- scss:defaults --*/
+$primary: #2563eb;
+$success: #059669;
+$warning: #d97706;
+$danger: #dc2626;
+$info: #0891b2;
+
+$body-bg: #ffffff;
+$body-color: #1f2937;
+$code-bg: #f3f4f6;
+$border-color: #e5e7eb;
+
+/*-- scss:rules --*/
+.quiz-container {
+  background: $code-bg;
+  border-left: 4px solid $primary;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+}
+
+.quiz-option {
+  display: block;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  background: white;
+  border: 2px solid $border-color;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.quiz-option:hover {
+  border-color: $primary;
+  background: rgba($primary, 0.05);
+}
+
+.quiz-option.correct {
+  border-color: $success;
+  background: rgba($success, 0.1);
+}
+
+.quiz-option.incorrect {
+  border-color: $danger;
+  background: rgba($danger, 0.1);
+}
+
+.feedback {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  border-left: 4px solid;
+}
+
+.feedback-correct {
+  background: rgba($success, 0.1);
+  border-color: $success;
+  color: darken($success, 10%);
+}
+
+.feedback-incorrect {
+  background: rgba($danger, 0.1);
+  border-color: $danger;
+  color: darken($danger, 10%);
+}
+
+.terminal-sim {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  min-height: 200px;
+}
+
+.terminal-sim .prompt {
+  color: #4ec9b0;
+}
+
+.terminal-sim .command {
+  color: #dcdcaa;
+}
+
+.terminal-sim .output {
+  color: #d4d4d4;
+}
+
+.exercise-box {
+  background: rgba($info, 0.05);
+  border: 2px solid $info;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.exercise-box h4 {
+  color: $info;
+  margin-top: 0;
+}
+
+.callout-dh {
+  border-left-color: #8b5cf6;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 9999px;
+}
+
+.difficulty-beginner {
+  background: rgba($success, 0.2);
+  color: darken($success, 20%);
+}
+
+.difficulty-intermediate {
+  background: rgba($warning, 0.2);
+  color: darken($warning, 20%);
+}
+
+.difficulty-advanced {
+  background: rgba($danger, 0.2);
+  color: darken($danger, 20%);
+}

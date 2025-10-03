@@ -3,7 +3,7 @@
 ## Project Overview
 Creating an interactive, web-based resource to help college students understand their computers for digital humanities work. The resource is designed for beginners working with Python/VS Code on text analysis, data visualization, and mapping projects.
 
-## Current Status (September 27, 2025)
+## Current Status (October 3, 2025)
 
 ### ✅ Completed Components
 
@@ -67,6 +67,71 @@ All six essential computer skills guides have been successfully converted to int
    - Python-based text repair tools and examples
    - Multilingual corpus processing workflows
    - Character set conversion practice with real-world scenarios
+
+## 🔬 Quarto Evaluation (October 3, 2025)
+
+### Parallel Implementation Created
+A complete Quarto version has been created in `quarto-version/` for comparison with the Jekyll implementation. This allows evaluation of both platforms for future development decisions.
+
+**Quarto Version Includes:**
+- `_quarto.yml` - Full configuration with navigation and themes
+- `index.qmd` - Homepage with grid layouts and native callouts
+- `guides/file-management.qmd` - Complete conversion showcasing Quarto features
+- `custom.scss` - Styling adapted for Quarto
+- `about.qmd` - About page
+- `COMPARISON-NOTES.md` - Detailed Jekyll vs Quarto analysis
+
+**Preview Available:** `cd quarto-version && quarto preview`
+
+### Key Quarto Advantages Demonstrated
+1. **Cleaner Markdown Syntax**
+   - Native callouts: `:::  {.callout-tip}` vs custom HTML divs
+   - Tabbed content: `{.panel-tabset}` for Mac/PC sections
+   - Cross-references: `@sec-naming` auto-generates numbered links
+   - Tables with captions and automatic numbering
+
+2. **Multi-Format Output**
+   - Same source generates HTML + PDF + Word + ePub
+   - Enables printable handouts for students
+   - Single `quarto render` builds all formats
+
+3. **Academic Publishing Features**
+   - Native citations and bibliographies
+   - Cross-references with automatic numbering
+   - Code execution (Python/R) in documents
+   - Better structured for academic contexts
+
+### Jekyll Advantages Preserved
+1. **Custom Interactive Features**
+   - Quiz engine (`quiz-engine.js`) - sophisticated, tested
+   - Terminal simulator (`terminal-sim.js`) - unique feature
+   - Progress tracking (`progress.js`) - localStorage implementation
+   - Full control over JavaScript interactivity
+
+2. **Deployment Simplicity**
+   - Zero-config GitHub Pages integration
+   - Automatic builds on push
+   - Established workflow
+
+### Recommendation Status: Under Evaluation
+**Current Assessment:** Stay with Jekyll for primary development due to:
+- Significant investment in custom interactive features
+- Working GitHub Pages deployment
+- Primary need is web-based interactive content
+- Custom quiz/terminal features are core value propositions
+
+**Consider Quarto for:**
+- Generating PDF/Word versions of content for offline use
+- Academic publication or conference materials
+- Future courses requiring executable code demonstrations
+- Simplified content updates (cleaner markdown)
+
+**Hybrid Approach Possible:**
+- Maintain Jekyll for interactive web version
+- Use Quarto to generate PDF handouts from simplified content
+- Best of both worlds (with added maintenance overhead)
+
+See `quarto-version/COMPARISON-NOTES.md` for detailed technical comparison.
 
 ## 🎯 Next Development Phases
 

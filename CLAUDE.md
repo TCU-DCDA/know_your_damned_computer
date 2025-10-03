@@ -60,13 +60,13 @@ This is an interactive digital humanities educational resource called "Know Your
 - `progress.js`: User progress tracking with local storage
 
 ### Content Development Status
-- **Completed**: File management and file paths guides (both static and interactive)
-- **In progress**: Converting remaining static guides to interactive format
-- **Priority order**: compression.md → file-formats.md → command-line.md → text-encoding.md
+- **Completed**: All six core guides (file management, file paths, compression, file formats, command line, text encoding) - both static and interactive versions
+- **Live deployment**: https://tcu-dcda.github.io/know_your_damned_computer/
+- **Evaluation phase**: Quarto parallel implementation created for platform comparison
 
 ## Development Commands
 
-### Jekyll Development
+### Jekyll Development (Primary)
 ```bash
 # Install dependencies (first time setup)
 cd docs && bundle install
@@ -78,9 +78,26 @@ cd docs && bundle exec jekyll serve
 cd docs && bundle exec jekyll build
 ```
 
+### Quarto Development (Evaluation)
+```bash
+# Install Quarto: https://quarto.org/docs/get-started/
+brew install quarto  # Mac
+
+# Preview site
+cd quarto-version && quarto preview
+
+# Render all formats
+cd quarto-version && quarto render
+
+# Render to specific format
+quarto render --to pdf    # PDF handouts
+quarto render --to docx   # Word documents
+```
+
 ### Content Development
 - Edit static guides in root directory for comprehensive content
-- Convert to interactive format in `docs/_guides/` with Jekyll front matter
+- Interactive Jekyll version in `docs/_guides/` with Jekyll front matter
+- Quarto evaluation version in `quarto-version/guides/` with .qmd format
 - Interactive elements use data attributes and JavaScript modules
 
 ### Testing
@@ -97,6 +114,12 @@ cd docs && bundle exec jekyll build
 │   ├── _layouts/                 # Page templates
 │   ├── assets/js/                # Interactive functionality
 │   └── index.html                # Landing page
+├── quarto-version/                # Quarto implementation for comparison
+│   ├── _quarto.yml               # Quarto configuration
+│   ├── index.qmd                 # Homepage
+│   ├── guides/                   # Guide content (.qmd format)
+│   ├── custom.scss               # Styling
+│   └── COMPARISON-NOTES.md       # Jekyll vs Quarto analysis
 ├── *.md                          # Static educational content
 ├── README.md                     # Project overview
 └── PROGRESS.md                   # Development status and next steps

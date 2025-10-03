@@ -1,0 +1,79 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "guides/*.qmd"
+    - "!COMPARISON-NOTES.md"
+    - "!README.md"
+
+website:
+  title: "Know Your Damned Computer"
+  description: "Interactive Digital Humanities Computer Skills Guide"
+  site-url: https://tcu-dcda.github.io/know_your_damned_computer
+  repo-url: https://github.com/TCU-DCDA/know_your_damned_computer
+  repo-actions: [edit, issue]
+
+  navbar:
+    title: "Know Your Damned Computer"
+    background: primary
+    search: true
+    left:
+      - text: "Guides"
+        menu:
+          - text: "File Management"
+            href: guides/file-management.qmd
+          - text: "File Paths"
+            href: guides/file-paths.qmd
+          - text: "Compression"
+            href: guides/compression.qmd
+          - text: "Command Line"
+            href: guides/command-line.qmd
+      - text: "Exercises"
+        href: exercises/index.qmd
+      - text: "About"
+        href: about.qmd
+
+  sidebar:
+    - title: "Learning Path"
+      style: "docked"
+      contents:
+        - section: "Fundamentals"
+          contents:
+            - guides/file-management.qmd
+            - guides/file-paths.qmd
+            - guides/compression.qmd
+        - section: "Command Line"
+          contents:
+            - guides/command-line.qmd
+        - section: "Advanced Topics"
+          contents:
+            - guides/text-encoding.qmd
+            - guides/file-formats.qmd
+
+  page-footer:
+    left: "© 2024 Curt Rode and TCU Digital Culture & Data Analytics Program"
+    right:
+      - icon: github
+        href: https://github.com/TCU-DCDA/know_your_damned_computer
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    toc-expand: 2
+    code-copy: true
+    code-fold: false
+    link-external-newwindow: true
+    link-external-icon: true
+
+# Execution options
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+
+# Metadata
+author: "Curt Rode"
+license: "CC BY-NC-SA 4.0"

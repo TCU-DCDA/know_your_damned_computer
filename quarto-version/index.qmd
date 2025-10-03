@@ -1,0 +1,78 @@
+---
+title: "Know Your Damned Computer"
+subtitle: "Essential Computer Skills for Digital Humanities Students"
+---
+
+## Welcome
+
+This interactive guide will teach you the computer fundamentals you need to succeed in digital humanities work. Whether you're analyzing historical texts, building digital archives, or creating data visualizations, understanding how your computer works is essential.
+
+## What You'll Learn
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+### File Management
+Learn to organize your research files, create logical folder structures, and develop naming conventions that will save you hours of frustration.
+
+[Start Learning →](guides/file-management.qmd){.btn .btn-primary}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+### Command Line Basics
+Gain confidence working with the terminal, understanding file paths, and executing commands that make your work more efficient.
+
+[Explore Guides →](guides/command-line.qmd){.btn .btn-outline-primary}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+### File Formats & Compression
+Understand different file types, when to use them, and how compression works for managing large digital collections.
+
+[Learn More →](guides/compression.qmd){.btn .btn-outline-primary}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+### Text Encoding
+Discover how computers represent text, why encoding matters for multilingual projects, and how to avoid common pitfalls.
+
+[Coming Soon]{.badge .bg-secondary}
+:::
+
+:::
+
+## Learning Path
+
+This guide is designed for beginners with no prior technical experience. We recommend following the modules in order:
+
+1. **File Management Fundamentals** (20 min)
+2. **Understanding File Paths** (15 min)
+3. **Compression Basics** (15 min)
+4. **Command Line Introduction** (30 min)
+5. **File Formats Deep Dive** (25 min)
+6. **Text Encoding** (20 min)
+
+## Interactive Features
+
+::: {.callout-tip}
+## Hands-On Learning
+Each guide includes interactive quizzes, exercises you can complete on your own computer, and real digital humanities examples.
+:::
+
+::: {.callout-note}
+## Platform Support
+All guides include instructions for both **Mac** and **PC** users. Look for platform-specific sections throughout.
+:::
+
+## About This Guide
+
+Created by Curt Rode and the TCU Digital Culture & Data Analytics Program, this resource is designed specifically for humanities students who need to build technical skills for digital research projects.
+
+::: {.callout-important}
+## Prerequisites
+No prior technical experience required! Just bring curiosity and willingness to learn.
+:::
+
+---
+
+**Ready to begin?** Start with [File Management Fundamentals](guides/file-management.qmd) to build your foundation.
