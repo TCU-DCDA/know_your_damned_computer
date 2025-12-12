@@ -1,78 +1,129 @@
 ---
 title: "Know Your Damned Computer"
-subtitle: "Essential Computer Skills for Digital Humanities Students"
+pagetitle: "Know Your Damned Computer"
+format:
+  html:
+    page-layout: full
+    toc: false
 ---
 
-## Welcome
+```{=html}
+<div class="refresh-hero">
+  <div class="hero-content">
+    <div class="hero-title-group">
+      <h1>Know Your Damned Computer</h1>
+      <p class="subtitle">
+        Bridging the gap between traditional humanities and modern computing.
 
-This interactive guide will teach you the computer fundamentals you need to succeed in digital humanities work. Whether you're analyzing historical texts, building digital archives, or creating data visualizations, understanding how your computer works is essential.
+      </p>
+    </div>
 
-## What You'll Learn
+    <div class="hero-actions">
+      <a href="#guides" class="btn-pill primary">
+        <i class="fas fa-terminal"></i> Start Learning
+      </a>
+      <a href="about.qmd" class="btn-pill secondary">
+        <i class="fas fa-book-open"></i> Read Manifesto
+      </a>
+    </div>
 
-::: {.grid}
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="value">6</span>
+        <span class="label">Modules</span>
+      </div>
+      <div class="stat-item">
+        <span class="value">20+</span>
+        <span class="label">Exercises</span>
+      </div>
+      <div class="stat-item">
+        <span class="value">100%</span>
+        <span class="label">Open Source</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-::: {.g-col-12 .g-col-md-6}
-### File Management
-Learn to organize your research files, create logical folder structures, and develop naming conventions that will save you hours of frustration.
+<section id="guides">
+  <h2 class="section-title">Interactive Learning Guides</h2>
+  
+  <div class="bento-grid">
+    <!-- Card 1 -->
+    <a href="guides/file-management.qmd" class="bento-card">
+      <img src="images/folders.png" class="card-image" alt="File Management">
+      <div class="card-content">
+        <h3>File Management</h3>
+        <p>Stop losing your thesis. Learn how file systems actually work, absolute vs. relative paths, and how to organize your digital life.</p>
+        <div class="card-meta">
+          <span class="chip">Beginner</span>
+          <span class="chip">macOS/Win</span>
+        </div>
+      </div>
+    </a>
 
-[Start Learning →](guides/file-management.qmd){.btn .btn-primary}
-:::
+    <!-- Card 2 -->
+    <a href="#" class="bento-card">
+      <img src="images/terminal.png" class="card-image" alt="Command Line">
+      <div class="card-content">
+        <h3>The Command Line</h3>
+        <p>Unlock the true power of your computer. Navigate directories, manipulate files, and run scripts without a mouse.</p>
+        <div class="card-meta">
+          <span class="chip">Intermediate</span>
+          <span class="chip">Bash/Zsh</span>
+        </div>
+      </div>
+    </a>
 
-::: {.g-col-12 .g-col-md-6}
-### Command Line Basics
-Gain confidence working with the terminal, understanding file paths, and executing commands that make your work more efficient.
+    <!-- Card 3 -->
+    <a href="#" class="bento-card">
+      <img src="images/ascii.png" class="card-image" alt="Plain Text">
+      <div class="card-content">
+        <h3>Plain Text & Encoding</h3>
+        <p>Why did your Word doc turn into gibberish? Understand ASCII, UTF-8, and why plain text is the scholar's best friend.</p>
+        <div class="card-meta">
+          <span class="chip">Advanced</span>
+          <span class="chip">Theory</span>
+        </div>
+      </div>
+    </a>
 
-[Explore Guides →](guides/command-line.qmd){.btn .btn-outline-primary}
-:::
+    <!-- Card 4 -->
+    <a href="#" class="bento-card">
+      <img src="images/version.png" class="card-image" alt="Version Control">
+      <div class="card-content">
+        <h3>Version Control</h3>
+        <p>Introduction to Git. Track changes, collaborate with others, and never create "final_final_v2.docx" again.</p>
+        <div class="card-meta">
+          <span class="chip">Intermediate</span>
+          <span class="chip">Git</span>
+        </div>
+      </div>
+    </a>
 
-::: {.g-col-12 .g-col-md-6}
-### File Formats & Compression
-Understand different file types, when to use them, and how compression works for managing large digital collections.
+    <!-- Card 5 -->
+    <a href="#" class="bento-card">
+      <img src="images/environment.png" class="card-image" alt="Environment Setup">
+      <div class="card-content">
+        <h3>Environment Setup</h3>
+        <p>Installing Python, VS Code, and package managers. Setting up a robust development environment for DH work.</p>
+        <div class="card-meta">
+          <span class="chip">Advanced</span>
+          <span class="chip">Setup</span>
+        </div>
+      </div>
+    </a>
 
-[Learn More →](guides/compression.qmd){.btn .btn-outline-primary}
-:::
-
-::: {.g-col-12 .g-col-md-6}
-### Text Encoding
-Discover how computers represent text, why encoding matters for multilingual projects, and how to avoid common pitfalls.
-
-[Coming Soon]{.badge .bg-secondary}
-:::
-
-:::
-
-## Learning Path
-
-This guide is designed for beginners with no prior technical experience. We recommend following the modules in order:
-
-1. **File Management Fundamentals** (20 min)
-2. **Understanding File Paths** (15 min)
-3. **Compression Basics** (15 min)
-4. **Command Line Introduction** (30 min)
-5. **File Formats Deep Dive** (25 min)
-6. **Text Encoding** (20 min)
-
-## Interactive Features
-
-::: {.callout-tip}
-## Hands-On Learning
-Each guide includes interactive quizzes, exercises you can complete on your own computer, and real digital humanities examples.
-:::
-
-::: {.callout-note}
-## Platform Support
-All guides include instructions for both **Mac** and **PC** users. Look for platform-specific sections throughout.
-:::
-
-## About This Guide
-
-Created by Curt Rode and the TCU Digital Culture & Data Analytics Program, this resource is designed specifically for humanities students who need to build technical skills for digital research projects.
-
-::: {.callout-important}
-## Prerequisites
-No prior technical experience required! Just bring curiosity and willingness to learn.
-:::
-
----
-
-**Ready to begin?** Start with [File Management Fundamentals](guides/file-management.qmd) to build your foundation.
+    <!-- Card 6 -->
+    <a href="#" class="bento-card">
+      <div class="card-content">
+        <h3>Data Formats</h3>
+        <p>CSV, JSON, XML. Understanding structured data and how to move information between different tools.</p>
+        <div class="card-meta">
+          <span class="chip">Intermediate</span>
+          <span class="chip">Data</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+```
