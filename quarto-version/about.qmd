@@ -1,48 +1,52 @@
 ---
 title: "About This Guide"
+subtitle: "Why we built this and why you need it."
+format:
+  html:
+    toc: true
 ---
 
-## Purpose
+## The Manifesto
 
-"Know Your Damned Computer" is an interactive educational resource designed specifically for digital humanities students who need to build technical skills for digital research projects.
+::: {.callout-important appearance="simple" icon=false}
+### 🛑 Stop Treating Your Computer Like a Magic Box
 
-## Learning Philosophy
+Digital Humanities is not just about reading books on a screen. It's about using computational methods to ask new questions. But you cannot ask those questions if you are afraid of the machine.
 
-We believe that:
+**We believe that:**
 
-- **Technical skills are learnable** - No prior experience required
-- **Hands-on practice matters** - Every guide includes exercises
-- **Context helps** - Examples come from real DH projects
-- **Both platforms matter** - Equal support for Mac and PC users
-- **Accessibility is essential** - Screen reader support and keyboard navigation
+1.  **"It just works" is a lie.** When things "just work," you learn nothing. When they break, you learn how they work. Embrace the error message.
+2.  **The Command Line is not scary.** It is simply a conversation. It is the most direct way to speak to your machine without the "user friendly" translation layer getting in the way.
+3.  **File management is scholarship.** If you lose your data, you have no research. If you cannot find your sources, you have no argument. Organizing your digital life is as crucial as organizing your bibliography.
+4.  **You belong here.** Technical skills are not a gene you are born with. They are a practice. You are a scholar; you can learn this.
+:::
 
-## Who This Is For
+## Why This Exists
 
-This guide is designed for:
+This guide emerged from a recurring pattern in Digital Humanities classrooms: students who are brilliant at critical theory and close reading but get stuck because they don't know where their files are saved.
 
-- Digital humanities students with little to no technical background
-- Researchers starting digital projects
-- Anyone who needs to organize digital research materials
-- Students learning command line basics
-- Scholars working with digital archives and text analysis
+We skip the "Introduction to Computer Science" theory and focus strictly on the **survival skills** you need to do DH work:
+- How to navigate without a mouse.
+- How to keep your data safe.
+- How to fix things when they break.
 
 ## What You'll Learn
 
 ::: {.grid}
 ::: {.g-col-12 .g-col-md-6}
-### Fundamentals
-- File management and organization
-- Understanding file paths
-- File formats and compression
-- Text encoding basics
+### 🏗️ Fundamentals
+- **File Management**: Stop saving everything to "Desktop".
+- **File Paths**: Understand where your data actually lives.
+- **Formats**: Why `.docx` is the enemy of data analysis.
+- **Encoding**: Why your text turned into ``.
 :::
 
 ::: {.g-col-12 .g-col-md-6}
-### Practical Skills
-- Command line navigation
-- Organizing research files
-- Version control concepts
-- Cross-platform compatibility
+### 🛠️ Practical Skills
+- **Command Line**: Navigate your computer like a pro.
+- **Compression**: Handle archives and datasets.
+- **Version Control**: Stop naming files `final_final_v2.doc`.
+- **Troubleshooting**: Read error messages without panicking.
 :::
 :::
 

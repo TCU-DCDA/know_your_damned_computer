@@ -1,6 +1,12 @@
 # Know Your Damned Computer - Quarto Version
 
-This is a Quarto implementation of the "Know Your Damned Computer" educational resource for comparison with the Jekyll version.
+This is the active Quarto implementation of the "Know Your Damned Computer" educational resource. It is currently being ported from the original Jekyll version to serve as the template for all DCDA textbooks.
+
+## Current Status (December 2025)
+
+- **Guides**: All 6 core guides have been ported to `.qmd` format.
+- **Theme**: "Terminal Chic" theme is active with Light/Dark mode support.
+- **Interactivity**: JavaScript modules (quizzes, terminal sim) have been successfully migrated using raw HTML blocks.
 
 ## Key Differences from Jekyll Version
 
@@ -31,15 +37,16 @@ This is a Quarto implementation of the "Know Your Damned Computer" educational r
    - WebR for interactive R demonstrations
    - Great for teaching programming concepts
 
-### What We Lose from Jekyll
+### Challenges & Workarounds
 
-1. **Custom JavaScript interactivity** - Would need to be reimplemented
-   - Quiz engine (custom JS)
-   - Terminal simulator (custom JS)
-   - Progress tracking (custom JS)
+1. **Custom JavaScript interactivity**
+   - **Solution**: We preserved the custom quiz engine and terminal simulator by wrapping the HTML blocks in ````{=html} ... ``` ` code blocks. This allows Quarto to pass them through to the final HTML without modification.
 
-2. **GitHub Pages integration** - Requires different deployment approach
-3. **Full control over HTML structure** - Quarto templates less flexible
+2. **GitHub Pages integration**
+   - Requires a different deployment workflow (e.g., `quarto publish gh-pages` or GitHub Actions) compared to standard Jekyll.
+
+3. **HTML Structure Control**
+   - Quarto templates are less flexible than Jekyll layouts, requiring the use of raw HTML wrappers for our custom interactive components.
 
 ## Setup
 

@@ -36,12 +36,29 @@ In digital humanities, you'll work with:
 
 Good file management ensures you can always find what you need and that your work is reproducible and shareable.
 
-::: {.callout-tip}
-## Quick Check
-**Why is file management especially important in DH work?**
-
-While file size and backups matter, the main challenge is managing the **complexity** of DH projects—multiple file types, versions, and collaborators all need clear organization.
-:::
+```{=html}
+<div class="quiz" data-quiz="file-management-intro">
+  <h3>Quick Check: Why is file management especially important in DH work?</h3>
+  <label class="quiz-option">
+    <input type="radio" name="intro-quiz" value="size">
+    DH projects involve large files that are hard to manage
+  </label>
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="intro-quiz" value="complexity">
+    DH projects involve multiple file types, versions, and collaborators
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="intro-quiz" value="backup">
+    DH projects require special backup procedures
+  </label>
+  <div class="feedback-correct">
+    <p><strong>Exactly!</strong> DH projects are complex, involving text data, images, code, analysis results, and often multiple team members. Good organization prevents confusion and lost work.</p>
+  </div>
+  <div class="feedback-incorrect">
+    <p>While file size and backups matter, the main challenge is managing the <strong>complexity</strong> of DH projects—multiple file types, versions, and collaborators all need clear organization.</p>
+  </div>
+</div>
+```
 
 ## Core Principles
 

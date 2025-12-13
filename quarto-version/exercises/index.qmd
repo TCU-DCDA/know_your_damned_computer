@@ -1,0 +1,105 @@
+---
+title: "Practice Labs"
+subtitle: "Hands-on exercises to master your computer skills."
+format:
+  html:
+    toc: false
+    page-layout: full
+    include-in-header:
+      text: |
+        <style>
+        #title-block-header { display: none; }
+        </style>
+---
+
+```{=html}
+<div class="refresh-hero" style="min-height: 40vh; padding: 4rem 2rem;">
+  <div class="hero-content">
+    <div class="hero-title-group">
+      <h1>Practice Labs</h1>
+      <p class="subtitle">
+        Don't just read about it. Do it. <br>
+        Interactive exercises to build muscle memory.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="bento-grid" style="margin-top: -4rem; position: relative; z-index: 2;">
+
+  <!-- File Management -->
+  <div class="bento-card">
+    <div class="card-content">
+      <div class="card-icon"><i class="fas fa-folder-open"></i></div>
+      <h3>File Management</h3>
+      <p>Master the art of organization. Learn to name files so you can actually find them again.</p>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="margin-bottom: 0.5rem;">
+          <a href="../guides/file-management.qmd#sec-naming" class="btn-pill secondary" style="width: 100%; justify-content: center;">
+            <i class="fas fa-pen"></i> Naming Conventions
+          </a>
+        </li>
+        <li>
+          <a href="../guides/file-management.qmd#sec-folders" class="btn-pill secondary" style="width: 100%; justify-content: center;">
+            <i class="fas fa-sitemap"></i> Folder Structures
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Command Line -->
+  <div class="bento-card">
+    <div class="card-content">
+      <div class="card-icon"><i class="fas fa-terminal"></i></div>
+      <h3>Command Line</h3>
+      <p>Step into the matrix. Navigate your computer using text commands and scripts.</p>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="margin-bottom: 0.5rem;">
+          <a href="../guides/command-line.qmd#essential-navigation-commands" class="btn-pill secondary" style="width: 100%; justify-content: center;">
+            <i class="fas fa-compass"></i> Navigation Basics
+          </a>
+        </li>
+        <li>
+          <a href="../guides/command-line.qmd#file-operations" class="btn-pill secondary" style="width: 100%; justify-content: center;">
+            <i class="fas fa-copy"></i> File Operations
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Compression -->
+  <div class="bento-card">
+    <div class="card-content">
+      <div class="card-icon"><i class="fas fa-file-archive"></i></div>
+      <h3>Compression</h3>
+      <p>Zip it up. Learn how to archive and extract files properly.</p>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="margin-bottom: 0.5rem;">
+          <a href="../guides/compression.qmd" class="btn-pill secondary" style="width: 100%; justify-content: center;">
+            <i class="fas fa-book-open"></i> Read Guide
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- File Formats -->
+  <div class="bento-card">
+    <div class="card-content">
+      <div class="card-icon"><i class="fas fa-file-code"></i></div>
+      <h3>File Formats</h3>
+      <p>Plain text vs. rich text. Why encoding matters for your data.</p>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="margin-bottom: 0.5rem;">
+          <a href="../guides/file-formats.qmd" class="btn-pill secondary" style="width: 100%; justify-content: center;">
+            <i class="fas fa-book-open"></i> Read Guide
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+```

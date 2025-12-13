@@ -5,6 +5,11 @@ format:
   html:
     page-layout: full
     toc: false
+    include-in-header:
+      text: |
+        <style>
+        #title-block-header { display: none; }
+        </style>
 ---
 
 ```{=html}
@@ -62,7 +67,7 @@ format:
     </a>
 
     <!-- Card 2 -->
-    <a href="#" class="bento-card">
+    <a href="guides/command-line.qmd" class="bento-card">
       <img src="images/terminal.png" class="card-image" alt="Command Line">
       <div class="card-content">
         <h3>The Command Line</h3>
@@ -75,7 +80,7 @@ format:
     </a>
 
     <!-- Card 3 -->
-    <a href="#" class="bento-card">
+    <a href="guides/text-encoding.qmd" class="bento-card">
       <img src="images/ascii.png" class="card-image" alt="Plain Text">
       <div class="card-content">
         <h3>Plain Text & Encoding</h3>
@@ -88,39 +93,39 @@ format:
     </a>
 
     <!-- Card 4 -->
-    <a href="#" class="bento-card">
-      <img src="images/version.png" class="card-image" alt="Version Control">
+    <a href="guides/file-paths.qmd" class="bento-card">
+      <img src="images/folders.png" class="card-image" alt="File Paths">
       <div class="card-content">
-        <h3>Version Control</h3>
-        <p>Introduction to Git. Track changes, collaborate with others, and never create "final_final_v2.docx" again.</p>
+        <h3>File Paths</h3>
+        <p>Navigate your file system with precision. Understand absolute vs. relative paths and never get 'File Not Found' again.</p>
         <div class="card-meta">
-          <span class="chip">Intermediate</span>
-          <span class="chip">Git</span>
+          <span class="chip">Beginner</span>
+          <span class="chip">Core Concept</span>
         </div>
       </div>
     </a>
 
     <!-- Card 5 -->
-    <a href="#" class="bento-card">
-      <img src="images/environment.png" class="card-image" alt="Environment Setup">
+    <a href="guides/compression.qmd" class="bento-card">
+      <img src="images/environment.png" class="card-image" alt="Compression">
       <div class="card-content">
-        <h3>Environment Setup</h3>
-        <p>Installing Python, VS Code, and package managers. Setting up a robust development environment for DH work.</p>
+        <h3>Compression</h3>
+        <p>Zip, Tar, Gzip? Learn how file compression works, why it matters, and how to archive your research data.</p>
         <div class="card-meta">
-          <span class="chip">Advanced</span>
-          <span class="chip">Setup</span>
+          <span class="chip">Beginner</span>
+          <span class="chip">Utilities</span>
         </div>
       </div>
     </a>
 
     <!-- Card 6 -->
-    <a href="#" class="bento-card">
+    <a href="guides/file-formats.qmd" class="bento-card">
       <div class="card-content">
-        <h3>Data Formats</h3>
-        <p>CSV, JSON, XML. Understanding structured data and how to move information between different tools.</p>
+        <h3>File Formats</h3>
+        <p>From DOCX to PDF to Markdown. Understanding file extensions, magic numbers, and long-term preservation.</p>
         <div class="card-meta">
-          <span class="chip">Intermediate</span>
-          <span class="chip">Data</span>
+          <span class="chip">Beginner</span>
+          <span class="chip">Concepts</span>
         </div>
       </div>
     </a>
