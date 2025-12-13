@@ -68,7 +68,28 @@ All six essential computer skills guides have been successfully converted to int
    - Multilingual corpus processing workflows
    - Character set conversion practice with real-world scenarios
 
-## 🔬 Quarto Evaluation (October 3, 2025)
+## � Quarto Migration (December 2025)
+
+### ✅ Phase 1: Content Porting
+- **Infrastructure**: Created `quarto-version/` with `_quarto.yml` and `index.qmd`
+- **Theme**: Implemented "Terminal Chic" theme with custom SCSS
+- **Guides Ported**:
+  - ✅ `file-management.qmd`
+  - ✅ `file-paths.qmd`
+  - ✅ `compression.qmd`
+  - ✅ `command-line.qmd`
+  - ✅ `file-formats.qmd`
+  - ✅ `text-encoding.qmd`
+- **Navigation**: Updated `_quarto.yml` and `index.qmd` with new links
+
+### 🚧 Phase 2: Interactivity & Polish
+- [ ] Port `quiz-engine.js` to Quarto extension or include
+- [ ] Port `terminal-sim.js` for command line guide
+- [ ] Create `exercises/index.qmd` landing page
+- [ ] Finalize `about.qmd`
+- [ ] Verify all internal links and images
+
+## �🔬 Quarto Evaluation (October 3, 2025)
 
 ### Parallel Implementation Created
 A complete Quarto version has been created in `quarto-version/` for comparison with the Jekyll implementation. This allows evaluation of both platforms for future development decisions.

@@ -1,0 +1,23 @@
+---
+title: "Exercises"
+subtitle: "Practice Your Skills"
+---
+
+::: {.callout-warning}
+## Under Construction
+The interactive exercises are currently being migrated to the new platform. Please check back soon!
+:::
+
+## Available Exercises
+
+### File Management
+- [Organization Challenge](guides/file-management.qmd#exercises)
+- [Path Navigation](guides/file-paths.qmd#exercises)
+
+### Command Line
+- [Terminal Basics](guides/command-line.qmd#exercises)
+- [Navigation Drills](guides/command-line.qmd#navigation-drills)
+
+### Data Skills
+- [Encoding Detective](guides/text-encoding.qmd#exercises)
+- [Format Conversion](guides/file-formats.qmd#exercises)

@@ -62,7 +62,7 @@ format:
     </a>
 
     <!-- Card 2 -->
-    <a href="#" class="bento-card">
+    <a href="guides/command-line.qmd" class="bento-card">
       <img src="images/terminal.png" class="card-image" alt="Command Line">
       <div class="card-content">
         <h3>The Command Line</h3>
@@ -75,7 +75,7 @@ format:
     </a>
 
     <!-- Card 3 -->
-    <a href="#" class="bento-card">
+    <a href="guides/text-encoding.qmd" class="bento-card">
       <img src="images/ascii.png" class="card-image" alt="Plain Text">
       <div class="card-content">
         <h3>Plain Text & Encoding</h3>
@@ -114,7 +114,7 @@ format:
     </a>
 
     <!-- Card 6 -->
-    <a href="#" class="bento-card">
+    <a href="guides/file-formats.qmd" class="bento-card">
       <div class="card-content">
         <h3>Data Formats</h3>
         <p>CSV, JSON, XML. Understanding structured data and how to move information between different tools.</p>

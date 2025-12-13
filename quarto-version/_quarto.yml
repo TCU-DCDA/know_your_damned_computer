@@ -41,6 +41,10 @@ website:
             href: guides/compression.qmd
           - text: "Command Line"
             href: guides/command-line.qmd
+          - text: "File Formats"
+            href: guides/file-formats.qmd
+          - text: "Text Encoding"
+            href: guides/text-encoding.qmd
       - text: "Exercises"
         href: exercises/index.qmd
       - text: "About"

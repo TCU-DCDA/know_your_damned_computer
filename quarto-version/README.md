@@ -1,6 +1,12 @@
 # Know Your Damned Computer - Quarto Version
 
-This is a Quarto implementation of the "Know Your Damned Computer" educational resource for comparison with the Jekyll version.
+This is the active Quarto implementation of the "Know Your Damned Computer" educational resource. It is currently being ported from the original Jekyll version to serve as the template for all DCDA textbooks.
+
+## Current Status (December 2025)
+
+- **Guides**: All 6 core guides have been ported to `.qmd` format.
+- **Theme**: "Terminal Chic" theme is active.
+- **Interactivity**: JavaScript modules (quizzes, terminal sim) are pending migration.
 
 ## Key Differences from Jekyll Version
 
