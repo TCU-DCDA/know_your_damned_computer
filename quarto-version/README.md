@@ -89,7 +89,6 @@ quarto-version/
 │   ├── file-management.qmd
 │   ├── file-paths.qmd
 │   └── compression.qmd
-├── custom.scss           # Styling
 └── README.md            # This file
 ```
 

@@ -428,14 +428,13 @@ git diff HEAD~1</code></pre>
     </ol>
   </div>
 </div>
+```
 
 ### Problem 2: "Permission denied"
-```
 
 <div class="troubleshooting-section">
   <h4>🚨 Error: Permission denied</h4>
   
-```{=html}
   <div class="solution-steps">
     <h5>Solutions:</h5>
     <ul>
@@ -477,12 +476,10 @@ python -m pip install pandas</code></pre>
     <div class="exercise-step">
       <input type="checkbox" id="step1">
       <label for="step1">Create project directory: <code>mkdir victorian-sentiment</code></label>
-```
     </div>
     
     <div class="exercise-step">
       <input type="checkbox" id="step2">
-```{=html}
       <label for="step2">Navigate into it: <code>cd victorian-sentiment</code></label>
     </div>
     
@@ -512,12 +509,10 @@ python -m pip install pandas</code></pre>
     </div>
   </div>
   
-```
   <div class="exercise-validation">
     <h5>Validation Commands:</h5>
     <pre><code># Check your project structure
 ls -la
-```{=html}
 
 # Verify Git is tracking
 git status
@@ -560,7 +555,6 @@ pip list | grep -E "(pandas|nltk|matplotlib)"</code></pre>
       <h5>Useful Shortcuts</h5>
       <ul>
         <li><kbd>Ctrl+C</kbd> Stop running command</li>
-```
         <li><kbd>Ctrl+L</kbd> Clear screen</li>
         <li><kbd>Ctrl+A</kbd> Go to line start</li>
         <li><kbd>Ctrl+E</kbd> Go to line end</li>
@@ -568,7 +562,6 @@ pip list | grep -E "(pandas|nltk|matplotlib)"</code></pre>
     </div>
   </div>
 </div>
-```{=html}
 
 ### Combining Commands
 
@@ -606,12 +599,10 @@ pip list | grep -E "(pandas|nltk|matplotlib)"</code></pre>
   </label>
   <label class="quiz-option">
     <input type="radio" name="proficiency-quiz" value="absolute-path">
-```
     <code>python /full/absolute/path/to/scripts/sentiment_analysis.py</code>
   </label>
   
   <div class="feedback-correct">
-```{=html}
     <p><strong>Perfect!</strong> You can run scripts from anywhere by specifying the relative path. This saves time and keeps you in your project root where you might need to access other files.</p>
   </div>
   <div class="feedback-incorrect">
@@ -621,7 +612,7 @@ pip list | grep -E "(pandas|nltk|matplotlib)"</code></pre>
 
 ## Next Steps
 
-With command line skills mastered, you're ready to tackle [text encoding and character sets]({{ site.baseurl }}/guides/text-encoding/), where you'll learn to handle multilingual and historical texts without garbled characters.
+With command line skills mastered, you're ready to tackle [text encoding and character sets](text-encoding.qmd), where you'll learn to handle multilingual and historical texts without garbled characters.
 
 ## Quick Reference Card
 

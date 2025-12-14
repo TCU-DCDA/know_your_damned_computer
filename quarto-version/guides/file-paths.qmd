@@ -187,7 +187,6 @@ If you're currently in `/Users/sarah/DH-Projects/novels/`:
     </div>
     <div class="example">
       <code>../poetry/</code> → <code>/Users/sarah/DH-Projects/poetry/</code>
-```{=html}
       <span class="explanation">(up one, then into poetry)</span>
     </div>
     <div class="example">
@@ -203,13 +202,11 @@ If you're currently in `/Users/sarah/DH-Projects/novels/`:
   <p>Try these commands to practice path navigation:</p>
   <div class="terminal-commands">
     <div class="command-example">
-```
       <code>pwd</code> <span class="command-desc">← Shows current directory</span>
     </div>
     <div class="command-example">
       <code>ls .</code> <span class="command-desc">← List current directory</span>
     </div>
-```{=html}
     <div class="command-example">
       <code>ls ..</code> <span class="command-desc">← List parent directory</span>
     </div>
@@ -236,12 +233,10 @@ Common problems and solutions:
   
   <h4>✅ Better Approaches</h4>
   ```python
-```
   import os
   
   # Option 1: Use absolute path
   file_path = '/Users/sarah/DH-Projects/data/data.csv'
-```{=html}
   with open(file_path, 'r') as file:
       content = file.read()
   
@@ -313,7 +308,6 @@ print(df.head())</code></pre>
       <div class="debug-solution" style="display: none;">
         <h5>✅ Correct Solutions:</h5>
         <pre><code># Option 1: Relative path from scripts/ to data/
-```{=html}
 df = pd.read_csv('../data/texts.csv')
 
 # Option 2: Build path using os.path
@@ -355,7 +349,6 @@ df = pd.read_csv(data_path)</code></pre>
       <h5>Try these:</h5>
       <ul>
         <li>Check if file is open in another program</li>
-```
         <li>Verify you have read/write permissions</li>
         <li>On Mac: use <code>ls -la</code> to check permissions</li>
         <li>On PC: right-click → Properties → Security</li>
@@ -593,7 +586,7 @@ output_file = project_root / 'results' / 'analysis.txt'</code></pre>
 
 ---
 
-Understanding file paths is crucial for effective digital humanities work. With these concepts learned, you're ready to learn about [working with compressed files]({{ site.baseurl }}/guides/compression/), which will expand your file management toolkit.
+Understanding file paths is crucial for effective digital humanities work. With these concepts learned, you're ready to learn about [working with compressed files](compression.qmd), which will expand your file management toolkit.
 
 ```{=html}
 <script>

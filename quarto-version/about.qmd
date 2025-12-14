@@ -92,3 +92,15 @@ Thanks to the students in TCU's Digital Humanities courses who provided feedback
 ## Version Note
 This is a Quarto implementation created to compare with the original Jekyll version. Both versions are actively maintained.
 :::
+
+## Credits
+
+**Author:** Curt Rode  
+**Institution:** Texas Christian University  
+**Department:** Center for Digital Expression
+
+This resource is part of the DCDA (Digital Culture & Data Analytics) curriculum.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.

@@ -506,7 +506,7 @@ MS001,Book of Kells,800,Latin</pre>
 
 ## Next Steps
 
-Understanding file formats prepares you for [command line work]({{ site.baseurl }}/guides/command-line/), where you'll learn to navigate files and run Python scripts efficiently from the terminal.
+Understanding file formats prepares you for [command line work](command-line.qmd), where you'll learn to navigate files and run Python scripts efficiently from the terminal.
 
 ---
 
