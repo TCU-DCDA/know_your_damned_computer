@@ -16,12 +16,12 @@ format:
     theme:
       - cosmo
       - ../../_shared/themes/terminal-chic/css/theme.scss
+    css:
+      - assets/css/page-ui.css
+    code-tools: false
     page-layout: full
     toc: true
     include-after-body: includes/footer-scripts.html
-    js:
-      - assets/js/quiz-engine.js
-      - assets/js/terminal-sim.js
 
 website:
   title: "Know Your Damned Computer"
@@ -43,12 +43,14 @@ website:
             href: guides/file-paths.qmd
           - text: "Compression"
             href: guides/compression.qmd
-          - text: "File Formats"
-            href: guides/file-formats.qmd
+          - text: "---"
           - text: "Command Line"
             href: guides/command-line.qmd
+          - text: "---"
           - text: "Text Encoding"
             href: guides/text-encoding.qmd
+          - text: "File Formats"
+            href: guides/file-formats.qmd
       - text: "Exercises"
         href: exercises/index.qmd
       - text: "About"

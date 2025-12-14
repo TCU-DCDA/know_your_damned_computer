@@ -93,21 +93,21 @@ Understanding file formats is crucial for DH work, especially when you'll be usi
 
 **Perfect for:** Documentation, research notes with basic formatting
 
-<div class="code-example">
-  <h4>📝 Markdown Example:</h4>
-  ```markdown
-  # Research Notes: Victorian Novels
-  ## Data Sources
-  - **Project Gutenberg**: Public domain texts
-  - **HathiTrust**: Digitized books
-  - *Last updated: 2024-09-26*
-  
-  ### Analysis Todo
-  1. Clean OCR errors
-  2. Extract character names
-  3. Run sentiment analysis
-  ```
-</div>
+:::{.code-example}
+#### 📝 Markdown Example
+```markdown
+# Research Notes: Victorian Novels
+## Data Sources
+- **Project Gutenberg**: Public domain texts
+- **HathiTrust**: Digitized books
+- *Last updated: 2024-09-26*
+
+### Analysis Todo
+1. Clean OCR errors
+2. Extract character names
+3. Run sentiment analysis
+```
+:::
 
 **Tools:** VS Code (excellent support), Typora, any text editor
 
@@ -228,29 +228,29 @@ MS001,Book of Kells,800,Latin</pre>
 
 ### Python Encoding Solutions
 
-<div class="code-example">
-  <h4>🐍 Python Encoding Best Practices:</h4>
-  ```python
-  # Always specify encoding when opening files
-  with open('french_poetry.txt', 'r', encoding='utf-8') as file:
-      text = file.read()
-  
-  # Check encoding if you're not sure
-  import chardet
-  with open('mystery_file.txt', 'rb') as file:
-      raw_data = file.read()
-      encoding = chardet.detect(raw_data)
-      print(f"Detected encoding: {encoding['encoding']}")
-  
-  # Convert if necessary
-  with open('mystery_file.txt', 'r', encoding=encoding['encoding']) as file:
-      text = file.read()
-  
-  # Save as UTF-8
-  with open('clean_file.txt', 'w', encoding='utf-8') as file:
-      file.write(text)
-  ```
-</div>
+:::{.code-example}
+#### 🐍 Python Encoding Best Practices
+```python
+# Always specify encoding when opening files
+with open('french_poetry.txt', 'r', encoding='utf-8') as file:
+    text = file.read()
+
+# Check encoding if you're not sure
+import chardet
+with open('mystery_file.txt', 'rb') as file:
+    raw_data = file.read()
+    encoding = chardet.detect(raw_data)
+    print(f"Detected encoding: {encoding['encoding']}")
+
+# Convert if necessary
+with open('mystery_file.txt', 'r', encoding=encoding['encoding']) as file:
+    text = file.read()
+
+# Save as UTF-8
+with open('clean_file.txt', 'w', encoding='utf-8') as file:
+    file.write(text)
+```
+:::
 
 ## Practical Exercise: Format Decision Tree
 
@@ -322,27 +322,27 @@ MS001,Book of Kells,800,Latin</pre>
 
 ### Python Conversion
 
-<div class="code-example">
-  <h4>🐍 Convert Formats with Python:</h4>
-  ```python
-  import pandas as pd
-  import json
-  
-  # Excel to CSV
-  df = pd.read_excel('research_data.xlsx')
-  df.to_csv('research_data.csv', index=False)
-  
-  # CSV to JSON
-  df = pd.read_csv('research_data.csv')
-  df.to_json('research_data.json', orient='records', indent=2)
-  
-  # JSON to CSV  
-  with open('research_data.json', 'r') as f:
-      data = json.load(f)
-  df = pd.DataFrame(data)
-  df.to_csv('converted_data.csv', index=False)
-  ```
-</div>
+:::{.code-example}
+#### 🐍 Convert Formats with Python
+```python
+import pandas as pd
+import json
+
+# Excel to CSV
+df = pd.read_excel('research_data.xlsx')
+df.to_csv('research_data.csv', index=False)
+
+# CSV to JSON
+df = pd.read_csv('research_data.csv')
+df.to_json('research_data.json', orient='records', indent=2)
+
+# JSON to CSV
+with open('research_data.json', 'r') as f:
+    data = json.load(f)
+df = pd.DataFrame(data)
+df.to_csv('converted_data.csv', index=False)
+```
+:::
 
 ## Real-World DH Workflow
 

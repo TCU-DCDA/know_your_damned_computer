@@ -113,7 +113,7 @@ Create a logical, consistent folder structure that makes sense for your work.
 
 #### Recommended DH Project Structure
 
-```default
+```text
 Your-DH-Project/
 ├── 01-raw-data/
 │   ├── texts/

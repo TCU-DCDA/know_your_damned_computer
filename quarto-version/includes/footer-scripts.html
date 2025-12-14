@@ -1,1 +1,30 @@
-<!-- Footer scripts are now handled by _quarto.yml js property -->
+<!-- Shared interactive scripts (load with correct relative prefix on nested pages) -->
+<script>
+(function () {
+  function guessRootPrefix() {
+    const scripts = Array.from(document.querySelectorAll("script[src]"));
+    const quartoLib = scripts.find((s) => s.src.includes("/site_libs/") || s.src.includes("site_libs/"));
+    if (!quartoLib) return "";
+    const idx = quartoLib.src.indexOf("/site_libs/");
+    if (idx !== -1) return quartoLib.src.slice(0, idx + 1); // keep trailing slash
+    const idx2 = quartoLib.src.indexOf("site_libs/");
+    if (idx2 !== -1) return quartoLib.src.slice(0, idx2);
+    return "";
+  }
+
+  const root = guessRootPrefix();
+  const urls = [
+    "assets/js/quiz-engine.js",
+    "assets/js/terminal-sim.js",
+    "assets/js/page-ui.js",
+  ].map((p) => (root ? root + p : p));
+
+  urls.forEach((src) => {
+    const existing = document.querySelector(`script[src="${src}"]`);
+    if (existing) return;
+    const script = document.createElement("script");
+    script.src = src;
+    document.body.appendChild(script);
+  });
+})();
+</script>

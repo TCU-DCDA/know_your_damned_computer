@@ -84,8 +84,11 @@ class QuizEngine {
     }
 
     renderQuiz(element, quiz) {
+        const autoSubmitAttr = element.getAttribute('data-auto-submit');
+        const autoSubmit = autoSubmitAttr === null ? 'true' : autoSubmitAttr;
+
         const quizHtml = `
-            <div class="quiz-container" data-quiz-id="${quiz.id}">
+            <div class="quiz-container" data-quiz-id="${quiz.id}" data-auto-submit="${autoSubmit}">
                 <div class="quiz-header">
                     <h3 class="quiz-question">${quiz.question}</h3>
                 </div>
@@ -133,11 +136,17 @@ class QuizEngine {
         // Enable submit button when option is selected
         options.forEach(option => {
             option.addEventListener('change', () => {
-                submitBtn.disabled = false;
+                if (submitBtn) submitBtn.disabled = false;
                 // Reset visual feedback
                 container.querySelectorAll('.quiz-option').forEach(opt => {
                     opt.classList.remove('correct', 'incorrect');
                 });
+
+                // Default behavior: show feedback immediately on selection.
+                // Can be disabled per-quiz by setting `data-auto-submit="false"` on the quiz wrapper.
+                if (container.getAttribute('data-auto-submit') !== 'false') {
+                    this.submitQuiz(quiz.id, container);
+                }
             });
             
             // Add touch support for mobile devices
@@ -159,14 +168,16 @@ class QuizEngine {
         });
 
         // Handle submit with touch support
-        submitBtn.addEventListener('click', (e) => {
-            this.submitQuiz(quiz.id, container);
-        });
-        
-        submitBtn.addEventListener('touchend', (e) => {
-            e.preventDefault();
-            this.submitQuiz(quiz.id, container);
-        });
+        if (submitBtn) {
+            submitBtn.addEventListener('click', (e) => {
+                this.submitQuiz(quiz.id, container);
+            });
+            
+            submitBtn.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                this.submitQuiz(quiz.id, container);
+            });
+        }
 
         // Handle reset with touch support
         resetBtn.addEventListener('click', (e) => {

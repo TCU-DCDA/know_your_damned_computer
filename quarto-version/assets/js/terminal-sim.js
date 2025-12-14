@@ -243,8 +243,8 @@ class TerminalSimulator {
 
                 const command = args[0];
                 if (command === 'install') {
-                    const package = args[1] || 'package-name';
-                    return `Collecting ${package}\nInstalling collected packages: ${package}\nSuccessfully installed ${package}`;
+                    const packageName = args[1] || 'package-name';
+                    return `Collecting ${packageName}\nInstalling collected packages: ${packageName}\nSuccessfully installed ${packageName}`;
                 } else if (command === 'list') {
                     return 'Package    Version\n---------- -------\npandas     1.3.3\nmatplotlib 3.4.3\nnltk       3.6.2\nnumpy      1.21.2';
                 } else {

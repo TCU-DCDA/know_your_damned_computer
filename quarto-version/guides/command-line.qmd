@@ -5,11 +5,8 @@ author: "Curt Rode"
 date: last-modified
 difficulty: intermediate
 time-estimate: "45 minutes"
-format:
-  html:
-    code-tools: false
-    toc: true
-    number-sections: true
+toc: true
+number-sections: true
 ---
 
 The command line might seem intimidating, but it's an essential tool for digital humanities work. When you start using Python for text analysis, data visualization, and mapping, you'll find that many tasks are easier and faster with command line skills.
@@ -63,10 +60,9 @@ By the end of this guide, you will be able to:
 - **Converting file formats**: `pandoc input.md -o output.pdf`
 - **Downloading datasets**: `curl -O https://example.com/data.csv`
 - **Version control**: `git add .` and `git commit -m "Updated analysis"`
-```{=html}
-
 ## Getting Started by Platform
 
+```{=html}
 <div class="platform-tabs">
   <div class="tab-buttons">
     <button class="tab-btn active" data-tab="mac">Mac</button>
@@ -148,36 +144,22 @@ By the end of this guide, you will be able to:
         <strong>Go home:</strong> <code>cd ~</code> (Mac) or <code>cd $env:USERPROFILE</code> (PC)
       </div>
       <p class="command-desc">Navigate between folders</p>
-```
-    </div>
-```{=html}
-  </div>
-</div>
-
-<div class="terminal-simulator" data-terminal="navigation-practice">
-  <h4>🖥️ Practice Terminal</h4>
-  <p>Try the navigation commands above. Type <code>help</code> for available commands.</p>
-  
-  <div class="terminal-window">
-    <div class="terminal-header">
-      <span class="terminal-title">Terminal</span>
-    </div>
-    <div class="terminal-body">
-      <div id="terminal-output">
-        <div class="terminal-line">Welcome to the practice terminal!</div>
-        <div class="terminal-line">Try: pwd, ls, cd Documents, cd ..</div>
-```
-        <div class="terminal-prompt">user@computer:~$ <input type="text" class="terminal-input" placeholder="Type command here..."></div>
-      </div>
     </div>
   </div>
 </div>
 
+```
+
+Try the navigation commands above in the simulator below. Type `help` for available commands.
+
 ```{=html}
+<div data-terminal="navigation-practice"></div>
+```
 ## File Operations
 
 ### Creating and Managing Files
 
+```{=html}
 <div class="command-reference">
   <div class="command-group">
     <h4>📁 File & Folder Operations</h4>
@@ -210,7 +192,6 @@ By the end of this guide, you will be able to:
     
     <div class="command-item">
       <div class="command-syntax">
-```
         <strong>Move/Rename:</strong><br>
         Mac/Linux: <code>mv oldname.txt newname.txt</code><br>
         PC: <code>Move-Item oldname.txt newname.txt</code>
@@ -219,10 +200,9 @@ By the end of this guide, you will be able to:
     </div>
   </div>
 </div>
-
-```{=html}
-## Interactive Terminal Practice
 ```
+
+## Interactive Terminal Practice
 
 ::: {.callout-tip}
 ## Try It Yourself
@@ -230,12 +210,14 @@ Use the simulated terminal below to practice these commands safely. You can navi
 :::
 
 ```{=html}
-<div class="terminal-container" data-terminal="main"></div>
+<div data-terminal="main"></div>
+```
 
 ## Python from the Command Line
 
 ### Installing Python Packages
 
+```{=html}
 <div class="interactive-exercise" data-exercise="pip-practice">
   <h4>🐍 Package Installation Practice</h4>
   <p>Let's practice installing Python packages for DH work:</p>
@@ -259,12 +241,10 @@ Use the simulated terminal below to practice these commands safely. You can navi
       </div>
       <button class="btn btn-sm" onclick="showExplanation(this, 'Multiple visualization libraries for different chart types and interactivity')">Why these three</button>
       <div class="explanation" style="display: none;"></div>
-```
     </div>
     
     <div class="scenario-card">
       <h5>Scenario 3: Web Scraping</h5>
-```{=html}
       <p>You need to collect data from historical newspaper websites.</p>
       <div class="command-solution">
         <code>pip install requests beautifulsoup4 selenium</code>
@@ -274,9 +254,11 @@ Use the simulated terminal below to practice these commands safely. You can navi
     </div>
   </div>
 </div>
+```
 
 ### Running Python Scripts
 
+```{=html}
 <div class="code-workflow">
   <h4>📜 Script Execution Workflow</h4>
   
@@ -300,15 +282,13 @@ ls *.py</code></pre>
 python analyze_text.py
 
 # With arguments
-python analyze_text.py --input data.csv --output results.json
-
-# Show output and save to file
-```
-python analyze_text.py | tee analysis_log.txt</code></pre>
+	python analyze_text.py --input data.csv --output results.json
+	
+	# Show output and save to file
+	python analyze_text.py | tee analysis_log.txt</code></pre>
     </div>
   </div>
   
-```{=html}
   <div class="workflow-step">
     <div class="step-number">3</div>
     <div class="step-content">
@@ -326,18 +306,18 @@ pip install pandas</code></pre>
     </div>
   </div>
 </div>
+```
 
 ## Git Basics for DH Projects
 
 ### Why Git Matters in DH
 
+```{=html}
 <div class="quiz" data-quiz="git-benefits">
-```
   <h3>Version Control Reality Check</h3>
   <p>You've been working on a Python script for 2 weeks. Today you made changes that broke everything, and you can't remember what you changed. What would Git help you do?</p>
   
   <label class="quiz-option">
-```{=html}
     <input type="radio" name="git-quiz" value="backup">
     Create backups of your files
   </label>
@@ -357,9 +337,11 @@ pip install pandas</code></pre>
     <p>While Git does those things too, its superpower is <strong>tracking changes</strong>. You can see exactly what broke and when, then revert specific changes.</p>
   </div>
 </div>
+```
 
 ### Essential Git Commands
 
+```{=html}
 <div class="git-workflow">
   <h4>📚 Basic Git Workflow for DH Projects</h4>
   
@@ -372,12 +354,10 @@ git config user.email "your.email@university.edu"</code></pre>
   </div>
   
   <div class="git-step">
-```
     <h5>2. Track Changes</h5>
     <pre><code># See what's changed
 git status
 
-```{=html}
 # Add files to track
 git add analyze_script.py
 git add data/cleaned_texts.csv
@@ -390,12 +370,10 @@ git add .</code></pre>
     <h5>3. Save Snapshots</h5>
     <pre><code># Commit with descriptive message
 git commit -m "Add text cleaning script"
-```
 git commit -m "Fix encoding issue in data processing"
 git commit -m "Complete sentiment analysis implementation"</code></pre>
   </div>
   
-```{=html}
   <div class="git-step">
     <h5>4. View History</h5>
     <pre><code># See commit history
@@ -414,7 +392,6 @@ git diff HEAD~1</code></pre>
 
 ### Problem 1: "Command not found"
 ```{=html}
-
 <div class="troubleshooting-section">
   <h4>🚨 Error: 'python' is not recognized</h4>
   
@@ -432,6 +409,7 @@ git diff HEAD~1</code></pre>
 
 ### Problem 2: "Permission denied"
 
+```{=html}
 <div class="troubleshooting-section">
   <h4>🚨 Error: Permission denied</h4>
   
@@ -444,9 +422,11 @@ git diff HEAD~1</code></pre>
     </ul>
   </div>
 </div>
+```
 
 ### Problem 3: "Module not found"
 
+```{=html}
 <div class="troubleshooting-section">
   <h4>🚨 Error: ModuleNotFoundError: No module named 'pandas'</h4>
   
@@ -465,9 +445,11 @@ pip install pandas
 python -m pip install pandas</code></pre>
   </div>
 </div>
+```
 
 ## Hands-On Exercise: Complete DH Workflow
 
+```{=html}
 <div class="comprehensive-exercise">
   <h4>🎯 Exercise: Set Up a Text Analysis Project</h4>
   <p>Let's walk through a complete workflow using command line skills:</p>
@@ -521,18 +503,18 @@ git status
 pip list | grep -E "(pandas|nltk|matplotlib)"</code></pre>
   </div>
 </div>
+```
 
 ## Advanced Tips for Efficiency
 
 ### Command History and Shortcuts
 
+```{=html}
 <div class="productivity-tips">
-```
   <h4>⚡ Productivity Boosters</h4>
   
   <div class="tip-grid">
     <div class="tip-card">
-```{=html}
       <h5>History Navigation</h5>
       <ul>
         <li><kbd>↑</kbd> Previous command</li>
@@ -562,29 +544,30 @@ pip list | grep -E "(pandas|nltk|matplotlib)"</code></pre>
     </div>
   </div>
 </div>
+```
 
 ### Combining Commands
 
-<div class="command-chaining">
-  <h4>🔗 Command Chaining for DH Tasks</h4>
-  
-  ```bash
-  # Download and immediately extract data
-  curl -O https://example.com/corpus.zip && unzip corpus.zip
-  
-  # Run analysis and save output
-  python analyze.py > results.txt 2>&1
-  
-  # Process multiple files
-  for file in *.txt; do python clean_text.py "$file"; done
-  
-  # Chain with conditional execution
-  python preprocess.py && python analyze.py && python visualize.py
-  ```
-</div>
+:::{.command-chaining}
+#### 🔗 Command Chaining for DH Tasks
+```bash
+# Download and immediately extract data
+curl -O https://example.com/corpus.zip && unzip corpus.zip
+
+# Run analysis and save output
+python analyze.py > results.txt 2>&1
+
+# Process multiple files
+for file in *.txt; do python clean_text.py "$file"; done
+
+# Chain with conditional execution
+python preprocess.py && python analyze.py && python visualize.py
+```
+:::
 
 ## Knowledge Check
 
+```{=html}
 <div class="quiz" data-quiz="cli-proficiency">
   <h3>Proficiency Check: Command Line Skills</h3>
   <p>You want to run a Python script called <code>sentiment_analysis.py</code> that's in your <code>scripts</code> folder, but you're currently in your project root directory. What's the most efficient command?</p>
@@ -609,6 +592,7 @@ pip list | grep -E "(pandas|nltk|matplotlib)"</code></pre>
     <p>While those work, <code>python scripts/sentiment_analysis.py</code> is more efficient - you can run the script without changing directories first.</p>
   </div>
 </div>
+```
 
 ## Next Steps
 
@@ -616,6 +600,7 @@ With command line skills mastered, you're ready to tackle [text encoding and cha
 
 ## Quick Reference Card
 
+```{=html}
 <div class="reference-card">
   <h4>📋 Command Line Cheat Sheet</h4>
   
@@ -661,438 +646,8 @@ With command line skills mastered, you're ready to tackle [text encoding and cha
     </div>
   </div>
 </div>
+```
 
 ---
 
 *Remember: The command line becomes second nature with practice. Start with these basics and gradually add more advanced techniques as you become comfortable.*
-
-<script>
-// Tab functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetTab = this.getAttribute('data-tab');
-            
-            // Remove active class from all
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-            
-            // Add active class to clicked button and corresponding content
-```
-            this.classList.add('active');
-```{=html}
-            document.querySelector(`.tab-content.${targetTab}`).classList.add('active');
-        });
-    });
-});
-
-// Terminal simulator
-function showExplanation(button, text) {
-    const explanation = button.nextElementSibling;
-    explanation.textContent = text;
-    explanation.style.display = explanation.style.display === 'none' ? 'block' : 'none';
-}
-
-// Simple terminal simulator
-document.addEventListener('DOMContentLoaded', function() {
-    const terminalInput = document.querySelector('.terminal-input');
-    const terminalOutput = document.getElementById('terminal-output');
-    
-    if (terminalInput) {
-        terminalInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const command = this.value;
-                const response = simulateCommand(command);
-                
-                // Add command to output
-                const commandLine = document.createElement('div');
-                commandLine.className = 'terminal-line';
-                commandLine.innerHTML = `user@computer:~$ ${command}`;
-                terminalOutput.insertBefore(commandLine, terminalOutput.lastElementChild);
-                
-                // Add response
-                const responseLine = document.createElement('div');
-                responseLine.className = 'terminal-line';
-                responseLine.innerHTML = response;
-                terminalOutput.insertBefore(responseLine, terminalOutput.lastElementChild);
-                
-                // Clear input
-                this.value = '';
-                
-                // Scroll to bottom
-                terminalOutput.scrollTop = terminalOutput.scrollHeight;
-            }
-        });
-    }
-});
-
-function simulateCommand(command) {
-    const cmd = command.toLowerCase().trim();
-    
-    switch(cmd) {
-        case 'pwd':
-            return '/home/user';
-        case 'ls':
-            return 'Documents  Downloads  Pictures  scripts  data';
-        case 'ls -la':
-            return 'drwxr-xr-x  Documents<br>drwxr-xr-x  Downloads<br>drwxr-xr-x  Pictures<br>drwxr-xr-x  scripts<br>drwxr-xr-x  data';
-        case 'cd documents':
-            return '';
-        case 'cd ..':
-            return '';
-        case 'help':
-            return 'Available commands: pwd, ls, cd, mkdir, touch, python --version';
-        case 'python --version':
-            return 'Python 3.9.7';
-        case 'mkdir test':
-            return '';
-        case 'touch test.txt':
-            return '';
-        default:
-            return `Command not found: ${command}. Try 'help' for available commands.`;
-    }
-}
-</script>
-
-<style>
-.platform-tabs {
-    background: var(--bg-secondary);
-    border-radius: var(--border-radius-lg);
-    padding: var(--space-lg);
-    margin: var(--space-lg) 0;
-}
-
-.tab-buttons {
-    display: flex;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-md);
-}
-
-.tab-btn {
-    padding: var(--space-sm) var(--space-md);
-    border: 1px solid var(--border-color);
-    background: var(--bg-primary);
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.tab-btn.active {
-    background: var(--color-primary);
-    color: white;
-    border-color: var(--color-primary);
-}
-
-.tab-content {
-    display: none;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-.terminal-example {
-    background: var(--bg-primary);
-    padding: var(--space-md);
-    border-radius: var(--border-radius);
-    margin: var(--space-md) 0;
-    border-left: 4px solid var(--color-primary);
-}
-
-.pro-tip {
-    background: linear-gradient(135deg, var(--color-info), var(--color-primary));
-    color: white;
-    padding: var(--space-md);
-    border-radius: var(--border-radius);
-    margin: var(--space-md) 0;
-}
-
-.command-practice {
-    display: grid;
-    gap: var(--space-md);
-    margin: var(--space-md) 0;
-}
-
-.practice-command {
-    background: var(--bg-tertiary);
-    padding: var(--space-md);
-    border-radius: var(--border-radius);
-    border-left: 4px solid var(--color-secondary);
-}
-
-.command-example {
-    background: var(--bg-primary);
-    padding: var(--space-sm);
-    border-radius: var(--border-radius);
-    margin: var(--space-sm) 0;
-    font-family: var(--font-mono);
-}
-
-.terminal-window {
-    background: #1e1e1e;
-    color: #ffffff;
-    border-radius: var(--border-radius);
-    margin: var(--space-md) 0;
-    font-family: var(--font-mono);
-}
-
-.terminal-header {
-    background: #333;
-    padding: var(--space-sm);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-    text-align: center;
-}
-
-.terminal-body {
-    padding: var(--space-md);
-    min-height: 200px;
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.terminal-line {
-    margin: 0.2rem 0;
-    line-height: 1.4;
-}
-
-.terminal-prompt {
-    display: flex;
-    align-items: center;
-}
-
-.terminal-input {
-    background: transparent;
-    border: none;
-    color: #ffffff;
-    font-family: var(--font-mono);
-    flex: 1;
-    outline: none;
-    margin-left: 0.5rem;
-}
-
-.command-reference {
-    background: var(--bg-secondary);
-    padding: var(--space-lg);
-    border-radius: var(--border-radius);
-    margin: var(--space-lg) 0;
-}
-
-.command-group {
-    display: grid;
-    gap: var(--space-md);
-```
-}
-
-.command-item {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: var(--space-md);
-    padding: var(--space-md);
-    background: var(--bg-tertiary);
-    border-radius: var(--border-radius);
-    align-items: center;
-}
-
-.command-syntax {
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-}
-
-.pip-scenarios {
-    display: grid;
-    gap: var(--space-md);
-    margin: var(--space-md) 0;
-}
-
-.scenario-card {
-    background: var(--bg-tertiary);
-    padding: var(--space-md);
-    border-radius: var(--border-radius);
-    border-left: 4px solid var(--color-primary);
-}
-
-.command-solution {
-    background: var(--bg-primary);
-    padding: var(--space-sm);
-    border-radius: var(--border-radius);
-    margin: var(--space-sm) 0;
-    font-family: var(--font-mono);
-}
-
-.explanation {
-    margin-top: var(--space-sm);
-    padding: var(--space-sm);
-    background: var(--color-info-light);
-    border-radius: var(--border-radius);
-    font-style: italic;
-}
-
-.code-workflow {
-    background: var(--bg-secondary);
-    padding: var(--space-lg);
-    border-radius: var(--border-radius);
-    margin: var(--space-lg) 0;
-}
-
-.workflow-step {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-md);
-    margin: var(--space-md) 0;
-}
-
-.step-number {
-    background: var(--color-primary);
-    color: white;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    flex-shrink: 0;
-}
-
-.step-content {
-    flex: 1;
-    background: var(--bg-tertiary);
-    padding: var(--space-md);
-    border-radius: var(--border-radius);
-}
-
-.git-workflow {
-    background: var(--bg-secondary);
-    padding: var(--space-lg);
-    border-radius: var(--border-radius);
-    margin: var(--space-lg) 0;
-}
-
-.git-step {
-    margin: var(--space-md) 0;
-    padding: var(--space-md);
-    background: var(--bg-tertiary);
-    border-radius: var(--border-radius);
-    border-left: 4px solid var(--color-success);
-}
-
-.troubleshooting-section {
-    background: var(--bg-tertiary);
-    border-left: 4px solid var(--color-warning);
-    padding: var(--space-md);
-    margin: var(--space-md) 0;
-    border-radius: var(--border-radius);
-}
-
-.solution-steps {
-    margin-top: var(--space-md);
-}
-
-.comprehensive-exercise {
-    background: var(--bg-secondary);
-    border: 2px solid var(--color-primary);
-    border-radius: var(--border-radius-lg);
-    padding: var(--space-lg);
-    margin: var(--space-lg) 0;
-}
-
-.exercise-checklist {
-    margin: var(--space-md) 0;
-}
-
-.exercise-step {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    margin: var(--space-sm) 0;
-    padding: var(--space-xs);
-}
-
-.exercise-step input[type="checkbox"]:checked + label {
-    text-decoration: line-through;
-    color: var(--color-success);
-}
-
-.exercise-validation {
-    background: var(--bg-tertiary);
-    padding: var(--space-md);
-    border-radius: var(--border-radius);
-    margin-top: var(--space-md);
-}
-
-.productivity-tips {
-    background: var(--bg-secondary);
-    padding: var(--space-lg);
-    border-radius: var(--border-radius);
-    margin: var(--space-lg) 0;
-}
-
-.tip-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-md);
-}
-
-.tip-card {
-    background: var(--bg-tertiary);
-    padding: var(--space-md);
-    border-radius: var(--border-radius);
-}
-
-.command-chaining {
-    background: var(--bg-secondary);
-    padding: var(--space-lg);
-    border-radius: var(--border-radius);
-    margin: var(--space-lg) 0;
-}
-
-.reference-card {
-    background: var(--bg-secondary);
-    border: 2px solid var(--color-primary);
-    border-radius: var(--border-radius-lg);
-    padding: var(--space-lg);
-    margin: var(--space-lg) 0;
-}
-
-.reference-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-md);
-}
-
-.ref-section {
-    background: var(--bg-tertiary);
-    padding: var(--space-md);
-    border-radius: var(--border-radius);
-}
-
-.ref-section ul {
-    margin: 0;
-    padding-left: var(--space-md);
-}
-
-.ref-section li {
-    margin: 0.25rem 0;
-}
-
-@media (max-width: 768px) {
-    .command-item,
-    .tip-grid,
-    .reference-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .tab-buttons {
-        flex-direction: column;
-    }
-    
-    .terminal-body {
-        min-height: 150px;
-    }
-}
-</style>

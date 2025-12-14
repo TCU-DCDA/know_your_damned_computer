@@ -221,33 +221,32 @@ If you're currently in `/Users/sarah/DH-Projects/novels/`:
 ### Python Path Issues
 Common problems and solutions:
 
-<div class="code-example">
-  <h4>❌ Common Python Path Error</h4>
-  ```python
-  # This often fails:
-  with open('data.csv', 'r') as file:
-      content = file.read()
-  
-  # Error: FileNotFoundError: [Errno 2] No such file or directory: 'data.csv'
-  ```
-  
-  <h4>✅ Better Approaches</h4>
-  ```python
-  import os
-  
-  # Option 1: Use absolute path
-  file_path = '/Users/sarah/DH-Projects/data/data.csv'
-  with open(file_path, 'r') as file:
-      content = file.read()
-  
-  # Option 2: Build path relative to script location
-  script_dir = os.path.dirname(os.path.abspath(__file__))
-  file_path = os.path.join(script_dir, 'data', 'data.csv')
-  with open(file_path, 'r') as file:
-      content = file.read()
-  ```
-</div>
+:::{.code-example}
+#### ❌ Common Python Path Error
+```python
+# This often fails:
+with open('data.csv', 'r') as file:
+    content = file.read()
+
+# Error: FileNotFoundError: [Errno 2] No such file or directory: 'data.csv'
 ```
+
+#### ✅ Better Approaches
+```python
+import os
+
+# Option 1: Use absolute path
+file_path = '/Users/sarah/DH-Projects/data/data.csv'
+with open(file_path, 'r') as file:
+    content = file.read()
+
+# Option 2: Build path relative to script location
+script_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(script_dir, 'data', 'data.csv')
+with open(file_path, 'r') as file:
+    content = file.read()
+```
+:::
 
 ### VS Code and Path Issues
 
