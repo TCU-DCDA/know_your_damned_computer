@@ -5,8 +5,17 @@ This is the active Quarto implementation of the "Know Your Damned Computer" educ
 ## Current Status (December 2025)
 
 - **Guides**: All 6 core guides have been ported to `.qmd` format.
-- **Theme**: "Terminal Chic" theme is active with Light/Dark mode support.
-- **Interactivity**: JavaScript modules (quizzes, terminal sim) have been successfully migrated using raw HTML blocks.
+- **Theme**: "Terminal Chic" theme is active (dark-first styling).
+- **Interactivity**: Quizzes + terminal simulator are working via shared JS assets and `{=html}` islands.
+
+## Status Note (Unresolved / Needs Verification)
+
+This Quarto version is **functionally close**, but not “done” until a full end-to-end verification pass is complete:
+
+- Confirm `quarto render` produces **0 warnings** on the target machine/environment.
+- Confirm **0 console errors** across all guides (first load + refresh).
+- Confirm the shared script loader works reliably on nested pages and on the intended deployment host (e.g., GitHub Pages).
+- Confirm mobile usability and final contrast/readability on real devices.
 
 ## Key Differences from Jekyll Version
 
@@ -40,7 +49,9 @@ This is the active Quarto implementation of the "Know Your Damned Computer" educ
 ### Challenges & Workarounds
 
 1. **Custom JavaScript interactivity**
-   - **Solution**: We preserved the custom quiz engine and terminal simulator by wrapping the HTML blocks in ````{=html} ... ``` ` code blocks. This allows Quarto to pass them through to the final HTML without modification.
+   - **Approach**: Interactive components live in shared JS (`assets/js/*`). Pages declare interactive regions using raw HTML islands (` ```{=html} ... ``` `) and `data-*` hooks:
+     - Quizzes: `<div class="quiz" data-quiz="..."> ... </div>`
+     - Terminals: `<div data-terminal="..."></div>`
 
 2. **GitHub Pages integration**
    - Requires a different deployment workflow (e.g., `quarto publish gh-pages` or GitHub Actions) compared to standard Jekyll.
@@ -105,12 +116,12 @@ quarto-version/
 - ✅ Learning objectives boxes
 - ✅ Exercise sections
 
-### Not Yet Implemented
+### Still In Progress
 
-- ⏳ Interactive quizzes (would need Quarto extension or custom JS)
-- ⏳ Terminal simulator (would need custom implementation)
-- ⏳ Progress tracking (would need custom solution)
-- ⏳ Executable code demonstrations
+- ⏳ Progress tracking (not implemented/verified in Quarto version)
+- ⏳ Deployment automation (GitHub Actions, etc.)
+- ⏳ PDF output pass (decide how to treat interactive-only content)
+- ⏳ Ongoing styling polish (contrast, tables, forms, mobile)
 
 ## Deployment Options
 
@@ -152,8 +163,7 @@ Free hosting specifically for Quarto sites.
 
 To continue developing the Quarto version:
 
-1. Convert remaining guides (compression, command-line, etc.)
-2. Explore Quarto extensions for interactivity
-3. Implement quiz functionality (possibly with webr or custom JS)
-4. Add executable code examples where appropriate
-5. Test PDF output for printable handouts
+1. Run full-site QA (console + links + mobile) and close out remaining styling issues
+2. Decide deployment path and automate it (GitHub Actions preferred)
+3. Decide whether to add progress tracking to Quarto version
+4. Test PDF output for printable handouts

@@ -5,8 +5,8 @@ This TODO is organized around **where problems live** (render vs browser vs depl
 ## Definition Of Done (v1)
 - [ ] `quarto render` produces **0 warnings** (especially HTML/div warnings)
 - [ ] Each guide loads with **0 console errors** on first load
-- [ ] Quizzes work (selecting answers shows feedback; state persists after refresh)
-- [ ] Terminal simulators work (input works; expected commands respond)
+- [x] Quizzes work (selecting answers shows feedback; state persists after refresh)
+- [x] Terminal simulators work (input works; expected commands respond)
 - [ ] Interactive exercises work (any click/inputs behave; no broken layouts)
 - [ ] Internal links + images work from `_site/` (not just in the editor)
 - [ ] Mobile pass: usable at ~375px width (no overflow; terminal usable)
@@ -49,10 +49,16 @@ Debug loop:
 - [ ] Refresh any guide and confirm quiz/reading progress persists
 
 ## Current Work (Prioritized)
-- [ ] **Fix “Exposed Code” at the source** by removing raw `<div class="code-example">` wrappers around fenced code (hotspots: `guides/file-paths.qmd`, `guides/file-formats.qmd`, `guides/command-line.qmd`)
-- [ ] **Test interactivity end-to-end** (quizzes, terminals, exercises) and log any console errors with page + reproduction steps
+- [x] **Fix “Exposed Code” at the source** by removing raw `<div class="code-example">` wrappers around fenced code (hotspots: `guides/file-paths.qmd`, `guides/file-formats.qmd`, `guides/command-line.qmd`)
+- [ ] **Run end-to-end QA pass** (quizzes, terminals, exercises) and log any console errors with page + reproduction steps
 - [ ] **Finalize `about.qmd`** (content + any images/links)
-- [ ] **Mobile optimization** (especially the terminal simulator and any wide grids)
+- [ ] **Mobile optimization + accessibility pass** (especially terminals, forms, tables, tabsets)
+
+## Unresolved / Verify Before Calling “Done”
+- [ ] Confirm the shared script loader works on nested pages and in deployed hosting (GitHub Pages base path)
+- [ ] Confirm there are no duplicate/competing styles affecting Quarto-native tabsets, tables, and callouts
+- [ ] Confirm code highlighting + inline code contrast is acceptable across all guides
+- [ ] Confirm `quarto render` is clean (0 warnings) in the intended build environment
 
 ## Later (Nice To Have)
 - [ ] “Copy to clipboard” for code blocks (either Quarto-native or custom)
