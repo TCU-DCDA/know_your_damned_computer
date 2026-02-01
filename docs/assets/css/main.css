@@ -534,6 +534,22 @@ a:focus {
   min-height: auto; /* No fixed height on mobile */
 }
 
+/* Ensure guide-content fills available space for consistent card heights */
+.guide-card .guide-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-card .guide-content h3 {
+  margin-bottom: var(--space-sm);
+}
+
+.guide-card .guide-content p {
+  flex: 1;
+  margin-bottom: var(--space-md);
+}
+
 .guide-card:hover,
 .guide-card:focus-within {
   transform: translateY(-2px);
@@ -787,7 +803,6 @@ pre code {
    Mobile Navigation Enhancements
    ======================================== */
 .mobile-menu {
-  display: none;
   position: absolute;
   top: 100%;
   left: 0;
@@ -797,14 +812,14 @@ pre code {
   box-shadow: var(--shadow-lg);
   z-index: var(--z-dropdown);
   padding: var(--space-md);
-  transform: translateY(-100%);
+  max-height: 0;
+  overflow: hidden;
   opacity: 0;
-  transition: all var(--transition-normal);
+  transition: max-height var(--transition-normal), opacity var(--transition-normal);
 }
 
 .mobile-menu.active {
-  display: block;
-  transform: translateY(0);
+  max-height: 300px;
   opacity: 1;
 }
 
@@ -962,6 +977,42 @@ pre code {
   
   .guide-card:hover {
     transform: none; /* Disable hover transforms on touch devices */
+  }
+}
+
+/* ========================================
+   Reduced Motion - Accessibility
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .guide-card:hover,
+  .guide-card:focus-within {
+    transform: none;
+  }
+
+  .highlight-interactive {
+    animation: none;
+    box-shadow: 0 0 0 3px var(--color-secondary) !important;
+  }
+
+  .quiz-celebration {
+    transition: none;
+  }
+
+  .notification {
+    transition: none;
+  }
+
+  .mobile-menu {
+    transition: none;
   }
 }
 

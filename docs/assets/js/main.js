@@ -20,7 +20,6 @@ class KnowYourComputer {
         this.loadTheme();
         this.loadProgress();
         
-        console.log('🖥️ Know Your Damned Computer initialized');
     }
 
     // Theme Management
@@ -64,27 +63,32 @@ class KnowYourComputer {
     setupMobileMenu() {
         const menuToggle = document.querySelector('.menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
-        
-        if (!menuToggle) {
-            console.log('Menu toggle not found');
-            return;
-        }
-        
-        if (!mobileMenu) {
-            console.log('Mobile menu not found');
+
+        if (!menuToggle || !mobileMenu) {
             return;
         }
 
-        menuToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.toggleMobileMenu();
-        });
-        
+        // Use a single handler that works for both touch and click
+        // Track if touch was used to prevent double-firing
+        let touchUsed = false;
+
         menuToggle.addEventListener('touchend', (e) => {
             e.preventDefault();
+            e.stopPropagation();
+            touchUsed = true;
             this.toggleMobileMenu();
         });
-        
+
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            // Only handle click if touch wasn't just used
+            if (!touchUsed) {
+                this.toggleMobileMenu();
+            }
+            touchUsed = false;
+        });
+
         // Close mobile menu when clicking on links
         const mobileLinks = mobileMenu.querySelectorAll('.nav-link');
         mobileLinks.forEach(link => {
@@ -92,15 +96,16 @@ class KnowYourComputer {
                 this.closeMobileMenu();
             });
         });
-        
-        // Close mobile menu when clicking outside
+
+        // Close mobile menu when clicking outside (with delay to avoid immediate close)
         document.addEventListener('click', (e) => {
-            if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+            if (mobileMenu.classList.contains('active') &&
+                !menuToggle.contains(e.target) &&
+                !mobileMenu.contains(e.target)) {
                 this.closeMobileMenu();
             }
         });
-        
-        console.log('Mobile menu setup complete');
+
     }
     
     toggleMobileMenu() {
@@ -118,9 +123,6 @@ class KnowYourComputer {
                 menuToggle.classList.add('active');
             }
             
-            console.log('Mobile menu toggled:', !isActive);
-        } else {
-            console.log('Mobile menu elements not found for toggle');
         }
     }
     
@@ -142,7 +144,7 @@ class KnowYourComputer {
         const headings = document.querySelectorAll('.guide-content h2, .guide-content h3, .guide-content h4');
         const tocItems = [];
 
-        headings.forEach((heading, index) => {
+        headings.forEach((heading) => {
             // Generate ID if it doesn't exist
             if (!heading.id) {
                 heading.id = this.slugify(heading.textContent);
@@ -420,35 +422,20 @@ function toggleReadingMode() {
     const overlay = document.getElementById('reading-mode-overlay');
     const content = document.querySelector('.guide-content .guide-body');
 
-    console.log('Reading mode toggle clicked');
-    console.log('Overlay found:', !!overlay);
-    console.log('Content found:', !!content);
-
-    if (!overlay) {
-        console.error('Reading mode overlay not found');
-        return;
-    }
-
-    if (!content) {
-        console.error('Guide content not found');
+    if (!overlay || !content) {
         return;
     }
 
     if (overlay.style.display === 'none' || !overlay.style.display) {
         // Enter reading mode
-        console.log('Entering reading mode');
         const readingContent = overlay.querySelector('.reading-content');
         if (readingContent) {
             readingContent.innerHTML = content.innerHTML;
             overlay.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            console.log('Reading mode activated');
-        } else {
-            console.error('Reading content container not found');
         }
     } else {
         // Exit reading mode
-        console.log('Exiting reading mode');
         overlay.style.display = 'none';
         document.body.style.overflow = '';
     }

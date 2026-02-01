@@ -18,7 +18,6 @@ class TerminalSimulator {
         this.render();
         this.bindEvents();
         this.showWelcome();
-        console.log('💻 Terminal Simulator initialized');
     }
 
     createFileSystem() {
@@ -243,8 +242,8 @@ class TerminalSimulator {
 
                 const command = args[0];
                 if (command === 'install') {
-                    const package = args[1] || 'package-name';
-                    return `Collecting ${package}\nInstalling collected packages: ${package}\nSuccessfully installed ${package}`;
+                    const pkgName = args[1] || 'package-name';
+                    return `Collecting ${pkgName}\nInstalling collected packages: ${pkgName}\nSuccessfully installed ${pkgName}`;
                 } else if (command === 'list') {
                     return 'Package    Version\n---------- -------\npandas     1.3.3\nmatplotlib 3.4.3\nnltk       3.6.2\nnumpy      1.21.2';
                 } else {
@@ -389,8 +388,9 @@ Try exploring the sample DH project structure!`;
                 <div class="terminal-content">
                     <div class="terminal-output"></div>
                     <div class="terminal-input-line">
-                        <span class="terminal-prompt">${this.getPrompt()}</span>
-                        <input type="text" class="terminal-input" placeholder="Type a command..." autocomplete="off">
+                        <label for="terminal-input-${this.container.dataset.terminal || 'main'}" class="sr-only">Enter terminal command</label>
+                        <span class="terminal-prompt" aria-hidden="true">${this.getPrompt()}</span>
+                        <input type="text" id="terminal-input-${this.container.dataset.terminal || 'main'}" class="terminal-input" placeholder="Type a command..." autocomplete="off" aria-label="Terminal command input">
                     </div>
                 </div>
             </div>
@@ -593,12 +593,20 @@ Try exploring the sample DH project structure!`;
 
     getDirectoryAtPath(path) {
         const parts = path.split('/').filter(part => part);
-        let current = this.fileSystem;
 
-        for (const part of parts) {
-            if (current[`/${parts.slice(0, parts.indexOf(part) + 1).join('/')}`]) {
-                current = current[`/${parts.slice(0, parts.indexOf(part) + 1).join('/')}`];
-            } else if (current.contents && current.contents[part]) {
+        // Check if this is the root home directory
+        if (path === '/Users/student' || path === '~') {
+            return this.fileSystem['/Users/student'];
+        }
+
+        // Start from the home directory
+        let current = this.fileSystem['/Users/student'];
+
+        // Skip 'Users' and 'student' parts since we start from home
+        const pathFromHome = parts.slice(2); // Skip ['Users', 'student']
+
+        for (const part of pathFromHome) {
+            if (current && current.contents && current.contents[part]) {
                 current = current.contents[part];
             } else {
                 return null;
@@ -632,77 +640,121 @@ Try exploring the sample DH project structure!`;
 }
 
 // Function to create terminal simulators
-function createTerminalSimulator(selector, options = {}) {
-    const container = typeof selector === 'string' ? 
+function createTerminalSimulator(selector) {
+    const container = typeof selector === 'string' ?
         document.querySelector(selector) : selector;
-    
+
     if (!container) {
-        console.error('Terminal container not found:', selector);
         return null;
     }
 
-    return new TerminalSimulator(container);
+    // Prevent double-initialization
+    if (container.dataset.terminalInitialized === 'true') {
+        return null;
+    }
+    container.dataset.terminalInitialized = 'true';
+
+    try {
+        return new TerminalSimulator(container);
+    } catch (error) {
+        // Show fallback UI on initialization failure
+        showTerminalFallback(container);
+        return null;
+    }
 }
 
-// Auto-initialize terminal simulators
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('🔍 Looking for terminal simulators...');
-    console.log('DOMContentLoaded event fired');
-    console.log('Document ready state:', document.readyState);
+// Fallback UI when terminal fails to load
+function showTerminalFallback(container) {
+    container.innerHTML = `
+        <div class="terminal-fallback" role="alert">
+            <div class="terminal-fallback-content">
+                <i class="fas fa-terminal" aria-hidden="true"></i>
+                <h4>Terminal Simulator Unavailable</h4>
+                <p>The interactive terminal couldn't load. You can still practice these commands in your computer's real terminal.</p>
+                <button class="btn btn-secondary terminal-retry" onclick="retryTerminalInit(this.closest('[data-terminal]'))">
+                    <i class="fas fa-redo"></i> Try Again
+                </button>
+            </div>
+        </div>
+    `;
+    container.dataset.terminalInitialized = 'failed';
+}
 
+// Retry initialization
+function retryTerminalInit(container) {
+    if (container) {
+        container.dataset.terminalInitialized = '';
+        createTerminalSimulator(container);
+    }
+}
+
+// Robust initialization function
+function initializeTerminals() {
     const terminals = document.querySelectorAll('[data-terminal]');
-    console.log('Found terminals:', terminals.length);
-    console.log('Terminal elements:', terminals);
+    let initialized = 0;
 
-    terminals.forEach((terminal, index) => {
-        console.log(`Initializing terminal ${index + 1}:`, terminal);
-        console.log('Terminal data-terminal value:', terminal.getAttribute('data-terminal'));
-        try {
+    terminals.forEach((terminal) => {
+        if (!terminal.dataset.terminalInitialized || terminal.dataset.terminalInitialized === '') {
             const simulator = createTerminalSimulator(terminal);
-            console.log('Terminal simulator created:', simulator);
-        } catch (error) {
-            console.error('Error creating terminal simulator:', error);
+            if (simulator) initialized++;
         }
     });
 
-    if (terminals.length === 0) {
-        console.log('No terminals found with [data-terminal] attribute');
-        console.log('All elements with data attributes:', document.querySelectorAll('[data-*]'));
+    return initialized;
+}
 
-        // Show visible error message
-        const terminalElements = document.querySelectorAll('[data-terminal]');
-        if (terminalElements.length === 0) {
-            console.error('CRITICAL: No terminal elements found even after DOM loaded');
-            // Try to find the terminal div a different way
-            setTimeout(() => {
-                const retryTerminals = document.querySelectorAll('[data-terminal]');
-                console.log('Retry search found:', retryTerminals.length, 'terminals');
-                if (retryTerminals.length > 0) {
-                    retryTerminals.forEach((terminal, index) => {
-                        console.log(`Late initializing terminal ${index + 1}:`, terminal);
-                        createTerminalSimulator(terminal);
-                    });
+// Use requestAnimationFrame for reliable DOM timing
+function scheduleTerminalInit() {
+    if (typeof requestAnimationFrame === 'function') {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                initializeTerminals();
+            });
+        });
+    } else {
+        setTimeout(initializeTerminals, 0);
+    }
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scheduleTerminalInit);
+} else {
+    // DOM already loaded, schedule initialization
+    scheduleTerminalInit();
+}
+
+// Fallback: check again after load event
+window.addEventListener('load', () => {
+    scheduleTerminalInit();
+});
+
+// MutationObserver for dynamically added terminal elements
+const terminalObserver = new MutationObserver((mutations) => {
+    let shouldInit = false;
+    mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+                if (node.hasAttribute && node.hasAttribute('data-terminal')) {
+                    shouldInit = true;
+                } else if (node.querySelector && node.querySelector('[data-terminal]')) {
+                    shouldInit = true;
                 }
-            }, 2000);
-        }
+            }
+        });
+    });
+    if (shouldInit) {
+        scheduleTerminalInit();
     }
 });
 
-// Backup initialization in case DOMContentLoaded already fired
+// Start observing once DOM is ready
 if (document.readyState === 'loading') {
-    console.log('Document still loading, waiting for DOMContentLoaded');
+    document.addEventListener('DOMContentLoaded', () => {
+        terminalObserver.observe(document.body, { childList: true, subtree: true });
+    });
 } else {
-    console.log('Document already loaded, initializing immediately');
-    setTimeout(() => {
-        const terminals = document.querySelectorAll('[data-terminal]');
-        console.log('Backup initialization found:', terminals.length, 'terminals');
-        terminals.forEach((terminal, index) => {
-            if (!terminal.querySelector('.terminal-simulator')) {
-                console.log(`Backup initializing terminal ${index + 1}:`, terminal);
-                createTerminalSimulator(terminal);
-            }
-        });
-    }, 100);
+    terminalObserver.observe(document.body, { childList: true, subtree: true });
 }
 
 // Add terminal-specific styles
@@ -863,13 +915,62 @@ const terminalStyles = `
         max-height: 400px;
         font-size: 0.875rem;
     }
-    
+
     .terminal-input-line {
         flex-wrap: wrap;
     }
-    
+
     .terminal-prompt {
         font-size: 0.75rem;
+    }
+}
+
+/* Terminal fallback UI */
+.terminal-fallback {
+    background-color: #2d2d2d;
+    border: 1px solid #555;
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    margin: var(--space-lg) 0;
+    text-align: center;
+}
+
+.terminal-fallback-content {
+    color: #ccc;
+}
+
+.terminal-fallback-content i.fa-terminal {
+    font-size: 2.5rem;
+    color: #666;
+    margin-bottom: var(--space-md);
+    display: block;
+}
+
+.terminal-fallback-content h4 {
+    color: #fff;
+    margin-bottom: var(--space-sm);
+}
+
+.terminal-fallback-content p {
+    color: #999;
+    margin-bottom: var(--space-md);
+    font-size: var(--font-size-sm);
+}
+
+.terminal-fallback .terminal-retry {
+    background: #444;
+    border-color: #666;
+    color: #fff;
+}
+
+.terminal-fallback .terminal-retry:hover {
+    background: #555;
+    border-color: #888;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
     }
 }
 </style>

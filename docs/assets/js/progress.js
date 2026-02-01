@@ -13,7 +13,6 @@ class ProgressTracker {
     init() {
         this.setupProgressElements();
         this.updateAllProgressBars();
-        console.log('📊 Progress Tracker initialized');
     }
 
     loadProgress() {
@@ -171,7 +170,10 @@ class ProgressTracker {
         const exercises = document.querySelectorAll('[data-exercise]');
         exercises.forEach(exercise => {
             const exerciseId = exercise.getAttribute('data-exercise');
-            this.initializeExercise(exerciseId);
+            // Initialize exercise tracking if not already tracked
+            if (exerciseId && !this.progress.exercises[exerciseId]) {
+                this.progress.exercises[exerciseId] = { completed: false, score: 0 };
+            }
         });
     }
 
