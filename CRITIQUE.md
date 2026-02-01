@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-"Know Your Damned Computer" is a **well-crafted, production-ready educational resource** that successfully teaches computer fundamentals to digital humanities students. The six-guide curriculum covers essential topics from file management through text encoding with strong pedagogical design.
+"Know Your Damned Computer" is a **well-crafted, production-ready educational resource** that successfully teaches computer fundamentals to digital humanities students. The eight-guide curriculum covers essential topics from file management through regular expressions with strong pedagogical design.
 
 **Overall Grade: A- (Very Good)**
 
@@ -16,7 +16,7 @@ The site achieves its core mission excellently: preparing complete beginners for
 
 | Category | Score | Grade | Notes |
 |----------|-------|-------|-------|
-| **Content Quality** | 9/10 | A | Comprehensive, well-written, DH-focused, now includes Git |
+| **Content Quality** | 9/10 | A | Comprehensive, well-written, DH-focused, now includes Git & Regex |
 | **Pedagogical Design** | 9/10 | A | Excellent scaffolding and beginner focus |
 | **Interactive Features** | 8.5/10 | A- | Good quizzes, terminal fixed |
 | **Technical Implementation** | 8/10 | B+ | Solid Jekyll, some JS issues |
@@ -37,7 +37,8 @@ The site achieves its core mission excellently: preparing complete beginners for
 | Text Encoding | 9.5/10 | Comprehensive, practical, sophisticated |
 | File Formats | 9/10 | Clear decision frameworks |
 | File Management | 9/10 | Addresses real student needs |
-| **Git & Version Control** | 9/10 | **NEW** - Comprehensive coverage with GitHub Desktop option |
+| Git & Version Control | 9/10 | Comprehensive coverage with GitHub Desktop option |
+| **Regular Expressions** | 9/10 | **NEW** - Pattern matching, Python integration, DH examples |
 | File Paths | 8/10 | Clear but could go deeper |
 | Compression | 7.5/10 | Thorough, over-detailed on tools |
 | Command Line | 7.5/10 | Essentials only, refers to Git guide for more |
@@ -87,7 +88,7 @@ The site achieves its core mission excellently: preparing complete beginners for
 
 **Priority 1 - Should Add:**
 - ~~**Git/Version Control**~~ ✅ **ADDED** - Comprehensive guide with CLI and GitHub Desktop coverage
-- **Regular Expressions** - Essential for text processing, completely absent
+- ~~**Regular Expressions**~~ ✅ **ADDED** - Pattern matching, Python integration, DH-focused examples
 - **Piping & Redirection** - Fundamental CLI skills not covered
 
 **Priority 2 - High Value:**
@@ -258,7 +259,7 @@ The site achieves its core mission excellently: preparing complete beginners for
 1. ~~**Add Git/Version Control guide**~~ ✅ Done - Comprehensive guide covering Git basics, GitHub, branching, and DH workflows
 2. **Add linting** - ESLint and Stylelint for code quality
 3. **Modularize CSS** - Convert to SCSS with variables
-4. **Add Regular Expressions guide** - Essential for text processing
+4. ~~**Add Regular Expressions guide**~~ ✅ Done - Pattern matching, Python integration, DH-focused examples
 5. **Improve terminal realism** - Dynamic outputs, path arguments
 
 ### Long-Term Considerations
