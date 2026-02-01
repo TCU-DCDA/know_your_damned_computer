@@ -33,7 +33,8 @@ class ProgressTracker {
                 'compression': { completed: false, progress: 0, timeSpent: 0 },
                 'file-formats': { completed: false, progress: 0, timeSpent: 0 },
                 'command-line': { completed: false, progress: 0, timeSpent: 0 },
-                'text-encoding': { completed: false, progress: 0, timeSpent: 0 }
+                'text-encoding': { completed: false, progress: 0, timeSpent: 0 },
+                'version-control': { completed: false, progress: 0, timeSpent: 0 }
             },
             exercises: {},
             quizzes: {},
@@ -307,7 +308,8 @@ class ProgressTracker {
         }
         
         // All guides completed
-        if (completedGuides === 6 && !this.hasAchievement('guide-expert')) {
+        const totalGuideCount = Object.keys(this.progress.guides).length;
+        if (completedGuides === totalGuideCount && !this.hasAchievement('guide-expert')) {
             achievements.push({
                 id: 'guide-expert',
                 title: 'Guide Expert',
@@ -527,7 +529,8 @@ class ProgressTracker {
             'compression': 'Working with Compressed Files',
             'file-formats': 'Essential File Formats for DH',
             'command-line': 'Command Line Basics',
-            'text-encoding': 'Text Encoding and Character Sets'
+            'text-encoding': 'Text Encoding & Character Sets',
+            'version-control': 'Git & Version Control'
         };
         
         return Object.entries(this.progress.guides).map(([slug, data]) => {
@@ -603,7 +606,8 @@ class ProgressTracker {
             'compression': 'Working with Compressed Files',
             'file-formats': 'Essential File Formats for DH',
             'command-line': 'Command Line Basics',
-            'text-encoding': 'Text Encoding and Character Sets'
+            'text-encoding': 'Text Encoding & Character Sets',
+            'version-control': 'Git & Version Control'
         };
         return titles[slug] || slug;
     }

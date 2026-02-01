@@ -4,7 +4,7 @@
 
 "Know Your Damned Computer" is a **well-crafted, production-ready educational resource** that successfully teaches computer fundamentals to digital humanities students. The six-guide curriculum covers essential topics from file management through text encoding with strong pedagogical design.
 
-**Overall Grade: B+ (Very Good)**
+**Overall Grade: A- (Very Good)**
 
 The site achieves its core mission excellently: preparing complete beginners for DH work. The interactive features (quizzes, terminal simulator, progress tracking) enhance learning, and the cross-platform coverage is thorough. However, there are notable gaps in content depth, some technical issues to address, and opportunities for enhancement.
 
@@ -16,7 +16,7 @@ The site achieves its core mission excellently: preparing complete beginners for
 
 | Category | Score | Grade | Notes |
 |----------|-------|-------|-------|
-| **Content Quality** | 8.5/10 | A- | Comprehensive, well-written, DH-focused |
+| **Content Quality** | 9/10 | A | Comprehensive, well-written, DH-focused, now includes Git |
 | **Pedagogical Design** | 9/10 | A | Excellent scaffolding and beginner focus |
 | **Interactive Features** | 8.5/10 | A- | Good quizzes, terminal fixed |
 | **Technical Implementation** | 8/10 | B+ | Solid Jekyll, some JS issues |
@@ -27,7 +27,7 @@ The site achieves its core mission excellently: preparing complete beginners for
 | **Documentation** | 7/10 | B | Code comments OK, no user docs |
 | **Learning Effectiveness** | 8.5/10 | A- | Strong quizzes, terminal needs realism |
 
-### **Composite Score: 8.4/10 (B+)**
+### **Composite Score: 8.5/10 (A-)**
 
 ### Component Breakdown
 
@@ -37,9 +37,10 @@ The site achieves its core mission excellently: preparing complete beginners for
 | Text Encoding | 9.5/10 | Comprehensive, practical, sophisticated |
 | File Formats | 9/10 | Clear decision frameworks |
 | File Management | 9/10 | Addresses real student needs |
+| **Git & Version Control** | 9/10 | **NEW** - Comprehensive coverage with GitHub Desktop option |
 | File Paths | 8/10 | Clear but could go deeper |
 | Compression | 7.5/10 | Thorough, over-detailed on tools |
-| Command Line | 7.5/10 | Essentials only, missing intermediate |
+| Command Line | 7.5/10 | Essentials only, refers to Git guide for more |
 
 #### Interactive Features
 | Feature | Score | Notes |
@@ -85,7 +86,7 @@ The site achieves its core mission excellently: preparing complete beginners for
 ### Critical Content Gaps
 
 **Priority 1 - Should Add:**
-- **Git/Version Control** - Currently a footnote, needs dedicated guide
+- ~~**Git/Version Control**~~ ✅ **ADDED** - Comprehensive guide with CLI and GitHub Desktop coverage
 - **Regular Expressions** - Essential for text processing, completely absent
 - **Piping & Redirection** - Fundamental CLI skills not covered
 
@@ -233,7 +234,7 @@ The site achieves its core mission excellently: preparing complete beginners for
 | ~~File Management card display~~ | ~~Medium~~ | ✅ Fixed with flex CSS |
 | ~~Console.log statements in production~~ | ~~Medium~~ | ✅ Removed |
 | ~~Quiz accessibility labels~~ | ~~Medium~~ | ✅ Fixed with ARIA attributes |
-| Hard-coded guide count in progress.js | Low | Will break when guides added |
+| ~~Hard-coded guide count in progress.js~~ | ~~Low~~ | ✅ Fixed - Now dynamically counts guides |
 
 ---
 
@@ -254,7 +255,7 @@ The site achieves its core mission excellently: preparing complete beginners for
 
 ### Medium-Term Enhancements (1-2 Months)
 
-1. **Add Git/Version Control guide** - Critical gap for DH collaboration
+1. ~~**Add Git/Version Control guide**~~ ✅ Done - Comprehensive guide covering Git basics, GitHub, branching, and DH workflows
 2. **Add linting** - ESLint and Stylelint for code quality
 3. **Modularize CSS** - Convert to SCSS with variables
 4. **Add Regular Expressions guide** - Essential for text processing
@@ -283,7 +284,7 @@ The site achieves its core mission excellently: preparing complete beginners for
 ### Critical Limitations
 
 1. **Stops at prerequisites** rather than "ready for DH work" state
-2. **Missing collaborative/social computing** aspects (Git)
+2. ~~**Missing collaborative/social computing** aspects (Git)~~ ✅ Git guide now included
 3. **No research data management** or DH-specific tool coverage
 4. **Interactive features good but not exceptional** (terminal needs work)
 5. **No mechanism to validate** students can apply concepts in integrated scenarios
@@ -304,11 +305,11 @@ The site achieves its core mission excellently: preparing complete beginners for
 
 ## Final Verdict
 
-**"Know Your Damned Computer" is a solid B+ educational resource** that successfully achieves its core mission of preparing complete beginners for digital humanities work. The content is well-written, the interactive features are thoughtful, and the technical implementation is sound.
+**"Know Your Damned Computer" is now a solid A- educational resource** that successfully achieves its core mission of preparing complete beginners for digital humanities work. The content is comprehensive (now including Git/version control), the interactive features are thoughtful, and the technical implementation is sound.
 
 The main opportunities lie in:
 1. ~~Fixing the known terminal simulator issue~~ ✅ Done
-2. Adding Git/version control content
+2. ~~Adding Git/version control content~~ ✅ Done - New comprehensive guide added
 3. ~~Improving accessibility compliance~~ ✅ Significantly improved
 4. Extending coverage to DH-specific tools
 

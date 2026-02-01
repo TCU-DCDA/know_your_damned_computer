@@ -26,25 +26,27 @@ This guide is specifically designed for DH students who need to understand their
 - **File Formats**: Choosing the right format for your data and projects
 - **Command Line Basics**: Terminal skills for Python, pip, and Git
 - **Text Encoding**: Understanding character sets and avoiding encoding problems
+- **Git & Version Control**: Track changes, collaborate, and never lose work again
 
 ### Platform Coverage
 This guide provides equal coverage for both Mac and PC users, with specific instructions and screenshots for each platform where they differ.
 
 ## Guide Structure
 
-| Guide | Difficulty | Description |
-|-------|------------|-------------|
-| [File Management](./file-management.md) | Beginner | Organizing your digital research materials |
-| [File Paths](./file-paths.md) | Beginner | How your computer organizes files |
-| [Compression](./compression.md) | Beginner | Working with ZIP and compressed files |
-| [File Formats](./file-formats.md) | Beginner | Choosing the right formats for DH projects |
-| [Command Line](./command-line.md) | Intermediate | Terminal basics for advanced DH work |
-| [Text Encoding](./text-encoding.md) | Intermediate | Character sets and encoding |
+| Guide | Difficulty | Time | Description |
+|-------|------------|------|-------------|
+| [File Management](https://tcu-dcda.github.io/know_your_damned_computer/guides/file-management/) | Beginner | 20 min | Organizing your digital research materials |
+| [File Paths](https://tcu-dcda.github.io/know_your_damned_computer/guides/file-paths/) | Beginner | 25 min | How your computer organizes files |
+| [Compression](https://tcu-dcda.github.io/know_your_damned_computer/guides/compression/) | Beginner | 20 min | Working with ZIP and compressed files |
+| [File Formats](https://tcu-dcda.github.io/know_your_damned_computer/guides/file-formats/) | Beginner | 30 min | Choosing the right formats for DH projects |
+| [Command Line](https://tcu-dcda.github.io/know_your_damned_computer/guides/command-line/) | Intermediate | 45 min | Terminal basics for advanced DH work |
+| [Text Encoding](https://tcu-dcda.github.io/know_your_damned_computer/guides/text-encoding/) | Intermediate | 35 min | Character sets and encoding |
+| [Git & Version Control](https://tcu-dcda.github.io/know_your_damned_computer/guides/version-control/) | Intermediate | 50 min | Track changes and collaborate with Git |
 
 ## Getting Started
 
-1. Start with [File Management Fundamentals](./file-management.md) if you're new to organizing digital files
-2. Move on to [Understanding File Paths](./file-paths.md) to learn navigation
+1. Start with [File Management Fundamentals](https://tcu-dcda.github.io/know_your_damned_computer/guides/file-management/) if you're new to organizing digital files
+2. Move on to [Understanding File Paths](https://tcu-dcda.github.io/know_your_damned_computer/guides/file-paths/) to learn navigation
 3. Work through the other sections based on your specific needs
 
 ## Local Development
@@ -63,11 +65,12 @@ cd docs && bundle exec jekyll serve
 
 ```
 ├── docs/                    # Jekyll site (interactive version)
-│   ├── _guides/            # Interactive guide content
+│   ├── _guides/            # Interactive guide content (7 guides)
 │   ├── _layouts/           # Page templates
 │   └── assets/js/          # Quiz engine, terminal simulator, progress tracking
-├── *.md                    # Static educational content
+├── .archive/               # Archived static content (deprecated)
 ├── CRITIQUE.md             # Evaluation and improvement roadmap
+├── PROGRESS.md             # Development status and priorities
 └── README.md               # This file
 ```
 
