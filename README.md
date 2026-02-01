@@ -12,7 +12,6 @@ This guide is specifically designed for DH students who need to understand their
 
 - **Interactive quizzes** with immediate feedback
 - **Terminal simulator** for safe command line practice
-- **Progress tracking** across all guides
 - **Dark mode** support
 - **Mobile-friendly** responsive design
 - **Accessibility-first** with ARIA labels, keyboard navigation, and reduced motion support
@@ -27,6 +26,7 @@ This guide is specifically designed for DH students who need to understand their
 - **Command Line Basics**: Terminal skills for Python, pip, and Git
 - **Text Encoding**: Understanding character sets and avoiding encoding problems
 - **Git & Version Control**: Track changes, collaborate, and never lose work again
+- **Regular Expressions**: Find patterns in text for data cleaning and extraction
 
 ### Platform Coverage
 This guide provides equal coverage for both Mac and PC users, with specific instructions and screenshots for each platform where they differ.
@@ -42,6 +42,7 @@ This guide provides equal coverage for both Mac and PC users, with specific inst
 | [Command Line](https://tcu-dcda.github.io/know_your_damned_computer/guides/command-line/) | Intermediate | 45 min | Terminal basics for advanced DH work |
 | [Text Encoding](https://tcu-dcda.github.io/know_your_damned_computer/guides/text-encoding/) | Intermediate | 35 min | Character sets and encoding |
 | [Git & Version Control](https://tcu-dcda.github.io/know_your_damned_computer/guides/version-control/) | Intermediate | 50 min | Track changes and collaborate with Git |
+| [Regular Expressions](https://tcu-dcda.github.io/know_your_damned_computer/guides/regular-expressions/) | Intermediate | 45 min | Pattern matching for text processing |
 
 ## Getting Started
 
@@ -65,7 +66,7 @@ cd docs && bundle exec jekyll serve
 
 ```
 ├── docs/                    # Jekyll site (interactive version)
-│   ├── _guides/            # Interactive guide content (7 guides)
+│   ├── _guides/            # Interactive guide content (8 guides)
 │   ├── _layouts/           # Page templates
 │   └── assets/js/          # Quiz engine, terminal simulator, progress tracking
 ├── .archive/               # Archived static content (deprecated)

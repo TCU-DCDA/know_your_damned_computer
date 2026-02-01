@@ -15,11 +15,9 @@ class KnowYourComputer {
         this.setupSmoothScrolling();
         this.setupReadingProgress();
         this.initializeTooltips();
-        
+
         // Load user preferences
         this.loadTheme();
-        this.loadProgress();
-        
     }
 
     // Theme Management
@@ -136,13 +134,17 @@ class KnowYourComputer {
         }
     }
 
-    // Table of Contents Generation
+    // Table of Contents Generation with Collapsible Sections
     setupTableOfContents() {
         const tocList = document.getElementById('toc-list');
         if (!tocList) return;
 
         const headings = document.querySelectorAll('.guide-content h2, .guide-content h3, .guide-content h4');
         const tocItems = [];
+
+        // Build hierarchical structure
+        let currentSection = null;
+        let currentSublist = null;
 
         headings.forEach((heading) => {
             // Generate ID if it doesn't exist
@@ -158,24 +160,94 @@ class KnowYourComputer {
             };
             tocItems.push(tocItem);
 
-            // Create TOC link
-            const li = document.createElement('li');
-            li.style.paddingLeft = `${(level - 2) * 1}rem`;
-            
-            const a = document.createElement('a');
-            a.href = `#${heading.id}`;
-            a.textContent = heading.textContent;
-            a.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.scrollToHeading(heading.id);
-            });
-            
-            li.appendChild(a);
-            tocList.appendChild(li);
+            if (level === 2) {
+                // H2: Create a new collapsible section
+                const li = document.createElement('li');
+                li.className = 'toc-section';
+
+                // Section header with toggle
+                const sectionHeader = document.createElement('div');
+                sectionHeader.className = 'toc-section-header';
+
+                const toggle = document.createElement('button');
+                toggle.className = 'toc-toggle';
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-label', 'Toggle section');
+                toggle.innerHTML = '<i class="fas fa-chevron-right"></i>';
+
+                const a = document.createElement('a');
+                a.href = `#${heading.id}`;
+                a.textContent = heading.textContent;
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.scrollToHeading(heading.id);
+                });
+
+                sectionHeader.appendChild(toggle);
+                sectionHeader.appendChild(a);
+                li.appendChild(sectionHeader);
+
+                // Create sublist for children (hidden by default)
+                const sublist = document.createElement('ul');
+                sublist.className = 'toc-subsection collapsed';
+                li.appendChild(sublist);
+                currentSublist = sublist;
+
+                // Toggle click handler - use sublist directly to avoid closure issue
+                toggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.toggleTocSection(toggle, sublist);
+                });
+
+                // Also toggle when clicking the section header area
+                sectionHeader.addEventListener('click', (e) => {
+                    if (e.target === sectionHeader) {
+                        this.toggleTocSection(toggle, sublist);
+                    }
+                });
+
+                tocList.appendChild(li);
+                currentSection = li;
+
+            } else if (level === 3 || level === 4) {
+                // H3/H4: Add to current section's sublist
+                const li = document.createElement('li');
+                li.className = level === 4 ? 'toc-item toc-item-deep' : 'toc-item';
+
+                const a = document.createElement('a');
+                a.href = `#${heading.id}`;
+                a.textContent = heading.textContent;
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.scrollToHeading(heading.id);
+                });
+
+                li.appendChild(a);
+
+                if (currentSublist) {
+                    currentSublist.appendChild(li);
+                } else {
+                    // If no current section, add directly to main list
+                    tocList.appendChild(li);
+                }
+            }
         });
 
         // Setup intersection observer for active TOC highlighting
         this.setupTocHighlighting(tocItems);
+    }
+
+    toggleTocSection(toggle, sublist) {
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+        toggle.setAttribute('aria-expanded', !isExpanded);
+        toggle.querySelector('i').className = isExpanded ? 'fas fa-chevron-right' : 'fas fa-chevron-down';
+
+        if (isExpanded) {
+            sublist.classList.add('collapsed');
+        } else {
+            sublist.classList.remove('collapsed');
+        }
     }
 
     setupTocHighlighting(tocItems) {
@@ -286,90 +358,6 @@ class KnowYourComputer {
         if (tooltip) {
             tooltip.remove();
         }
-    }
-
-    // Progress Management
-    loadProgress() {
-        const savedProgress = localStorage.getItem('kydc_progress');
-        if (savedProgress) {
-            this.userProgress = JSON.parse(savedProgress);
-        } else {
-            this.userProgress = {
-                guides: {},
-                exercises: {},
-                overallProgress: 0
-            };
-        }
-        this.updateProgressDisplay();
-    }
-
-    saveProgress() {
-        localStorage.setItem('kydc_progress', JSON.stringify(this.userProgress));
-    }
-
-    markGuideComplete(guideSlug) {
-        this.userProgress.guides[guideSlug] = {
-            completed: true,
-            completedAt: new Date().toISOString()
-        };
-        this.calculateOverallProgress();
-        this.saveProgress();
-        this.updateProgressDisplay();
-    }
-
-    markExerciseComplete(exerciseSlug, score = 100) {
-        this.userProgress.exercises[exerciseSlug] = {
-            completed: true,
-            score: score,
-            completedAt: new Date().toISOString()
-        };
-        this.calculateOverallProgress();
-        this.saveProgress();
-        this.updateProgressDisplay();
-    }
-
-    calculateOverallProgress() {
-        // This would be calculated based on all available guides and exercises
-        const totalGuides = 6; // file-management, file-paths, compression, file-formats, command-line, text-encoding
-        const totalExercises = 12; // Estimated number of interactive exercises
-        
-        const completedGuides = Object.keys(this.userProgress.guides).length;
-        const completedExercises = Object.keys(this.userProgress.exercises).length;
-        
-        this.userProgress.overallProgress = Math.round(
-            ((completedGuides + completedExercises) / (totalGuides + totalExercises)) * 100
-        );
-    }
-
-    updateProgressDisplay() {
-        // Update overall progress if element exists
-        const overallProgress = document.querySelector('[data-overall-progress]');
-        if (overallProgress) {
-            overallProgress.style.width = `${this.userProgress.overallProgress}%`;
-        }
-
-        // Update guide-specific progress
-        // Update in-guide progress bars
-        const guideProgressBars = document.querySelectorAll('.progress-fill[data-guide]');
-        guideProgressBars.forEach(bar => {
-            const guideSlug = bar.getAttribute('data-guide');
-            const guideData = this.userProgress.guides[guideSlug] || {};
-            const progress = typeof guideData.progress === 'number'
-                ? guideData.progress
-                : (guideData.completed ? 100 : 0);
-            bar.style.width = `${Math.max(0, Math.min(progress, 100))}%`;
-        });
-
-        // Update homepage guide cards
-        const overviewProgressBars = document.querySelectorAll('.progress-fill[data-guide-progress]');
-        overviewProgressBars.forEach(bar => {
-            const guideSlug = bar.getAttribute('data-guide-progress');
-            const guideData = this.userProgress.guides[guideSlug] || {};
-            const progress = typeof guideData.progress === 'number'
-                ? guideData.progress
-                : (guideData.completed ? 100 : 0);
-            bar.style.width = `${Math.max(0, Math.min(progress, 100))}%`;
-        });
     }
 
     // Utility Functions

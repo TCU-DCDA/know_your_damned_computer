@@ -7,7 +7,7 @@ An interactive, web-based resource to help college students understand their com
 
 ## Current Status: A- Grade Resource (February 2026)
 
-### 7 Interactive Guides Complete
+### 8 Interactive Guides Complete
 
 | Guide | Difficulty | Time | Status |
 |-------|------------|------|--------|
@@ -17,9 +17,17 @@ An interactive, web-based resource to help college students understand their com
 | File Formats | Beginner | 30 min | ✅ Complete |
 | Command Line | Intermediate | 45 min | ✅ Complete |
 | Text Encoding | Intermediate | 35 min | ✅ Complete |
-| **Git & Version Control** | Intermediate | 50 min | ✅ **NEW** |
+| Git & Version Control | Intermediate | 50 min | ✅ Complete |
+| **Regular Expressions** | Intermediate | 45 min | ✅ **NEW** |
 
 ### Recent Updates (February 2026)
+
+#### Regular Expressions Guide Added
+- Comprehensive guide covering regex basics through Python integration
+- Interactive quizzes with DH-focused scenarios
+- Pattern reference for common DH tasks (dates, names, prices, cleaning)
+- Practice exercises with historical document examples
+- Debugging strategies and recommended tools
 
 #### Git & Version Control Guide Added
 - Comprehensive guide covering Git basics through GitHub collaboration
@@ -30,8 +38,9 @@ An interactive, web-based resource to help college students understand their com
 
 #### Technical Improvements
 - Fixed hard-coded guide count in progress.js (now dynamic)
-- Updated homepage to show 7 guides
+- Updated homepage to show 8 guides
 - Improved quiz prompts across guides for clarity
+- Archived deprecated static .md files
 
 ## Technical Architecture
 
@@ -39,7 +48,7 @@ An interactive, web-based resource to help college students understand their com
 ```
 docs/
 ├── _config.yml              # Jekyll configuration
-├── index.html               # Landing page (7 guides)
+├── index.html               # Landing page (8 guides)
 ├── _layouts/                # Page templates
 │   ├── default.html
 │   ├── guide.html
@@ -51,20 +60,19 @@ docs/
 │   ├── file-formats.md      ✅
 │   ├── command-line.md      ✅
 │   ├── text-encoding.md     ✅
-│   └── version-control.md   ✅ NEW
+│   ├── version-control.md   ✅
+│   └── regular-expressions.md ✅ NEW
 └── assets/
     ├── css/main.css         # Styling
     └── js/                   # Interactive functionality
         ├── main.js           # Core features
         ├── quiz-engine.js    # Quiz system
-        ├── terminal-sim.js   # Terminal simulation
-        └── progress.js       # Progress tracking (7 guides)
+        └── terminal-sim.js   # Terminal simulation
 ```
 
 ### Key Features
 - **Responsive Design**: Desktop, tablet, and mobile support
 - **Accessibility**: ARIA labels, keyboard navigation, reduced-motion support
-- **Progress Tracking**: LocalStorage persistence across sessions
 - **Theme Support**: Light/dark mode toggle
 - **Cross-Platform**: Mac and PC specific guidance
 - **Interactive Elements**: Quizzes, exercises, terminal simulation
@@ -72,7 +80,7 @@ docs/
 ## Remaining Development Priorities
 
 ### High Priority
-1. **Regular Expressions Guide** - Essential for text processing
+1. ~~**Regular Expressions Guide**~~ ✅ Complete - Essential for text processing
 2. **Add linting** - ESLint and Stylelint for code quality
 3. **Modularize CSS** - Convert to SCSS with partials
 
@@ -115,7 +123,7 @@ See `quarto-version/COMPARISON-NOTES.md` for detailed analysis.
 - ✅ Hands-on practice with immediate feedback
 - ✅ Real DH project examples throughout
 - ✅ Cross-platform (Mac/PC) guidance
-- ✅ Complete pathway from file management to Git collaboration
+- ✅ Complete pathway from file management to regex text processing
 
 ---
 

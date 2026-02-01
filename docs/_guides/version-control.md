@@ -14,6 +14,9 @@ learning_objectives:
 prev_guide:
   title: "Text Encoding & Character Sets"
   url: "/guides/text-encoding/"
+next_guide:
+  title: "Regular Expressions for Text Processing"
+  url: "/guides/regular-expressions/"
 interactive: true
 ---
 
