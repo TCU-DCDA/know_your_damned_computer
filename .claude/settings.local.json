@@ -6,7 +6,17 @@
       "Bash(curl -s \"http://127.0.0.1:4000/know_your_damned_computer/guides/file-management/\")",
       "Bash(open \"http://127.0.0.1:4000/know_your_damned_computer/guides/file-management/\")",
       "Bash(open \"http://127.0.0.1:4000/know_your_damned_computer/\")",
-      "Bash(git add CLAUDE.md PROGRESS.md docs/_guides/compression.md docs/assets/css/main.css docs/assets/js/main.js docs/assets/js/terminal-sim.js docs/index.html docs/_layouts/guide.html docs/Gemfile docs/Gemfile.lock)"
+      "Bash(git add CLAUDE.md PROGRESS.md docs/_guides/compression.md docs/assets/css/main.css docs/assets/js/main.js docs/assets/js/terminal-sim.js docs/index.html docs/_layouts/guide.html docs/Gemfile docs/Gemfile.lock)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd Git & Version Control guide and archive static content\n\n- Add comprehensive version-control.md guide \\(50 min, intermediate\\)\n- Include GitHub Desktop section as GUI alternative\n- Update progress.js with dynamic guide count\n- Update homepage to show 7 guides\n- Archive deprecated static .md files to .archive/\n- Update README links to point to live site\n- Update CRITIQUE.md and PROGRESS.md with current status\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(pgrep:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(bundle exec jekyll serve:*)",
+      "WebFetch(domain:127.0.0.1)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []
