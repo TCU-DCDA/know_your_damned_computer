@@ -1,234 +1,54 @@
-# Interactive DH Computer Skills Resource - Progress & Next Steps
+# Interactive DH Computer Skills Resource - Progress & Status
 
 ## Project Overview
-Creating an interactive, web-based resource to help college students understand their computers for digital humanities work. The resource is designed for beginners working with Python/VS Code on text analysis, data visualization, and mapping projects.
+An interactive, web-based resource to help college students understand their computers for digital humanities work. Designed for beginners working with Python/VS Code on text analysis, data visualization, and mapping projects.
 
-## Current Status (October 3, 2025)
+**Live Site:** [https://tcu-dcda.github.io/know_your_damned_computer/](https://tcu-dcda.github.io/know_your_damned_computer/)
 
-### ✅ Completed Components
+## Current Status: A- Grade Resource (February 2026)
 
-#### 1. Static Markdown Guides (Complete - Archived)
-- `README.md` - Main overview and navigation
-- `file-management.md` - File organization fundamentals (converted to interactive)
-- `file-paths.md` - Understanding absolute/relative paths (converted to interactive)
-- `compression.md` - Working with zip files and archives (converted to interactive)
-- `file-formats.md` - Text files, encoding, CSV/JSON basics (converted to interactive)
-- `command-line.md` - Terminal/command prompt introduction (converted to interactive)
-- `text-encoding.md` - Character encoding for DH work (converted to interactive)
+### 8 Interactive Guides Complete
 
-#### 2. Jekyll Site Infrastructure (Complete)
-- **Configuration**: `docs/_config.yml` with proper Jekyll setup and GitHub Pages deployment
-- **Layouts**: 
-  - `docs/_layouts/default.html` - Site template with navigation
-  - `docs/_layouts/guide.html` - Guide page template with progress tracking
-  - `docs/_layouts/exercise.html` - Interactive exercise template
-- **Styling**: `docs/assets/css/main.css` - Responsive, accessible design
-- **Main Page**: `docs/index.html` - Landing page with course overview
+| Guide | Difficulty | Time | Status |
+|-------|------------|------|--------|
+| File Management | Beginner | 20 min | ✅ Complete |
+| File Paths | Beginner | 25 min | ✅ Complete |
+| Compression | Beginner | 20 min | ✅ Complete |
+| File Formats | Beginner | 30 min | ✅ Complete |
+| Command Line | Intermediate | 45 min | ✅ Complete |
+| Text Encoding | Intermediate | 35 min | ✅ Complete |
+| Git & Version Control | Intermediate | 50 min | ✅ Complete |
+| **Regular Expressions** | Intermediate | 45 min | ✅ **NEW** |
 
-#### 3. Interactive JavaScript Modules (Complete)
-- **Core**: `docs/assets/js/main.js` - Theme switching, TOC, feedback system
-- **Quiz Engine**: `docs/assets/js/quiz-engine.js` - Multiple choice with feedback
-- **Terminal Simulator**: `docs/assets/js/terminal-sim.js` - Command line practice
-- **Progress Tracking**: `docs/assets/js/progress.js` - User progress persistence
+### Recent Updates (February 2026)
 
-#### 4. Interactive Guides (Complete! 🎉)
-- ✅ **File Management**: `docs/_guides/file-management.md` - Full interactive guide with quizzes, exercises, and hands-on practice
-- ✅ **File Paths**: `docs/_guides/file-paths.md` - Interactive path navigation with debugging exercises
-- ✅ **Compression**: `docs/_guides/compression.md` - Interactive compression guide with quizzes, exercises, and terminal simulator
-- ✅ **File Formats**: `docs/_guides/file-formats.md` - Interactive format selection guide with CSV builder and decision tools
-- ✅ **Command Line**: `docs/_guides/command-line.md` - Comprehensive terminal guide with simulator and platform tabs
-- ✅ **Text Encoding**: `docs/_guides/text-encoding.md` - Encoding diagnostics guide with multilingual examples and Python tools
+#### Regular Expressions Guide Added
+- Comprehensive guide covering regex basics through Python integration
+- Interactive quizzes with DH-focused scenarios
+- Pattern reference for common DH tasks (dates, names, prices, cleaning)
+- Practice exercises with historical document examples
+- Debugging strategies and recommended tools
 
-## � Major Milestone: Core Interactive Guides Complete!
+#### Git & Version Control Guide Added
+- Comprehensive guide covering Git basics through GitHub collaboration
+- GitHub Desktop section for GUI-preferring users
+- Interactive quizzes with improved, clearer prompts
+- Branching, .gitignore, and recovery from mistakes
+- Real DH workflow examples
 
-All six essential computer skills guides have been successfully converted to interactive Jekyll format and are live on GitHub Pages at: https://tcu-dcda.github.io/know_your_damned_computer/
-
-### ✅ Completed Interactive Guide Conversions
-
-1. ✅ **`compression.md`** → `docs/_guides/compression.md` 
-   - Interactive exercises for zip/unzip operations
-   - Hands-on archive creation practice
-   - Terminal simulation for command-line compression
-
-2. ✅ **`file-formats.md`** → `docs/_guides/file-formats.md`
-   - Interactive CSV builder and format decision tree
-   - Encoding detection exercises with real examples
-   - Format conversion practice with DH datasets
-   - Comprehensive troubleshooting tools
-
-3. ✅ **`command-line.md`** → `docs/_guides/command-line.md`
-   - Full terminal simulator integration with file system
-   - Platform-specific tabs (Mac/Windows) for all commands
-   - Progressive Git workflow exercises
-   - Safety checks and error handling practice
-
-4. ✅ **`text-encoding.md`** → `docs/_guides/text-encoding.md`
-   - Interactive encoding problem diagnosis labs
-   - Python-based text repair tools and examples
-   - Multilingual corpus processing workflows
-   - Character set conversion practice with real-world scenarios
-
-## � Quarto Migration (December 2025)
-
-### ✅ Phase 1: Content Porting
-- **Infrastructure**: Created `quarto-version/` with `_quarto.yml` and `index.qmd`
-- **Theme**: Implemented "Terminal Chic" theme with custom SCSS
-- **Guides Ported**:
-  - ✅ `file-management.qmd`
-  - ✅ `file-paths.qmd`
-  - ✅ `compression.qmd`
-  - ✅ `command-line.qmd`
-  - ✅ `file-formats.qmd`
-  - ✅ `text-encoding.qmd`
-- **Navigation**: Updated `_quarto.yml` and `index.qmd` with new links
-
-### 🚧 Phase 2: Interactivity & Polish
-- [x] Port `quiz-engine.js` to Quarto extension or include
-- [x] Port `terminal-sim.js` for command line guide
-- [x] Create `exercises/index.qmd` landing page
-- [x] Port missing guides (file-paths, compression, file-formats, text-encoding)
-- [x] Fix raw HTML rendering for interactive elements in all guides
-- [ ] Finalize `about.qmd`
-- [ ] Verify all internal links and images
-- [ ] Fix Quarto build warnings (unclosed divs)
-
-## �🔬 Quarto Evaluation (October 3, 2025)
-
-### Parallel Implementation Created
-A complete Quarto version has been created in `quarto-version/` for comparison with the Jekyll implementation. This allows evaluation of both platforms for future development decisions.
-
-**Quarto Version Includes:**
-- `_quarto.yml` - Full configuration with navigation and themes
-- `index.qmd` - Homepage with grid layouts and native callouts
-- `guides/file-management.qmd` - Complete conversion showcasing Quarto features
-- `custom.scss` - Styling adapted for Quarto
-- `about.qmd` - About page
-- `COMPARISON-NOTES.md` - Detailed Jekyll vs Quarto analysis
-
-**Preview Available:** `cd quarto-version && quarto preview`
-
-### Key Quarto Advantages Demonstrated
-1. **Cleaner Markdown Syntax**
-   - Native callouts: `:::  {.callout-tip}` vs custom HTML divs
-   - Tabbed content: `{.panel-tabset}` for Mac/PC sections
-   - Cross-references: `@sec-naming` auto-generates numbered links
-   - Tables with captions and automatic numbering
-
-2. **Multi-Format Output**
-   - Same source generates HTML + PDF + Word + ePub
-   - Enables printable handouts for students
-   - Single `quarto render` builds all formats
-
-3. **Academic Publishing Features**
-   - Native citations and bibliographies
-   - Cross-references with automatic numbering
-   - Code execution (Python/R) in documents
-   - Better structured for academic contexts
-
-### Jekyll Advantages Preserved
-1. **Custom Interactive Features**
-   - Quiz engine (`quiz-engine.js`) - sophisticated, tested
-   - Terminal simulator (`terminal-sim.js`) - unique feature
-   - Progress tracking (`progress.js`) - localStorage implementation
-   - Full control over JavaScript interactivity
-
-2. **Deployment Simplicity**
-   - Zero-config GitHub Pages integration
-   - Automatic builds on push
-   - Established workflow
-
-### Recommendation Status: Under Evaluation
-**Current Assessment:** Stay with Jekyll for primary development due to:
-- Significant investment in custom interactive features
-- Working GitHub Pages deployment
-- Primary need is web-based interactive content
-- Custom quiz/terminal features are core value propositions
-
-**Consider Quarto for:**
-- Generating PDF/Word versions of content for offline use
-- Academic publication or conference materials
-- Future courses requiring executable code demonstrations
-- Simplified content updates (cleaner markdown)
-
-**Hybrid Approach Possible:**
-- Maintain Jekyll for interactive web version
-- Use Quarto to generate PDF handouts from simplified content
-- Best of both worlds (with added maintenance overhead)
-
-See `quarto-version/COMPARISON-NOTES.md` for detailed technical comparison.
-
-## 🎯 Next Development Phases
-
-### Phase 1: Enhanced Interactivity (Medium Priority)
-
-1. **Terminal Simulator Enhancement**
-   - Implement full file system simulation  
-   - Add safety mechanisms for destructive commands
-   - Create guided tutorial sequences
-   - Fix occasional rendering consistency issues
-
-2. **Progress Dashboard Enhancement**
-   - Implement user progress visualization across all guides
-   - Add achievement/badge system for completed sections
-   - Create personalized learning paths based on progress
-   - Add guide completion certificates
-
-3. **Additional Interactive Elements**
-   - File drag-and-drop exercises for file management
-   - Visual file system navigation with real-time feedback
-   - Interactive path resolution tools with step-by-step validation
-
-### Phase 2: Content Enhancement (Medium Priority)
-
-1. **Advanced Guides**
-   - Version control (Git) basics for DH with hands-on GitHub exercises
-   - Working with APIs and web scraping for DH data collection
-   - Database fundamentals for DH projects (SQLite focus)
-   - Cloud storage and collaboration tools for DH teams
-
-2. **DH-Specific Content**
-   - TEI XML handling with interactive markup exercises
-   - Metadata standards (Dublin Core, MODS) with practical examples
-   - Digital archive workflows with real-world case studies
-   - Corpus preparation techniques with multilingual examples
-
-### Phase 3: Quality Assurance & User Experience (Ongoing)
-
-1. ✅ **Deployment & Testing**
-   - ✅ Configure repository for GitHub Pages
-   - ✅ Test live site functionality at https://tcu-dcda.github.io/know_your_damned_computer/
-   - ✅ Verify all interactive elements work properly
-   - ✅ Confirm cross-guide navigation functions
-
-2. **Future User Testing**
-   - Test with actual DH students in classroom settings
-   - Gather feedback on difficulty progression and pacing
-   - Refine interactive elements based on usage analytics
-   - Improve navigation and content discoverability
-
-3. **Accessibility & Performance**
-   - Validate WCAG 2.1 compliance across all guides
-   - Optimize loading times for interactive elements
-   - Test screen reader compatibility
-   - Ensure mobile responsiveness for all exercises
-
-## 🚨 Known Issues
-
-### Homepage Display Issues
-- **File Management Card Layout** (September 27, 2025)
-  - File Management card displays incorrectly on both mobile and desktop views
-  - Issue persists despite CSS conflicts resolution and guide card styling fixes
-  - Card sizing, alignment, or content rendering not matching other guide cards
-  - Requires further investigation and targeted CSS debugging
-  - **Status:** Documented for future resolution
+#### Technical Improvements
+- Fixed hard-coded guide count in progress.js (now dynamic)
+- Updated homepage to show 8 guides
+- Improved quiz prompts across guides for clarity
+- Archived deprecated static .md files
 
 ## Technical Architecture
 
-### File Structure
+### Jekyll Site Structure
 ```
 docs/
 ├── _config.yml              # Jekyll configuration
-├── index.html               # Landing page
+├── index.html               # Landing page (8 guides)
 ├── _layouts/                # Page templates
 │   ├── default.html
 │   ├── guide.html
@@ -239,84 +59,72 @@ docs/
 │   ├── compression.md       ✅
 │   ├── file-formats.md      ✅
 │   ├── command-line.md      ✅
-│   └── text-encoding.md     ✅
+│   ├── text-encoding.md     ✅
+│   ├── version-control.md   ✅
+│   └── regular-expressions.md ✅ NEW
 └── assets/
     ├── css/main.css         # Styling
-    └── js/                  # Interactive functionality
-        ├── main.js          # Core features
-        ├── quiz-engine.js   # Quiz system
-        ├── terminal-sim.js  # Terminal simulation
-        └── progress.js      # Progress tracking
+    └── js/                   # Interactive functionality
+        ├── main.js           # Core features
+        ├── quiz-engine.js    # Quiz system
+        └── terminal-sim.js   # Terminal simulation
 ```
 
-### Key Features Implemented
-- **Responsive Design**: Works on desktop, tablet, and mobile
-- **Accessibility**: ARIA labels, keyboard navigation, screen reader support
-- **Progress Tracking**: Local storage of user progress across sessions
+### Key Features
+- **Responsive Design**: Desktop, tablet, and mobile support
+- **Accessibility**: ARIA labels, keyboard navigation, reduced-motion support
 - **Theme Support**: Light/dark mode toggle
-- **Cross-Platform**: Mac and PC specific guidance where needed
+- **Cross-Platform**: Mac and PC specific guidance
 - **Interactive Elements**: Quizzes, exercises, terminal simulation
 
-## Next Development Session Priorities
+## Remaining Development Priorities
 
-### Phase 1.2: File Formats Guide (Next Priority)
-1. **Convert `file-formats.md`** to interactive format with:
-   - Interactive encoding detection exercises
-   - CSV/JSON parsing practice with real DH datasets
-   - Text format conversion activities
-   - Character encoding demonstrations
+### High Priority
+1. ~~**Regular Expressions Guide**~~ ✅ Complete - Essential for text processing
+2. **Add linting** - ESLint and Stylelint for code quality
+3. **Modularize CSS** - Convert to SCSS with partials
 
-### Phase 1.3: Command Line Guide
-2. **Convert `command-line.md`** to interactive format with:
-   - Extensive terminal simulator integration
-   - Progressive command learning with safety checks
-   - Platform-specific (Mac/PC) command variations
+### Medium Priority
+4. **Improve terminal realism** - Dynamic outputs, path arguments
+5. **Add automated testing** - Unit tests for quiz-engine.js
+6. **TEI XML handling** - DH-specific markup guide
 
-### Phase 1.4: Text Encoding Guide
-3. **Convert `text-encoding.md`** to interactive format with:
-   - Encoding problem diagnosis exercises
-   - Character set conversion practice
-   - Unicode handling for international texts
+### Low Priority / Future
+7. **Cumulative assessments** - Multi-guide practical exercises
+8. **API and web scraping guide** - Data collection for DH
+9. **Database fundamentals** - SQLite for DH projects
 
-### Ongoing Technical Tasks
-4. **Resolve terminal simulator** display issue (documented in CLAUDE.md)
-5. **Test deployment** preparation for GitHub Pages
+## Quarto Evaluation
 
-## Learning Objectives Achieved ✅
+A parallel Quarto implementation exists in `quarto-version/` for comparison.
 
-### Core Educational Goals (Complete)
-- ✅ **Beginner-friendly explanations** with progressive difficulty across all guides
-- ✅ **Hands-on practice** with immediate feedback through interactive exercises
-- ✅ **Real DH project examples** and contexts integrated throughout
-- ✅ **Cross-platform compatibility** (Mac/PC) with platform-specific guidance
-- ✅ **Interactive engagement** far beyond static reading - quizzes, simulators, labs
-- ✅ **Complete pathway** from basic file management to advanced DH workflows
+**Current Decision:** Stay with Jekyll for primary development due to:
+- Significant investment in custom interactive features (quiz engine, terminal simulator)
+- Working GitHub Pages deployment
+- Interactive web content is the primary use case
 
-### Student Impact Metrics
-- **6 comprehensive guides** covering essential computer literacy
-- **50+ interactive exercises** with immediate feedback
-- **Platform-specific guidance** for both Mac and Windows users
-- **Real-world DH examples** from corpus linguistics, digital archives, and text analysis
-- **Progressive difficulty** from absolute beginner to intermediate skills
-- **Immediate applicability** to Python, VS Code, and command-line DH work
+**Quarto may be useful for:**
+- Generating PDF handouts for offline use
+- Academic publication materials
+- Future courses with executable code demonstrations
 
-## 🎉 Project Completion Summary
+See `quarto-version/COMPARISON-NOTES.md` for detailed analysis.
 
-**Status: Core Interactive Resource Complete and Deployed**
+## Quality Metrics
 
-The "Know Your Damned Computer" interactive DH computer skills resource is now fully functional and available at:
-**https://tcu-dcda.github.io/know_your_damned_computer/**
+### Current Assessment (from CRITIQUE.md)
+- **Overall Grade:** A- (8.5/10)
+- **Content Quality:** 9/10 - Comprehensive, DH-focused, now includes Git
+- **Pedagogical Design:** 9/10 - Excellent scaffolding
+- **Interactive Features:** 8.5/10 - Good quizzes, terminal works
 
-### What Students Get:
-1. **File Management** - Professional organization for research projects
-2. **File Paths** - Understanding computer navigation for programming
-3. **Compression** - Archive handling for data distribution
-4. **File Formats** - Smart format choices for Python analysis
-5. **Command Line** - Terminal skills for development workflows
-6. **Text Encoding** - Multilingual text handling for global DH
-
-Each guide includes comprehensive quizzes, hands-on exercises, troubleshooting labs, and real-world DH application examples. The resource successfully bridges the gap between "I don't understand computers" and "I'm ready for DH development work."
+### Learning Outcomes Achieved
+- ✅ Beginner-friendly explanations with progressive difficulty
+- ✅ Hands-on practice with immediate feedback
+- ✅ Real DH project examples throughout
+- ✅ Cross-platform (Mac/PC) guidance
+- ✅ Complete pathway from file management to regex text processing
 
 ---
 
-*Mission accomplished: This resource eliminates the "I don't know how my computer works" barrier that prevents students from engaging effectively with digital humanities projects.*
+*This resource eliminates the "I don't understand computers" barrier that prevents students from engaging effectively with digital humanities projects.*

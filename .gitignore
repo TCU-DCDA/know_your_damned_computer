@@ -19,6 +19,7 @@ node_modules/
 # IDE/Editor files
 .vscode/
 .idea/
+.claude/
 *.swp
 *.swo
 
@@ -28,3 +29,6 @@ node_modules/
 
 # Log files
 *.log
+
+# Archived content
+.archive/

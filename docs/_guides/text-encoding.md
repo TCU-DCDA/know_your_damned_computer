@@ -13,6 +13,9 @@ learning_objectives:
 prev_guide:
   title: "Command Line Basics"
   url: "/guides/command-line/"
+next_guide:
+  title: "Git & Version Control"
+  url: "/guides/version-control/"
 interactive: true
 ---
 

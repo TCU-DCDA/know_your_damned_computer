@@ -12,7 +12,6 @@ class QuizEngine {
 
     init() {
         this.setupQuizElements();
-        console.log('📝 Quiz Engine initialized');
     }
 
     setupQuizElements() {
@@ -85,15 +84,15 @@ class QuizEngine {
         const quizHtml = `
             <div class="quiz-container" data-quiz-id="${quiz.id}">
                 <div class="quiz-header">
-                    <h3 class="quiz-question">${quiz.question}</h3>
+                    <h3 class="quiz-question" id="${quiz.id}-question">${quiz.question}</h3>
                 </div>
                 
-                <div class="quiz-options">
+                <div class="quiz-options" role="radiogroup" aria-labelledby="${quiz.id}-question">
                     ${quiz.options.map((option, index) => `
-                        <label class="quiz-option" data-option="${option.value}">
-                            <input type="radio" name="${quiz.id}" value="${option.value}">
+                        <label class="quiz-option" data-option="${option.value}" for="${quiz.id}-option-${index}">
+                            <input type="radio" name="${quiz.id}" value="${option.value}" id="${quiz.id}-option-${index}" aria-describedby="${quiz.id}-feedback">
                             <span class="option-text">${option.text}</span>
-                            <span class="option-indicator"></span>
+                            <span class="option-indicator" aria-hidden="true"></span>
                         </label>
                     `).join('')}
                 </div>
@@ -107,7 +106,7 @@ class QuizEngine {
                     </button>
                 </div>
                 
-                <div class="quiz-feedback" style="display: none;">
+                <div class="quiz-feedback" id="${quiz.id}-feedback" style="display: none;" role="alert" aria-live="polite">
                     <div class="feedback-content"></div>
                 </div>
                 
@@ -575,9 +574,27 @@ const quizStyles = `
         align-items: flex-start;
         text-align: left;
     }
-    
+
     .quiz-actions {
         flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .quiz-option {
+        transition: none;
+    }
+
+    .quiz-celebration {
+        transition: none;
+    }
+
+    .quiz-celebration.show {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .quiz-feedback {
+        scroll-behavior: auto;
     }
 }
 </style>

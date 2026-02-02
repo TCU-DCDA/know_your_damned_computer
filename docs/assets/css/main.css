@@ -534,6 +534,22 @@ a:focus {
   min-height: auto; /* No fixed height on mobile */
 }
 
+/* Ensure guide-content fills available space for consistent card heights */
+.guide-card .guide-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-card .guide-content h3 {
+  margin-bottom: var(--space-sm);
+}
+
+.guide-card .guide-content p {
+  flex: 1;
+  margin-bottom: var(--space-md);
+}
+
 .guide-card:hover,
 .guide-card:focus-within {
   transform: translateY(-2px);
@@ -628,11 +644,6 @@ a:focus {
   gap: var(--space-md);
 }
 
-.guide-footer .progress-bar {
-  flex: 1;
-  max-width: 60%;
-}
-
 .guide-footer .btn {
   flex-shrink: 0;
 }
@@ -661,6 +672,67 @@ a:focus {
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-sm);
   order: 1;
+  overflow-x: hidden;
+  min-width: 0; /* Allow flex/grid item to shrink below content size */
+}
+
+/* Guide body typography - optimized for reading */
+.guide-body {
+  font-size: 1.0625rem; /* 17px - slightly larger for readability */
+  line-height: 1.7;
+}
+
+.guide-body p {
+  margin-bottom: 1.25em;
+}
+
+.guide-body h2 {
+  font-size: 1.5rem; /* 24px */
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.guide-body h3 {
+  font-size: 1.25rem; /* 20px */
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.guide-body h4 {
+  font-size: 1.125rem; /* 18px */
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.guide-body ul,
+.guide-body ol {
+  margin-bottom: 1.25em;
+  padding-left: 1.5em;
+}
+
+.guide-body li {
+  margin-bottom: 0.5em;
+  line-height: 1.6;
+}
+
+/* Tablet and up: slightly larger text */
+@media (min-width: 768px) {
+  .guide-body {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.75;
+  }
+
+  .guide-body h2 {
+    font-size: 1.75rem; /* 28px */
+  }
+
+  .guide-body h3 {
+    font-size: 1.375rem; /* 22px */
+  }
+
+  .guide-body h4 {
+    font-size: 1.1875rem; /* 19px */
+  }
 }
 
 .sidebar-content {
@@ -681,6 +753,170 @@ a:focus {
 
 .mode-controls .btn {
   margin-bottom: var(--space-sm);
+}
+
+/* ========================================
+   Table of Contents - Collapsible
+   ======================================== */
+.toc {
+  margin-top: var(--space-md);
+}
+
+.toc h4 {
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc > ul > li {
+  margin-bottom: var(--space-xs);
+}
+
+/* Section headers (H2 level) */
+.toc-section {
+  margin-bottom: var(--space-sm);
+}
+
+.toc-section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) 0;
+  cursor: pointer;
+}
+
+.toc-section-header a {
+  font-weight: 600;
+  font-size: 0.875rem; /* 14px */
+  color: var(--text-primary);
+  text-decoration: none;
+  flex: 1;
+  line-height: 1.4;
+}
+
+.toc-section-header a:hover {
+  color: var(--color-secondary);
+}
+
+.toc-toggle {
+  background: none;
+  border: none;
+  padding: var(--space-xs);
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.toc-toggle:hover {
+  background: var(--bg-tertiary);
+  color: var(--color-secondary);
+}
+
+.toc-toggle i {
+  font-size: 0.6rem;
+  transition: transform var(--transition-fast);
+}
+
+/* Subsection (H3/H4 items) */
+.toc-subsection {
+  margin-left: 32px; /* Align with first letter of section header text (toggle 28px + gap 4px) */
+  padding-left: 10px; /* Space between border and text */
+  margin-top: var(--space-xs);
+  border-left: 3px solid var(--color-secondary);
+  overflow: hidden;
+  max-height: 500px;
+  transition: max-height var(--transition-normal), opacity var(--transition-normal);
+  opacity: 1;
+}
+
+.toc-subsection.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.toc-item {
+  margin-bottom: var(--space-xs);
+}
+
+.toc-item a {
+  font-size: 0.8125rem; /* 13px - slightly larger than before */
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: block;
+  padding: 3px 0;
+  line-height: 1.5;
+}
+
+.toc-item a:hover,
+.toc-item a.active {
+  color: var(--color-secondary);
+}
+
+.toc-item a.active {
+  font-weight: 500;
+}
+
+/* Deep items (H4 level) */
+.toc-item-deep {
+  padding-left: var(--space-sm);
+}
+
+.toc-item-deep a {
+  font-size: 0.75rem; /* 12px */
+  color: var(--text-muted);
+}
+
+/* Active section highlighting */
+.toc-section-header a.active {
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .toc-subsection {
+    transition: none;
+  }
+
+  .toc-toggle i {
+    transition: none;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .toc {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .toc-section-header a {
+    font-size: 0.8125rem; /* 13px */
+  }
+
+  .toc-item a {
+    font-size: 0.75rem; /* 12px */
+  }
+
+  .toc-item-deep a {
+    font-size: 0.6875rem; /* 11px */
+  }
 }
 
 /* ========================================
@@ -757,6 +993,9 @@ pre {
   border: 1px solid var(--border-color);
   overflow-x: auto;
   line-height: var(--line-height-normal);
+  max-width: 100%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 pre code {
@@ -766,28 +1005,9 @@ pre code {
 }
 
 /* ========================================
-   Progress Indicators
-   ======================================== */
-.progress-bar {
-  width: 100%;
-  height: 8px;
-  background: var(--bg-tertiary);
-  border-radius: var(--border-radius-sm);
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--color-secondary), var(--color-secondary-light));
-  border-radius: var(--border-radius-sm);
-  transition: width var(--transition-normal);
-}
-
-/* ========================================
    Mobile Navigation Enhancements
    ======================================== */
 .mobile-menu {
-  display: none;
   position: absolute;
   top: 100%;
   left: 0;
@@ -797,14 +1017,14 @@ pre code {
   box-shadow: var(--shadow-lg);
   z-index: var(--z-dropdown);
   padding: var(--space-md);
-  transform: translateY(-100%);
+  max-height: 0;
+  overflow: hidden;
   opacity: 0;
-  transition: all var(--transition-normal);
+  transition: max-height var(--transition-normal), opacity var(--transition-normal);
 }
 
 .mobile-menu.active {
-  display: block;
-  transform: translateY(0);
+  max-height: 300px;
   opacity: 1;
 }
 
@@ -962,6 +1182,42 @@ pre code {
   
   .guide-card:hover {
     transform: none; /* Disable hover transforms on touch devices */
+  }
+}
+
+/* ========================================
+   Reduced Motion - Accessibility
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .guide-card:hover,
+  .guide-card:focus-within {
+    transform: none;
+  }
+
+  .highlight-interactive {
+    animation: none;
+    box-shadow: 0 0 0 3px var(--color-secondary) !important;
+  }
+
+  .quiz-celebration {
+    transition: none;
+  }
+
+  .notification {
+    transition: none;
+  }
+
+  .mobile-menu {
+    transition: none;
   }
 }
 
