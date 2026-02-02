@@ -1,0 +1,671 @@
+---
+title: "Git & Version Control"
+subtitle: "Track Changes, Collaborate, and Never Lose Your Work"
+author: "Curt Rode"
+date: last-modified
+difficulty: intermediate
+time-estimate: "50 minutes"
+format:
+  html:
+    code-tools: false
+    toc: true
+    number-sections: true
+---
+
+::: {.callout-note appearance="minimal"}
+## Learning Objectives
+By the end of this guide, you will be able to:
+
+- Understand why version control is essential for DH research
+- Set up Git and configure it for your projects
+- Use the basic Git workflow: add, commit, push, pull
+- Use GitHub to collaborate and share your work
+- Recover from common mistakes and conflicts
+:::
+
+Have you ever had multiple versions of a file like `final_paper.docx`, `final_paper_v2.docx`, `final_paper_FINAL.docx`, and `final_paper_FINAL_really.docx`? Or accidentally deleted hours of work with no way to recover it? Version control solves these problems elegantly, and Git is the tool that makes it possible.
+
+For digital humanities work, version control isn't just convenient—it's essential. When you're writing Python scripts for text analysis, collaborating on digital editions, or managing research data, Git helps you track every change, experiment safely, and work with others without chaos.
+
+## Why Version Control Matters for DH {#sec-why}
+
+```{=html}
+<div class="quiz" data-quiz="version-control-why">
+  <h3>Quick Check: Why Use Version Control?</h3>
+  <p>Imagine this situation: You've been working on a Python script for a week. Yesterday it worked perfectly. Today, after making some edits, it's completely broken—and you can't figure out what you changed. How would you solve this problem?</p>
+
+  <label class="quiz-option">
+    <input type="radio" name="vc-quiz-1" value="backup">
+    Hope you saved a backup copy somewhere with a different filename
+  </label>
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="vc-quiz-1" value="git">
+    Use Git to see exactly what changed and restore the working version
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="vc-quiz-1" value="memory">
+    Try to remember what you changed and manually undo each edit
+  </label>
+
+  <div class="feedback-correct">
+    <p><strong>Exactly!</strong> Git tracks every change you save (called a "commit"), letting you see exactly what changed and instantly restore any previous version. No more "FINAL_v2_REALLY_FINAL.py" files cluttering your folders!</p>
+  </div>
+  <div class="feedback-incorrect">
+    <p>While backups can help, Git provides a much more powerful solution. It automatically tracks <strong>every change</strong> you save, shows you <strong>exactly what lines changed</strong>, and lets you <strong>restore any previous version instantly</strong>. This is what version control is all about!</p>
+  </div>
+</div>
+```
+
+### Real DH Use Cases for Git
+
+| Use Case | Description |
+|----------|-------------|
+| **Code Development** | Track changes to Python scripts, Jupyter notebooks, and analysis code. Experiment with new approaches without fear. |
+| **Collaboration** | Work with research teams on shared codebases. Merge contributions from multiple researchers seamlessly. |
+| **Digital Editions** | Manage TEI-XML transcriptions with full history. Track who made what changes and when. |
+| **Reproducible Research** | Document your exact methodology. Share complete project history with publications. |
+
+: Git Use Cases in Digital Humanities {#tbl-use-cases}
+
+## Installing and Configuring Git {#sec-install}
+
+::: {.panel-tabset}
+## Mac
+
+### Option 1: Xcode Command Line Tools (Recommended)
+
+Open Terminal and type:
+
+```bash
+git --version
+```
+
+If Git isn't installed, macOS will prompt you to install the Xcode Command Line Tools. Click "Install" and wait for completion.
+
+### Option 2: Homebrew
+
+If you have Homebrew installed:
+
+```bash
+brew install git
+```
+
+### Verify Installation
+
+```bash
+git --version
+# Should show: git version 2.x.x
+```
+
+## PC
+
+### Download Git for Windows
+
+1. Visit [git-scm.com/download/win](https://git-scm.com/download/win)
+2. Download the installer (64-bit recommended)
+3. Run the installer with these recommended settings:
+   - Default editor: VS Code (or your preference)
+   - PATH environment: "Git from the command line and also from 3rd-party software"
+   - HTTPS transport: "Use the native Windows Secure Channel library"
+   - Line ending conversions: "Checkout Windows-style, commit Unix-style"
+
+### Verify Installation
+
+Open PowerShell or Git Bash and type:
+
+```bash
+git --version
+# Should show: git version 2.x.x
+```
+:::
+
+### Essential Configuration {#sec-config}
+
+Git needs to know who you are for commit attribution. Run these commands (use your actual name and email):
+
+```bash
+# Set your name (appears in commit history)
+git config --global user.name "Your Name"
+
+# Set your email (should match your GitHub account)
+git config --global user.email "your.email@university.edu"
+
+# Verify your settings
+git config --list
+```
+
+::: {.callout-tip}
+## Pro Tip
+Use the same email address for Git and GitHub to ensure your contributions are properly linked to your profile.
+:::
+
+## GitHub Desktop: A Visual Alternative {#sec-desktop}
+
+If the command line feels intimidating, **GitHub Desktop** provides a friendly graphical interface for Git. It's an excellent way to learn version control concepts before diving into commands.
+
+::: {.panel-tabset}
+## What GitHub Desktop Does Well
+
+- Visual diff viewer shows exactly what changed
+- Simple commit interface with guided workflow
+- Easy branch creation and switching
+- Handles GitHub authentication automatically
+- Great for learning Git concepts visually
+
+## When to Use Command Line Instead
+
+- Working on remote servers (no GUI available)
+- Automating tasks with scripts
+- Advanced operations (rebasing, cherry-picking)
+- Faster for experienced users
+- Required for most tutorials and documentation
+:::
+
+### Installing GitHub Desktop
+
+1. Visit [desktop.github.com](https://desktop.github.com)
+2. Download for Mac or Windows
+3. Sign in with your GitHub account
+4. The app will configure Git automatically
+
+::: {.callout-note}
+## Our Recommendation
+Learn both! Start with GitHub Desktop to understand the concepts, then gradually add command-line skills. Most DH work benefits from knowing both approaches—use the GUI for complex diffs and visualization, commands for quick operations and scripting.
+:::
+
+## The Git Mental Model {#sec-mental-model}
+
+Understanding Git's three states is crucial for effective use.
+
+### Git's Three States
+
+Files in a Git repository can be in one of three states:
+
+| State | Description | Command to Move Forward |
+|-------|-------------|------------------------|
+| **Working Directory** | Your actual files on disk. Edit freely here. | `git add` moves files to staging |
+| **Staging Area** | Files ready to be committed. Like a "shopping cart" for changes. | `git commit` saves to repository |
+| **Repository** | Permanent history of all commits. Safe and tracked. | `git push` shares with GitHub |
+
+: Git's Three States {#tbl-states}
+
+Think of it as a workflow:
+
+1. **Edit** files in your working directory
+2. **Stage** the changes you want to save
+3. **Commit** to create a permanent snapshot
+4. **Push** to share with others (optional)
+
+## Your First Git Repository {#sec-first-repo}
+
+::: {.callout-important icon=false}
+## Exercise: Create a DH Project Repository
+
+Let's create a repository for a text analysis project step by step.
+
+**Step 1: Create Project Directory**
+
+```bash
+# Create and enter project folder
+mkdir victorian-novels-analysis
+cd victorian-novels-analysis
+```
+
+**Step 2: Initialize Git Repository**
+
+```bash
+# Initialize Git in this folder
+git init
+
+# You should see: Initialized empty Git repository in .../victorian-novels-analysis/.git/
+```
+
+**Step 3: Create Project Structure**
+
+```bash
+# Create folders for organization
+mkdir data scripts results
+
+# Create a README file
+echo "# Victorian Novels Analysis" > README.md
+echo "Text analysis project for DH research." >> README.md
+```
+
+**Step 4: Check Status**
+
+```bash
+# See what Git knows about your files
+git status
+
+# You'll see README.md as "untracked"
+```
+
+**Step 5: Stage and Commit**
+
+```bash
+# Add README to staging
+git add README.md
+
+# Commit with a descriptive message
+git commit -m "Initial commit: Add project README"
+
+# Verify with git log
+git log --oneline
+```
+:::
+
+## The Core Git Workflow {#sec-workflow}
+
+### Daily Git Workflow
+
+1. **Make Changes** — Edit your files normally
+2. **Review Changes** — See what you modified with `git status` and `git diff`
+3. **Stage Changes** — Select changes to commit with `git add filename`
+4. **Commit** — Save with a message using `git commit -m "message"`
+
+### Essential Commands Reference
+
+| Command | Purpose | Example |
+|---------|---------|---------|
+| `git status` | Show current state of repository | See modified and untracked files |
+| `git add` | Stage files for commit | `git add analyze.py` or `git add .` |
+| `git commit` | Save staged changes to history | `git commit -m "Add sentiment analysis"` |
+| `git log` | View commit history | `git log --oneline` for compact view |
+| `git diff` | Show changes between versions | `git diff` for unstaged, `git diff --staged` for staged |
+| `git restore` | Undo changes to files | `git restore filename.py` discards changes |
+
+: Essential Git Commands {#tbl-commands}
+
+## Writing Good Commit Messages {#sec-commit-messages}
+
+::: {.callout-warning}
+## Unhelpful Messages to Avoid
+
+- `"fixed stuff"`
+- `"updates"`
+- `"asdfasdf"`
+- `"WIP"`
+- `"changes"`
+
+These don't tell you anything useful when you look back at history.
+:::
+
+::: {.callout-tip}
+## Helpful Messages to Use
+
+- `"Add word frequency analysis function"`
+- `"Fix encoding error in CSV export"`
+- `"Update stop words list for Victorian texts"`
+- `"Refactor data cleaning into separate module"`
+- `"Add documentation for sentiment analysis"`
+
+These explain **what** changed and **why**.
+:::
+
+### Commit Message Formula
+
+**Format:** `[Action verb] [what you changed] [optional: why]`
+
+**Common verbs:** Add, Fix, Update, Remove, Refactor, Document, Test
+
+```{=html}
+<div class="quiz" data-quiz="commit-messages">
+  <h3>Quick Check: Writing Commit Messages</h3>
+  <p>You just fixed a bug in your Python script. The problem was that it crashed whenever it tried to read files containing accented characters like "é" or "ñ". Now you need to save your fix with a commit message. Which message would be most helpful when you look back at your project history in 6 months?</p>
+
+  <label class="quiz-option">
+    <input type="radio" name="commit-quiz" value="bad1">
+    <code>"bug fix"</code>
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="commit-quiz" value="bad2">
+    <code>"fixed the thing"</code>
+  </label>
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="commit-quiz" value="good">
+    <code>"Fix crash when processing files with accented characters"</code>
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="commit-quiz" value="bad3">
+    <code>"encoding"</code>
+  </label>
+
+  <div class="feedback-correct">
+    <p><strong>This message tells future-you exactly what was fixed and why.</strong> When you're debugging a similar issue months later, this commit message will help you understand what changed.</p>
+  </div>
+  <div class="feedback-incorrect">
+    <p>A good commit message should describe <strong>what</strong> was changed and <strong>why</strong>. "Fix crash when processing files with accented characters" gives useful context that you'll appreciate later.</p>
+  </div>
+</div>
+```
+
+## Working with GitHub {#sec-github}
+
+### Why GitHub?
+
+GitHub is a platform that hosts Git repositories online, enabling:
+
+- **Backup:** Your code is safely stored in the cloud
+- **Collaboration:** Work with others on the same project
+- **Sharing:** Make your work public for others to learn from
+- **Portfolio:** Showcase your DH projects to potential employers
+
+### Setting Up GitHub
+
+**Step 1: Create a GitHub Account**
+
+1. Visit [github.com](https://github.com)
+2. Sign up with your university email (for student benefits)
+3. Choose a professional username (this will be public)
+4. Verify your email address
+
+**Step 2: Set Up Authentication**
+
+GitHub requires authentication to push code. The easiest method is HTTPS with a personal access token:
+
+1. Go to GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
+2. Click "Generate new token (classic)"
+3. Give it a name like "My Computer"
+4. Select scopes: `repo` (full control of repositories)
+5. Generate and **copy the token immediately** (you won't see it again)
+6. When Git asks for your password, paste this token instead
+
+::: {.callout-tip}
+## Credential Storage
+
+To avoid entering your token repeatedly:
+
+```bash
+# Mac: Uses Keychain
+git config --global credential.helper osxkeychain
+
+# PC: Uses Windows Credential Manager
+git config --global credential.helper wincred
+```
+:::
+
+### Connecting Local Repository to GitHub
+
+::: {.callout-important icon=false}
+## Exercise: Push Your Project to GitHub
+
+**Step 1: Create Repository on GitHub**
+
+- Click the "+" icon → "New repository"
+- Name: `victorian-novels-analysis`
+- Description: "Text analysis of Victorian literature"
+- Keep it Public (or Private if you prefer)
+- **Don't** initialize with README (we already have one)
+- Click "Create repository"
+
+**Step 2: Connect Local to Remote**
+
+```bash
+# Add GitHub as remote (use your username)
+git remote add origin https://github.com/YOUR-USERNAME/victorian-novels-analysis.git
+
+# Verify the connection
+git remote -v
+```
+
+**Step 3: Push Your Code**
+
+```bash
+# Push to GitHub (first time needs -u flag)
+git push -u origin main
+
+# Enter your GitHub username when prompted
+# Enter your personal access token as the password
+```
+
+**Step 4: Verify on GitHub**
+
+Visit your repository URL to see your files online!
+:::
+
+### The Push/Pull Workflow
+
+| Command | Direction | Purpose |
+|---------|-----------|---------|
+| `git push` | Local → Remote | Upload your commits to GitHub |
+| `git pull` | Remote → Local | Download changes from GitHub |
+| `git clone` | Remote → Local | Download an entire repository |
+
+: Push/Pull Commands {#tbl-push-pull}
+
+## Branching: Safe Experimentation {#sec-branching}
+
+Branches let you work on new features or experiments without affecting your main code. Think of them as parallel timelines for your project.
+
+### Branch Commands
+
+```bash
+# Create and switch to new branch
+git checkout -b sentiment-analysis
+# Or using newer syntax
+git switch -c sentiment-analysis
+
+# List all branches
+git branch
+
+# Switch to existing branch
+git checkout main
+# or
+git switch main
+
+# Merge branch into main
+git checkout main
+git merge sentiment-analysis
+
+# Delete branch after merging
+git branch -d sentiment-analysis
+```
+
+```{=html}
+<div class="quiz" data-quiz="branching">
+  <h3>Quick Check: Safe Experimentation</h3>
+  <p>Your text analysis script is working well, but you have an idea for a completely different approach that might work better. You want to try this new approach, but you're worried about breaking the code that's already working. What's the safest way to experiment?</p>
+
+  <label class="quiz-option">
+    <input type="radio" name="branch-quiz" value="copy">
+    Copy all your project files to a new folder and work there
+  </label>
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="branch-quiz" value="branch">
+    Create a Git branch to try your experiment in isolation
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="branch-quiz" value="careful">
+    Just make changes carefully and hope nothing breaks
+  </label>
+
+  <div class="feedback-correct">
+    <p><strong>Branching is designed exactly for this!</strong> A branch creates a separate "timeline" for your code. You can experiment freely, and if it works, merge it back into your main code. If it doesn't work out, just delete the branch—your original code stays completely untouched.</p>
+  </div>
+  <div class="feedback-incorrect">
+    <p>Git branches are the safest way to experiment. The command <code>git checkout -b experiment</code> creates a parallel version of your project where you can try anything without risking your working code. Think of it as a "sandbox" for testing ideas.</p>
+  </div>
+</div>
+```
+
+## The .gitignore File {#sec-gitignore}
+
+Some files should never be committed to Git:
+
+- **Sensitive data:** API keys, passwords, personal information
+- **Large data files:** Datasets that are too big for GitHub
+- **Generated files:** Outputs that can be recreated
+- **System files:** `.DS_Store`, `Thumbs.db`
+- **Virtual environments:** `venv/`, `.env/`
+
+### Creating a .gitignore File
+
+Create a file named `.gitignore` in your project root:
+
+```default
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Data files (too large for GitHub)
+data/raw/*.csv
+data/raw/*.json
+*.sqlite
+
+# Secrets
+config/secrets.py
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Output files that can be regenerated
+results/figures/
+*.log
+```
+
+::: {.callout-tip}
+## GitHub Gitignore Templates
+Visit [github.com/github/gitignore](https://github.com/github/gitignore) for ready-made templates for Python, R, and other languages.
+:::
+
+## Recovering from Mistakes {#sec-recovery}
+
+### Common Situations and Solutions
+
+| Situation | Solution |
+|-----------|----------|
+| "I made changes I want to undo" | `git restore filename.py` discards changes |
+| "I staged files I didn't mean to" | `git restore --staged filename.py` unstages |
+| "I need to change my last commit message" | `git commit --amend -m "New message"` (only if not pushed!) |
+| "I need to go back to a previous version" | `git log --oneline` to find commit, then `git restore --source=abc1234 filename.py` |
+
+: Recovery Commands {#tbl-recovery}
+
+::: {.callout-warning}
+## Sensitive Data Warning
+If you've already pushed sensitive data (like API keys), the data may be visible in Git history. Contact GitHub support for help removing it. Best practice: use `.gitignore` to prevent this!
+:::
+
+## Practical DH Workflow Example {#sec-example}
+
+Here's a realistic Git workflow for a DH project:
+
+**Day 1: Project Setup**
+
+```bash
+mkdir dickens-analysis && cd dickens-analysis
+git init
+mkdir data scripts results
+echo "# Dickens Novel Analysis" > README.md
+git add .
+git commit -m "Initial project structure"
+```
+
+**Day 2: Add Data Processing Script**
+
+```bash
+# ... write code in scripts/preprocess.py ...
+git add scripts/preprocess.py
+git commit -m "Add text preprocessing script"
+```
+
+**Day 3: Experiment with Analysis Approach**
+
+```bash
+# Create branch for experiment
+git checkout -b word-frequency
+
+# Work on analysis...
+git add scripts/word_freq.py
+git commit -m "Add word frequency analysis"
+
+# Happy with results? Merge back
+git checkout main
+git merge word-frequency
+git branch -d word-frequency
+```
+
+**Day 4: Share on GitHub**
+
+```bash
+# Create repo on GitHub, then:
+git remote add origin https://github.com/user/dickens-analysis.git
+git push -u origin main
+```
+
+**Ongoing: Daily Workflow**
+
+```bash
+# Start of session: get any updates
+git pull
+
+# Work on code...
+
+# End of session: save and share
+git add .
+git commit -m "Descriptive message"
+git push
+```
+
+## Quick Reference Card {#sec-reference}
+
+::: {.callout-note appearance="minimal"}
+## Git Cheat Sheet
+
+**Setup**
+
+- `git init` — Initialize repository
+- `git clone URL` — Copy remote repo
+- `git config --global user.name` — Set name
+- `git config --global user.email` — Set email
+
+**Daily Commands**
+
+- `git status` — Check state
+- `git add file` — Stage changes
+- `git commit -m "msg"` — Save snapshot
+- `git push` — Upload to GitHub
+- `git pull` — Download from GitHub
+
+**Branching**
+
+- `git branch` — List branches
+- `git checkout -b name` — Create branch
+- `git checkout main` — Switch branch
+- `git merge name` — Merge branch
+
+**History & Undo**
+
+- `git log --oneline` — View history
+- `git diff` — Show changes
+- `git restore file` — Undo changes
+- `git restore --staged file` — Unstage
+:::
+
+## Next Steps
+
+Congratulations! You now have the foundational Git skills for DH work. To continue developing your skills:
+
+1. **Practice Regularly** — Use Git for every project, even small ones. Muscle memory develops through repetition.
+
+2. **Explore GitHub Features** — Issues, Projects, and Pull Requests help manage larger projects and collaboration.
+
+3. **Learn Advanced Topics** — Rebasing, cherry-picking, and stashing become useful as your projects grow.
+
+4. **Contribute to Open Source** — Many DH tools are open source. Contributing is a great way to learn and give back.
+
+---
+
+::: {.callout-note appearance="simple"}
+*Version control is a skill that improves with practice. Start using Git today, even for small projects, and it will become second nature.*
+:::

@@ -1,0 +1,556 @@
+---
+title: "Regular Expressions for Text Processing"
+subtitle: "Find Patterns in Text with Precision"
+author: "Curt Rode"
+date: last-modified
+difficulty: intermediate
+time-estimate: "45 minutes"
+format:
+  html:
+    code-tools: false
+    toc: true
+    number-sections: true
+---
+
+::: {.callout-note appearance="minimal"}
+## Learning Objectives
+By the end of this guide, you will be able to:
+
+- Understand what regular expressions are and when to use them
+- Write basic patterns to match text, numbers, and dates
+- Use character classes and quantifiers effectively
+- Apply regex in Python for text cleaning and extraction
+- Debug and test your patterns before using them on real data
+:::
+
+Regular expressions (often called "regex" or "regexp") are one of the most powerful tools for working with text. If you've ever needed to find all the dates in a document, extract email addresses from a webpage, or clean messy data, regex can do it in seconds—once you know how to use it.
+
+For digital humanities work, regex is indispensable. Whether you're cleaning OCR output, extracting metadata from filenames, finding all mentions of a person in a corpus, or normalizing spelling variations, regex gives you surgical precision that "find and replace" simply can't match.
+
+## Why Regular Expressions Matter for DH {#sec-why}
+
+```{=html}
+<div class="quiz" data-quiz="regex-why">
+  <h3>Quick Check: When to Use Regex</h3>
+  <p>You have a folder of 500 text files with inconsistent date formats: "January 15, 1842", "15 Jan 1842", "1842-01-15", and "01/15/1842" all appear. You need to find all dates and standardize them. What's the best approach?</p>
+
+  <label class="quiz-option">
+    <input type="radio" name="regex-quiz-1" value="manual">
+    Open each file and use Ctrl+F to find dates manually
+  </label>
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="regex-quiz-1" value="regex">
+    Write regex patterns to match each date format, then extract and convert them
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="regex-quiz-1" value="ai">
+    Just ask AI to read the files and find the dates
+  </label>
+
+  <div class="feedback-correct">
+    <p><strong>Exactly!</strong> Regex can match complex patterns like dates in seconds across thousands of files. You write a pattern once, and it works on any amount of text. This is what makes regex essential for DH work at scale.</p>
+  </div>
+  <div class="feedback-incorrect">
+    <p>While other approaches might work for small tasks, regular expressions give you <strong>precise, repeatable, scalable</strong> pattern matching. A regex pattern that takes 5 minutes to write can process 500 files in seconds—and you can reuse it whenever similar data appears.</p>
+  </div>
+</div>
+```
+
+### Real DH Use Cases for Regex
+
+| Use Case | Description |
+|----------|-------------|
+| **Data Cleaning** | Remove OCR artifacts, normalize whitespace, fix encoding issues, strip HTML tags |
+| **Information Extraction** | Find dates, names, places, prices, or any structured pattern in text |
+| **Text Transformation** | Convert date formats, standardize names, restructure data |
+| **Validation** | Check if text matches expected formats (emails, IDs, references) |
+
+: Regex Use Cases in Digital Humanities {#tbl-use-cases}
+
+## The Basics: Literal Matching {#sec-basics}
+
+The simplest regex is just the text you want to find. The pattern `cat` matches the literal characters "cat" wherever they appear.
+
+::: {.callout-note}
+## Literal Pattern: `cat`
+
+**Text:** The **cat** sat on the mat. The **cat**alog was on the table.
+
+Notice that "cat" also matches inside "catalog"—we'll learn how to prevent this later with word boundaries.
+:::
+
+::: {.callout-important}
+## Key Insight
+Regular expressions describe **patterns**, not specific text. The pattern `cat` means "the letter c, followed by the letter a, followed by the letter t"—wherever that sequence appears.
+:::
+
+## Special Characters: The Building Blocks {#sec-special}
+
+Regex uses special characters (called "metacharacters") to match patterns rather than literal text. Here are the most important ones:
+
+| Character | Meaning | Example | Matches |
+|-----------|---------|---------|---------|
+| `.` | Any single character | `c.t` | cat, cot, cut, c9t |
+| `^` | Start of line | `^The` | "The" only at line start |
+| `$` | End of line | `end$` | "end" only at line end |
+| `\d` | Any digit (0-9) | `\d\d\d` | 123, 456, 789 |
+| `\w` | Word character (letter, digit, underscore) | `\w+` | hello, test123 |
+| `\s` | Whitespace (space, tab, newline) | `\s+` | spaces, tabs |
+
+: Special Characters in Regex {#tbl-special}
+
+::: {.callout-warning}
+## Escaping Special Characters
+To match a literal period, question mark, or other special character, put a backslash before it:
+
+- `\.` matches a literal period
+- `\?` matches a literal question mark
+- `\\` matches a literal backslash
+:::
+
+## Quantifiers: How Many? {#sec-quantifiers}
+
+Quantifiers specify how many times a pattern should repeat:
+
+| Quantifier | Meaning | Example | Matches |
+|------------|---------|---------|---------|
+| `*` | Zero or more | `ab*c` | ac, abc, abbc, abbbc |
+| `+` | One or more | `ab+c` | abc, abbc, abbbc (not ac) |
+| `?` | Zero or one (optional) | `colou?r` | color, colour |
+| `{n}` | Exactly n times | `\d{4}` | 1842, 2024 (4 digits) |
+| `{n,m}` | Between n and m times | `\d{2,4}` | 12, 123, 1234 |
+
+: Quantifiers in Regex {#tbl-quantifiers}
+
+::: {.callout-note}
+## Pattern: `\d{4}` (exactly 4 digits)
+
+**Text:** The document was written in **1842** and revised in **1856**. Page 42 has notes.
+
+"42" doesn't match because it's only 2 digits.
+:::
+
+## Character Classes: Sets of Characters {#sec-classes}
+
+Character classes let you match any one character from a set:
+
+| Pattern | Meaning | Example Use |
+|---------|---------|-------------|
+| `[aeiou]` | Any vowel | Find all vowels in text |
+| `[0-9]` | Any digit (same as `\d`) | Match numbers |
+| `[A-Z]` | Any uppercase letter | Find acronyms |
+| `[a-zA-Z]` | Any letter | Match words |
+| `[^0-9]` | NOT a digit | Match non-numeric characters |
+
+: Character Classes {#tbl-classes}
+
+::: {.callout-tip}
+## Pro Tip
+The caret `^` has two meanings: at the start of a pattern it means "start of line", but inside square brackets `[^...]` it means "NOT these characters".
+:::
+
+```{=html}
+<div class="quiz" data-quiz="character-classes">
+  <h3>Quick Check: Character Classes</h3>
+  <p>You want to find all words that start with a capital letter in a text. Which pattern would work?</p>
+
+  <label class="quiz-option">
+    <input type="radio" name="cc-quiz" value="a">
+    <code>[A-Z]</code>
+  </label>
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="cc-quiz" value="b">
+    <code>[A-Z][a-z]+</code>
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="cc-quiz" value="c">
+    <code>[A-Z]+</code>
+  </label>
+
+  <div class="feedback-correct">
+    <p><strong>Correct!</strong> <code>[A-Z][a-z]+</code> matches one uppercase letter followed by one or more lowercase letters—exactly what a capitalized word looks like. This would match "The", "London", "Shakespeare" but not "THE" or standalone capital letters.</p>
+  </div>
+  <div class="feedback-incorrect">
+    <p><code>[A-Z]</code> alone only matches a single capital letter. <code>[A-Z]+</code> matches sequences of capitals (like "THE" or "USA"). To match capitalized words like "London", you need <code>[A-Z][a-z]+</code>: one capital followed by lowercase letters.</p>
+  </div>
+</div>
+```
+
+## Groups and Alternatives {#sec-groups}
+
+### Grouping with Parentheses
+
+Parentheses group parts of a pattern together and "capture" the matched text for later use:
+
+::: {.callout-note}
+## Pattern: `(\d{4})-(\d{2})-(\d{2})`
+
+**Text:** Date: **2024-01-15**
+
+- Group 1 captures "2024"
+- Group 2 captures "01"
+- Group 3 captures "15"
+:::
+
+### Alternatives with Pipe
+
+The pipe `|` means "or" and lets you match alternatives:
+
+::: {.callout-note}
+## Pattern: `cat|dog|bird`
+
+**Text:** I have a **cat** and a **dog**, but no **bird**.
+:::
+
+::: {.callout-note}
+## Pattern: `(Mr|Mrs|Ms|Dr)\.?\s+[A-Z][a-z]+`
+
+**Text:** Letter to **Mr. Smith** and **Dr Johnson** regarding **Mrs. Williams**.
+
+Matches titles (with optional period) followed by a capitalized name.
+:::
+
+## Word Boundaries {#sec-boundaries}
+
+Remember how `cat` also matched inside "catalog"? Word boundaries solve this:
+
+| Pattern | Meaning | Example |
+|---------|---------|---------|
+| `\b` | Word boundary | `\bcat\b` matches "cat" but not "catalog" |
+| `\B` | NOT a word boundary | `\Bcat` matches "cat" in "catalog" but not standalone "cat" |
+
+: Word Boundaries {#tbl-boundaries}
+
+::: {.callout-note}
+## Pattern: `\bcat\b`
+
+**Text:** The **cat** sat on the mat. The catalog was on the table.
+
+"catalog" no longer matches because "cat" there isn't at a word boundary.
+:::
+
+## Practical DH Examples {#sec-examples}
+
+### Example 1: Finding Dates
+
+**Pattern for dates like "January 15, 1842":**
+
+```default
+(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+\d{4}
+```
+
+Breaks down as:
+
+- `(January|February|...)` — Month name
+- `\s+` — One or more spaces
+- `\d{1,2}` — Day (1-2 digits)
+- `,?` — Optional comma
+- `\s+` — One or more spaces
+- `\d{4}` — Four-digit year
+
+### Example 2: Extracting Prices
+
+**Pattern for prices like "$12.99" or "£45":**
+
+```default
+[$£€]\d+(?:\.\d{2})?
+```
+
+Breaks down as:
+
+- `[$£€]` — Currency symbol
+- `\d+` — One or more digits
+- `(?:\.\d{2})?` — Optional: period and two digits (non-capturing group)
+
+### Example 3: Cleaning OCR Output
+
+**Common OCR cleaning patterns:**
+
+```default
+# Replace multiple spaces with single space
+\s{2,}  →  (single space)
+
+# Remove page numbers like "[Page 42]"
+\[Page \d+\]  →  (nothing)
+
+# Fix "tlie" → "the" (common OCR error)
+\btlie\b  →  the
+
+# Remove hyphenation at line breaks: "some-\nthing" → "something"
+-\n  →  (nothing)
+```
+
+### Example 4: Finding Names in Historical Documents
+
+**Pattern for names with titles:**
+
+```default
+# Matches: "Mr. John Smith", "Mrs Elizabeth Bennett", "Dr. Watson"
+(Mr|Mrs|Miss|Ms|Dr|Rev|Prof)\.?\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?
+```
+
+## Using Regex in Python {#sec-python}
+
+Python's `re` module provides regex functionality. Here are the essential functions:
+
+```python
+import re
+
+text = "Contact us at info@example.com or support@example.org"
+
+# Find first match
+match = re.search(r'\S+@\S+', text)
+if match:
+    print(match.group())  # info@example.com
+
+# Find all matches
+emails = re.findall(r'\S+@\S+', text)
+print(emails)  # ['info@example.com', 'support@example.org']
+
+# Replace matches
+cleaned = re.sub(r'\S+@\S+', '[EMAIL]', text)
+print(cleaned)  # "Contact us at [EMAIL] or [EMAIL]"
+
+# Split on pattern
+parts = re.split(r'\s+', "Split   this    text")
+print(parts)  # ['Split', 'this', 'text']
+```
+
+::: {.callout-warning}
+## Raw Strings in Python
+Always use raw strings (prefix with `r`) for regex patterns in Python:
+
+```python
+# Good - raw string
+pattern = r'\d{4}'
+
+# Bad - regular string (backslash issues)
+pattern = '\d{4}'  # May not work as expected!
+```
+
+The `r` prefix prevents Python from interpreting backslashes as escape sequences before regex sees them.
+:::
+
+### Complete Example: Extracting Dates from Text
+
+```python
+import re
+
+text = """
+The treaty was signed on January 15, 1842.
+Revisions were made on March 3, 1845.
+The final version dates to December 25, 1848.
+"""
+
+# Pattern for "Month Day, Year"
+pattern = r'(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s+(\d{4})'
+
+# Find all dates with captured groups
+dates = re.findall(pattern, text)
+for month, day, year in dates:
+    print(f"{month} {day}, {year}")
+
+# Output:
+# January 15, 1842
+# March 3, 1845
+# December 25, 1848
+```
+
+```{=html}
+<div class="quiz" data-quiz="python-regex">
+  <h3>Quick Check: Python Regex</h3>
+  <p>You want to find all 4-digit years in a document and collect them into a list. Which Python code would work?</p>
+
+  <label class="quiz-option">
+    <input type="radio" name="py-quiz" value="a">
+    <code>re.search(r'\d{4}', text)</code>
+  </label>
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="py-quiz" value="b">
+    <code>re.findall(r'\b\d{4}\b', text)</code>
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="py-quiz" value="c">
+    <code>re.sub(r'\d{4}', '', text)</code>
+  </label>
+
+  <div class="feedback-correct">
+    <p><strong>Correct!</strong> <code>re.findall()</code> returns a list of all matches. The <code>\b</code> word boundaries ensure we match standalone 4-digit numbers (years) and not parts of longer numbers.</p>
+  </div>
+  <div class="feedback-incorrect">
+    <p><code>re.search()</code> only finds the first match (not all). <code>re.sub()</code> is for replacing text. To get a list of all matches, use <code>re.findall()</code>.</p>
+  </div>
+</div>
+```
+
+## Testing and Debugging Regex {#sec-testing}
+
+Regex patterns can be tricky. Here's how to develop them confidently:
+
+### Strategy 1: Start Simple, Add Complexity
+
+**Building a Date Pattern Step by Step:**
+
+1. `\d+` — Start with just digits
+2. `\d{4}` — Specify exactly 4 digits for year
+3. `\d{1,2}/\d{1,2}/\d{4}` — Add month and day
+4. `\d{1,2}/\d{1,2}/\d{2,4}` — Allow 2 or 4 digit years
+5. `\b\d{1,2}/\d{1,2}/\d{2,4}\b` — Add word boundaries
+
+Test after each step to make sure it still matches what you expect!
+
+### Strategy 2: Use Online Testers
+
+::: {.callout-tip}
+## Recommended Tools
+
+- **[regex101.com](https://regex101.com)** — Best for learning. Shows explanations and highlights matches in real-time
+- **[regexr.com](https://regexr.com)** — Great visual interface with a helpful reference
+- **[pythex.org](https://pythex.org)** — Specifically for testing Python regex
+
+These tools let you paste sample text and see immediately what your pattern matches (and doesn't match).
+:::
+
+### Strategy 3: Test with Edge Cases
+
+**Things That Often Break Patterns:**
+
+- **Unexpected whitespace** — Tabs, multiple spaces, line breaks
+- **Case sensitivity** — "The" vs "THE" vs "the"
+- **Optional elements** — "Mr." vs "Mr" (period optional?)
+- **Partial matches** — Finding "cat" in "catalog"
+- **Empty matches** — Patterns with `*` can match nothing
+
+## Common Patterns Reference {#sec-reference}
+
+::: {.callout-note appearance="minimal"}
+## Copy-Paste Patterns for DH Work
+
+**Dates**
+
+```default
+# MM/DD/YYYY or MM-DD-YYYY
+\d{1,2}[/-]\d{1,2}[/-]\d{2,4}
+
+# Month Day, Year
+(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+\d{4}
+
+# Year alone (19th-21st century)
+\b(1[89]\d{2}|20[0-2]\d)\b
+```
+
+**People and Places**
+
+```default
+# Capitalized words (potential names)
+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*
+
+# Titles with names
+(Mr|Mrs|Ms|Miss|Dr|Prof|Rev)\.?\s+[A-Z][a-z]+
+```
+
+**Numbers and Money**
+
+```default
+# Integers with optional commas
+\d{1,3}(?:,\d{3})*
+
+# Prices (USD, GBP, EUR)
+[$£€]\d+(?:\.\d{2})?
+
+# Percentages
+\d+(?:\.\d+)?%
+```
+
+**Text Cleaning**
+
+```default
+# Multiple whitespace → single space
+\s+
+
+# Text in brackets [like this]
+\[[^\]]+\]
+
+# Text in parentheses (like this)
+\([^)]+\)
+
+# HTML/XML tags
+<[^>]+>
+```
+:::
+
+## Practice Exercise {#sec-practice}
+
+::: {.callout-important icon=false}
+## Try It Yourself: Historical Document Processing
+
+You're processing a collection of 19th-century letters. Here's a sample:
+
+```default
+London, January 15, 1842
+
+Dear Mr. Smith,
+
+I received your letter of December 3, 1841 regarding the property
+at 42 Baker Street. The asking price of £450 seems reasonable,
+though Dr. Watson suggests we offer £400.
+
+Please contact Mrs. Hudson at your earliest convenience.
+
+Yours faithfully,
+S. Holmes
+```
+
+**Challenge:** Write regex patterns to extract:
+
+1. All dates mentioned
+2. All people with titles (Mr., Mrs., Dr.)
+3. All prices in pounds (£)
+4. The street address
+
+<details>
+<summary>Click to see solutions</summary>
+
+```default
+# 1. Dates
+(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+\d{4}
+# Matches: "January 15, 1842" and "December 3, 1841"
+
+# 2. People with titles
+(Mr|Mrs|Dr)\.?\s+[A-Z][a-z]+
+# Matches: "Mr. Smith", "Dr. Watson", "Mrs. Hudson"
+
+# 3. Prices in pounds
+£\d+
+# Matches: "£450", "£400"
+
+# 4. Street address
+\d+\s+[A-Z][a-z]+\s+Street
+# Matches: "42 Baker Street"
+```
+
+</details>
+:::
+
+## What's Next?
+
+Regular expressions are a skill that improves with practice. As you work with text data in your DH projects, you'll encounter new patterns to match and new challenges to solve. The key is to:
+
+1. **Start with simple patterns** and build complexity gradually
+2. **Test thoroughly** with tools like regex101.com
+3. **Keep a collection** of patterns that work for your common tasks
+4. **Read other people's patterns** to learn new techniques
+
+::: {.callout-note appearance="simple"}
+## Reflection Questions
+
+- What kinds of patterns appear frequently in your research materials?
+- Where could regex save you time that you currently spend on manual text processing?
+- What patterns would you need to extract metadata from your file naming conventions?
+:::
+
+---
+
+::: {.callout-note appearance="simple"}
+*Remember: Regex looks cryptic at first, but becomes intuitive with practice. Start simple, test often, and build your pattern library over time.*
+:::

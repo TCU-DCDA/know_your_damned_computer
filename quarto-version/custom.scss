@@ -12,8 +12,8 @@ $border-color: #e5e7eb;
 
 /*-- scss:rules --*/
 .quiz-container {
-  background: $code-bg;
-  border-left: 4px solid $primary;
+  background: var(--bs-tertiary-bg, #{$code-bg});
+  border-left: 4px solid var(--bs-primary, #{$primary});
   padding: 1.5rem;
   margin: 1.5rem 0;
   border-radius: 0.5rem;
@@ -23,25 +23,25 @@ $border-color: #e5e7eb;
   display: block;
   padding: 0.75rem;
   margin: 0.5rem 0;
-  background: white;
-  border: 2px solid $border-color;
+  background: var(--bs-body-bg, white);
+  border: 2px solid var(--bs-border-color, #{$border-color});
   border-radius: 0.375rem;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .quiz-option:hover {
-  border-color: $primary;
+  border-color: var(--bs-primary, #{$primary});
   background: rgba($primary, 0.05);
 }
 
 .quiz-option.correct {
-  border-color: $success;
+  border-color: var(--bs-success, #{$success});
   background: rgba($success, 0.1);
 }
 
 .quiz-option.incorrect {
-  border-color: $danger;
+  border-color: var(--bs-danger, #{$danger});
   background: rgba($danger, 0.1);
 }
 
@@ -124,4 +124,64 @@ $border-color: #e5e7eb;
 .difficulty-advanced {
   background: rgba($danger, 0.2);
   color: darken($danger, 20%);
+}
+
+/* Accessibility improvements */
+
+/* Skip link for keyboard navigation */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--bs-primary, #{$primary});
+  color: white;
+  padding: 0.5rem 1rem;
+  z-index: 10000;
+  text-decoration: none;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+/* Focus styles for interactive elements */
+.quiz-option:focus,
+.kydc-exercise-complete:focus,
+.kydc-reading-toggle:focus {
+  outline: 2px solid var(--bs-primary, #{$primary});
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode improvements */
+@media (prefers-contrast: high) {
+  .quiz-option {
+    border-width: 3px;
+  }
+
+  .quiz-option.correct,
+  .quiz-option.incorrect {
+    border-width: 4px;
+  }
+}
+
+/* Mobile TOC improvements */
+@media (max-width: 991.98px) {
+  .sidebar-navigation {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bs-body-bg, white);
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--bs-border-color, #{$border-color});
+  }
 }

@@ -1,54 +1,37 @@
 # Know Your Damned Computer - Quarto Version
 
-This is the active Quarto implementation of the "Know Your Damned Computer" educational resource. It is currently being ported from the original Jekyll version to serve as the template for all DCDA textbooks.
+This is the Quarto implementation of the "Know Your Damned Computer" educational resource, achieving feature parity with the original Jekyll version.
 
-## Current Status (December 2025)
+## Current Status (February 2026)
 
-- **Guides**: All 6 core guides have been ported to `.qmd` format.
-- **Theme**: "Terminal Chic" theme is active with Light/Dark mode support.
-- **Interactivity**: JavaScript modules (quizzes, terminal sim) have been successfully migrated using raw HTML blocks.
+- **All 8 guides ported** to `.qmd` format
+- **Interactive features**: Quizzes, terminal simulator, progress tracking, reading mode
+- **Native Quarto features**: Dark/light theme toggle, search, responsive TOC
+- **Accessibility**: Focus trapping, keyboard navigation, reduced motion support
+- **Deployment**: GitHub Actions workflow for automatic publishing
 
-## Key Differences from Jekyll Version
+## Features
 
-### Quarto Advantages
+### Interactive Learning
+- **Multiple-choice quizzes** with immediate feedback
+- **Terminal simulator** for safe command-line practice
+- **Progress tracking** across sessions (localStorage)
+- **Reading mode** for distraction-free study
 
-1. **Native Academic Features**
-   - Built-in callouts (tip, note, warning, important)
-   - Cross-references with @sec-id syntax
-   - Tabbed content for platform-specific instructions
-   - Automatic table of contents and numbering
-   - Citation and bibliography support
+### Native Quarto Features
+- Built-in dark/light theme toggle
+- Automatic table of contents
+- Full-text search
+- Tabbed content (`{.panel-tabset}`) for Mac/PC instructions
+- Callout blocks (tip, note, warning, important)
+- Cross-references and section navigation
 
-2. **Simpler Markdown**
-   - Less HTML needed for common elements
-   - Cleaner YAML front matter
-   - Native support for code execution
-   - Better handling of figures and tables
+### Multi-Format Output
+- HTML (primary)
+- PDF via LaTeX (for handouts)
+- Word documents (on request)
 
-3. **Multi-Format Output**
-   - HTML (current)
-   - PDF via LaTeX
-   - Word documents
-   - ePub for e-readers
-   - RevealJS presentations
-
-4. **Interactive Code**
-   - Can embed executable Python/R code
-   - WebR for interactive R demonstrations
-   - Great for teaching programming concepts
-
-### Challenges & Workarounds
-
-1. **Custom JavaScript interactivity**
-   - **Solution**: We preserved the custom quiz engine and terminal simulator by wrapping the HTML blocks in ````{=html} ... ``` ` code blocks. This allows Quarto to pass them through to the final HTML without modification.
-
-2. **GitHub Pages integration**
-   - Requires a different deployment workflow (e.g., `quarto publish gh-pages` or GitHub Actions) compared to standard Jekyll.
-
-3. **HTML Structure Control**
-   - Quarto templates are less flexible than Jekyll layouts, requiring the use of raw HTML wrappers for our custom interactive components.
-
-## Setup
+## Development
 
 ### Prerequisites
 
@@ -68,7 +51,7 @@ cd quarto-version
 quarto preview
 ```
 
-This will open a live-reloading preview in your browser.
+This opens a live-reloading preview in your browser.
 
 ### Build the Site
 
@@ -79,82 +62,88 @@ quarto render
 
 Output will be in `_site/` directory.
 
+### Render to Other Formats
+
+```bash
+# PDF (requires LaTeX)
+quarto render guides/file-management.qmd --to pdf
+
+# Word document
+quarto render guides/file-management.qmd --to docx
+```
+
 ## Project Structure
 
 ```
 quarto-version/
 ├── _quarto.yml           # Main configuration
 ├── index.qmd             # Homepage
-├── guides/               # Learning modules
+├── about.qmd             # About page
+├── guides/               # Learning modules (8 guides)
 │   ├── file-management.qmd
 │   ├── file-paths.qmd
-│   └── compression.qmd
-├── custom.scss           # Styling
-└── README.md            # This file
+│   ├── compression.qmd
+│   ├── file-formats.qmd
+│   ├── command-line.qmd
+│   ├── text-encoding.qmd
+│   ├── version-control.qmd
+│   └── regular-expressions.qmd
+├── exercises/            # Practice exercises
+├── assets/
+│   └── js/               # Interactive features
+│       ├── quiz-engine.js
+│       ├── terminal-sim.js
+│       ├── progress-tracking.js
+│       └── reading-mode.js
+├── custom.scss           # Theme customizations
+└── includes/             # HTML includes
 ```
 
-## Quarto Features Demonstrated
+## Deployment
 
-### In file-management.qmd
+### GitHub Actions (Automatic)
 
-- ✅ Callout blocks (tip, note, warning, important)
-- ✅ Tabbed content (Mac/PC instructions)
-- ✅ Cross-references to sections and tables
-- ✅ Collapsible details/summary
-- ✅ Code blocks with syntax highlighting
-- ✅ Tables with captions and IDs
-- ✅ Learning objectives boxes
-- ✅ Exercise sections
+The repository includes a GitHub Actions workflow (`.github/workflows/quarto-publish.yml`) that:
+1. Builds the Quarto site on push to `main`
+2. Deploys to GitHub Pages
 
-### Not Yet Implemented
+### Manual Deployment
 
-- ⏳ Interactive quizzes (would need Quarto extension or custom JS)
-- ⏳ Terminal simulator (would need custom implementation)
-- ⏳ Progress tracking (would need custom solution)
-- ⏳ Executable code demonstrations
+```bash
+# Option 1: Quarto's built-in publish
+quarto publish gh-pages
 
-## Deployment Options
+# Option 2: Build and push manually
+quarto render
+# Then push _site/ to gh-pages branch
+```
 
-### GitHub Pages
-
-1. Build site: `quarto render`
-2. Push `_site/` directory to `gh-pages` branch
-3. Or use GitHub Actions for automatic builds
-
-### Netlify/Vercel
-
-Connect your repo and these platforms auto-detect Quarto projects.
-
-### Quarto Pub
+### Quarto Pub (Alternative)
 
 ```bash
 quarto publish quarto-pub
 ```
 
-Free hosting specifically for Quarto sites.
+## Keyboard Shortcuts
 
-## Comparison Summary
+- **R** - Toggle reading mode
+- **Esc** - Close reading mode or overlays
+- **Tab** - Navigate interactive elements
 
-**Choose Quarto if you want:**
-- Multi-format output (HTML + PDF + Word)
-- Academic publishing features
-- Executable code demonstrations
-- Simpler markdown syntax
-- Built-in educational features
+## Browser Support
 
-**Stay with Jekyll if you want:**
-- Full control over JavaScript interactivity
-- Easier GitHub Pages deployment
-- Custom quiz/exercise engines
-- Terminal simulation
-- Already invested in custom features
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
+- Mobile browsers (iOS Safari, Chrome for Android)
 
-## Next Steps
+## Contributing
 
-To continue developing the Quarto version:
+1. Create a new branch from `2nd-edition`
+2. Make changes to `.qmd` files in `guides/`
+3. Test with `quarto preview`
+4. Submit a pull request
 
-1. Convert remaining guides (compression, command-line, etc.)
-2. Explore Quarto extensions for interactivity
-3. Implement quiz functionality (possibly with webr or custom JS)
-4. Add executable code examples where appropriate
-5. Test PDF output for printable handouts
+## License
+
+Licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)

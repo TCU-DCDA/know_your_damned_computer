@@ -14,14 +14,20 @@ project:
 format:
   html:
     theme:
-      - cosmo
-      - ../../_shared/themes/terminal-chic/css/theme.scss
+      light:
+        - cosmo
+        - custom.scss
+      dark:
+        - darkly
+        - custom.scss
     page-layout: full
     toc: true
     include-after-body: includes/footer-scripts.html
     js:
       - assets/js/quiz-engine.js
       - assets/js/terminal-sim.js
+      - assets/js/progress-tracking.js
+      - assets/js/reading-mode.js
 
 website:
   title: "Know Your Damned Computer"
@@ -49,6 +55,10 @@ website:
             href: guides/command-line.qmd
           - text: "Text Encoding"
             href: guides/text-encoding.qmd
+          - text: "Git & Version Control"
+            href: guides/version-control.qmd
+          - text: "Regular Expressions"
+            href: guides/regular-expressions.qmd
       - text: "Exercises"
         href: exercises/index.qmd
       - text: "About"
@@ -70,6 +80,8 @@ website:
           contents:
             - guides/text-encoding.qmd
             - guides/file-formats.qmd
+            - guides/version-control.qmd
+            - guides/regular-expressions.qmd
 
   page-footer:
     left: "© 2024 Curt Rode and TCU Digital Culture & Data Analytics Program"
