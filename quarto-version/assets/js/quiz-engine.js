@@ -12,7 +12,6 @@ class QuizEngine {
 
     init() {
         this.setupQuizElements();
-        console.log('📝 Quiz Engine initialized');
     }
 
     setupQuizElements() {
@@ -297,16 +296,16 @@ class QuizEngine {
 
     recordQuizCompletion(quizId, attempts) {
         // Record in localStorage
-        let completions = JSON.parse(localStorage.getItem('kydc_quiz_completions') || '{}');
+        let completions = JSON.parse(safeGet('kydc_quiz_completions', '{}'));
         completions[quizId] = {
             completed: true,
             attempts: attempts,
             completedAt: new Date().toISOString()
         };
-        localStorage.setItem('kydc_quiz_completions', JSON.stringify(completions));
+        safeSet('kydc_quiz_completions', JSON.stringify(completions));
 
         // Update global progress if available
-        if (window.kydc) {
+        if (window.kydc && typeof window.kydc.markExerciseComplete === 'function') {
             window.kydc.markExerciseComplete(`quiz-${quizId}`, attempts === 1 ? 100 : Math.max(50, 100 - (attempts - 1) * 10));
         }
 
@@ -374,7 +373,7 @@ class QuizEngine {
 
     // Get quiz statistics
     getQuizStats() {
-        const completions = JSON.parse(localStorage.getItem('kydc_quiz_completions') || '{}');
+        const completions = JSON.parse(safeGet('kydc_quiz_completions', '{}'));
         const totalQuizzes = this.quizzes.size;
         const completedQuizzes = Object.keys(completions).length;
         const averageAttempts = Object.values(completions)
@@ -386,6 +385,30 @@ class QuizEngine {
             completionRate: totalQuizzes > 0 ? (completedQuizzes / totalQuizzes) * 100 : 0,
             averageAttempts: Math.round(averageAttempts * 10) / 10
         };
+    }
+}
+
+function safeGet(key, fallback = null) {
+    if (window.kydc && typeof window.kydc.safeGet === 'function') {
+        return window.kydc.safeGet(key, fallback);
+    }
+    try {
+        const value = localStorage.getItem(key);
+        return value === null ? fallback : value;
+    } catch {
+        return fallback;
+    }
+}
+
+function safeSet(key, value) {
+    if (window.kydc && typeof window.kydc.safeSet === 'function') {
+        window.kydc.safeSet(key, value);
+        return;
+    }
+    try {
+        localStorage.setItem(key, value);
+    } catch {
+        // ignore
     }
 }
 
@@ -409,7 +432,6 @@ function initQuizEngine() {
     // Prevent multiple initializations
     if (window.quizEngineInitialized) return;
     
-    console.log('🚀 Starting Quiz Engine Initialization...');
     
     if (!window.quizEngine) {
         window.quizEngine = new QuizEngine();

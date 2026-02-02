@@ -125,3 +125,117 @@ $border-color: #e5e7eb;
   background: rgba($danger, 0.2);
   color: darken($danger, 20%);
 }
+
+.kydc-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.kydc-progress__bar {
+  height: 100%;
+  width: 0;
+  background: $primary;
+  transition: width 0.1s ease-out;
+}
+
+.kydc-progress__text {
+  position: fixed;
+  top: 8px;
+  right: 12px;
+  font-size: 0.75rem;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+}
+
+.kydc-reading-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid $border-color;
+  border-radius: 999px;
+  background: $body-bg;
+  font-size: 0.875rem;
+}
+
+#kydc-reading-mode {
+  display: none;
+}
+
+#kydc-reading-mode.is-open {
+  display: block;
+}
+
+.kydc-reading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 10000;
+  padding: 2rem 1rem;
+  overflow: auto;
+}
+
+.kydc-reading-content {
+  max-width: 760px;
+  margin: 3rem auto;
+  background: $body-bg;
+  color: $body-color;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.kydc-reading-close {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  background: $body-bg;
+  border: 1px solid $border-color;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+}
+
+.platform-tabs .tab-content {
+  display: none;
+}
+
+.platform-tabs .tab-content.active {
+  display: block;
+}
+
+.platform-tabs .tab-btn {
+  margin-right: 0.5rem;
+}
+
+.kydc-exercise.is-complete {
+  background: $success;
+  border-color: $success;
+  color: white;
+}
+
+.kydc-toc-toggle {
+  display: none;
+  margin-bottom: 0.75rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid $border-color;
+  border-radius: 0.5rem;
+  background: $body-bg;
+}
+
+@media (max-width: 900px) {
+  .kydc-toc-toggle {
+    display: inline-flex;
+  }
+  .toc {
+    display: none;
+  }
+  body.kydc-toc-open .toc {
+    display: block;
+  }
+}

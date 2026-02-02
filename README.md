@@ -52,6 +52,22 @@ This guide provides equal coverage for both Mac and PC users, with specific inst
 
 ## Local Development
 
+### Quarto (Preferred)
+
+```bash
+cd quarto-version
+quarto preview
+```
+
+Build:
+```bash
+cd quarto-version
+quarto render
+```
+
+Deployment (GitHub Pages):
+- Push to `main` to trigger the GitHub Actions workflow in `.github/workflows/quarto.yml`
+
 ```bash
 # Install dependencies
 cd docs && bundle install
@@ -65,7 +81,8 @@ cd docs && bundle exec jekyll serve
 ## Project Structure
 
 ```
-├── docs/                    # Jekyll site (interactive version)
+├── quarto-version/          # Quarto site (primary)
+├── docs/                    # Jekyll site (legacy reference)
 │   ├── _guides/            # Interactive guide content (8 guides)
 │   ├── _layouts/           # Page templates
 │   └── assets/js/          # Quiz engine, terminal simulator, progress tracking

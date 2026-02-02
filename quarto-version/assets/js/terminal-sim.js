@@ -18,7 +18,6 @@ class TerminalSimulator {
         this.render();
         this.bindEvents();
         this.showWelcome();
-        console.log('💻 Terminal Simulator initialized');
     }
 
     createFileSystem() {
@@ -649,16 +648,12 @@ function initTerminalSimulators() {
     // Prevent multiple initializations
     if (window.terminalSimInitialized) return;
     
-    console.log('🚀 Starting Terminal Simulator Initialization...');
-    
     const terminals = document.querySelectorAll('[data-terminal]');
-    console.log(`Found ${terminals.length} terminals to initialize`);
 
     terminals.forEach((terminal, index) => {
         // Check if already initialized
         if (terminal.getAttribute('data-initialized') === 'true') return;
         
-        console.log(`Initializing terminal ${index + 1}:`, terminal);
         try {
             createTerminalSimulator(terminal);
             terminal.setAttribute('data-initialized', 'true');

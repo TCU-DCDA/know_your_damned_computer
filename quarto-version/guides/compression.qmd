@@ -162,7 +162,7 @@ Compressed files (like ZIP archives) are everywhere in digital humanities work. 
     </ol>
   </div>
 
-  <button class="btn btn-success" onclick="markExerciseComplete('first-archive')">Mark Complete</button>
+  <button class="btn btn-success kydc-exercise" data-exercise-id="first-archive">Mark Complete</button>
 </div>
 ```
 
@@ -322,7 +322,7 @@ zip -9 small.zip files/
     </ol>
   </div>
 
-  <button class="btn btn-success" onclick="markExerciseComplete('dh-scenario')">Mark Complete</button>
+  <button class="btn btn-success kydc-exercise" data-exercise-id="dh-scenario">Mark Complete</button>
 </div>
 ```
 

@@ -1,0 +1,260 @@
+---
+title: "Git & Version Control"
+subtitle: "Track changes, collaborate with others, and never lose your work again."
+author: "Curt Rode"
+date: last-modified
+difficulty: intermediate
+time-estimate: "50 min"
+format:
+  html:
+    code-tools: false
+    toc: true
+    number-sections: true
+---
+
+Have you ever had multiple versions of a file like `final_paper.docx`, `final_paper_v2.docx`, `final_paper_FINAL.docx`, and `final_paper_FINAL_really.docx`? Version control solves these problems elegantly, and Git is the tool that makes it possible.
+
+::: {.callout-note appearance="minimal"}
+## Learning Objectives
+By the end of this guide, you will be able to:
+
+- Explain why version control matters for DH work
+- Set up Git and configure it for your projects
+- Use the core Git workflow (add → commit → push)
+- Collaborate using GitHub
+- Recover from common mistakes
+:::
+
+::: {.callout-tip}
+## What You Need
+- Familiarity with the command line
+- Git installed (we’ll cover setup)
+- A free GitHub account
+:::
+
+## Why Version Control Matters
+
+```{=html}
+<div class="quiz" data-quiz="version-control-why">
+  <h3>Quick Check: Why Use Version Control?</h3>
+  <p>Your Python script worked yesterday, but today it's broken and you don't know what changed. What's the best solution?</p>
+  <label class="quiz-option">
+    <input type="radio" name="vc-quiz-1" value="backup">
+    Hope you saved a backup copy somewhere
+  </label>
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="vc-quiz-1" value="git">
+    Use Git to see exactly what changed and restore the working version
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="vc-quiz-1" value="memory">
+    Try to remember what you changed and undo it manually
+  </label>
+  <div class="feedback-correct">
+    <p><strong>Exactly!</strong> Git tracks every change so you can restore a working version instantly.</p>
+  </div>
+  <div class="feedback-incorrect">
+    <p>Git lets you see the exact change history and roll back safely—no guessing required.</p>
+  </div>
+</div>
+```
+
+## Installing and Configuring Git
+
+::: {.panel-tabset}
+## Mac
+
+**Option 1: Xcode Command Line Tools (Recommended)**  
+Run:
+```
+git --version
+```
+If Git isn’t installed, macOS will prompt you to install Xcode Command Line Tools.
+
+**Option 2: Homebrew**
+```
+brew install git
+```
+
+## PC
+
+1. Download Git for Windows: <https://git-scm.com/download/win>  
+2. Install with recommended defaults  
+3. Verify in PowerShell or Git Bash:
+```
+git --version
+```
+:::
+
+### Configure Your Identity
+
+```
+git config --global user.name "Your Name"
+git config --global user.email "your.email@university.edu"
+git config --list
+```
+
+::: {.callout-tip}
+Use the same email as your GitHub account so your contributions are linked properly.
+:::
+
+## Alternative: GitHub Desktop
+
+If the command line feels intimidating, **GitHub Desktop** provides a friendly GUI. It’s great for learning the concepts before switching to CLI for speed and automation.
+
+## The Git Mental Model
+
+Files move through three states:
+
+1. **Working directory** (your files)
+2. **Staging area** (`git add`)
+3. **Repository** (`git commit`)
+
+## Your First Repository
+
+```
+mkdir victorian-novels-analysis
+cd victorian-novels-analysis
+git init
+mkdir data scripts results
+echo "# Victorian Novels Analysis" > README.md
+git add README.md
+git commit -m "Initial commit: Add project README"
+```
+
+## The Core Git Workflow
+
+```
+git status
+git add .
+git commit -m "Describe your change"
+git push
+```
+
+### Common Commands
+
+| Command | Purpose |
+|---|---|
+| `git status` | Show state |
+| `git add` | Stage changes |
+| `git commit` | Save snapshot |
+| `git log` | View history |
+| `git diff` | See changes |
+| `git restore` | Undo local changes |
+
+## Writing Good Commit Messages
+
+```{=html}
+<div class="quiz" data-quiz="commit-messages">
+  <h3>Quick Check: Commit Messages</h3>
+  <p>You fixed a crash when processing files with accented characters. Which message is best?</p>
+  <label class="quiz-option">
+    <input type="radio" name="commit-quiz" value="bad1">
+    <code>"bug fix"</code>
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="commit-quiz" value="bad2">
+    <code>"fixed the thing"</code>
+  </label>
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="commit-quiz" value="good">
+    <code>"Fix crash when processing files with accented characters"</code>
+  </label>
+  <div class="feedback-correct">
+    <p><strong>Yes.</strong> It describes what changed and why it matters.</p>
+  </div>
+  <div class="feedback-incorrect">
+    <p>Good messages explain both <strong>what</strong> and <strong>why</strong>.</p>
+  </div>
+</div>
+```
+
+## Working with GitHub
+
+### Create a GitHub Account
+1. Go to <https://github.com>
+2. Sign up with your university email
+3. Verify your email address
+
+### Connect Local Repo to GitHub
+
+```
+git remote add origin https://github.com/YOUR-USERNAME/project.git
+git push -u origin main
+```
+
+## Branching: Safe Experimentation
+
+```
+git switch -c experiment
+# make changes...
+git switch main
+git merge experiment
+git branch -d experiment
+```
+
+```{=html}
+<div class="quiz" data-quiz="branching">
+  <h3>Quick Check: Safe Experimentation</h3>
+  <p>What's the safest way to try a risky new analysis approach?</p>
+  <label class="quiz-option">
+    <input type="radio" name="branch-quiz" value="copy">
+    Copy the whole project to a new folder
+  </label>
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="branch-quiz" value="branch">
+    Create a Git branch to isolate your experiment
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="branch-quiz" value="careful">
+    Edit carefully and hope nothing breaks
+  </label>
+  <div class="feedback-correct">
+    <p><strong>Correct!</strong> Branches let you experiment without risking your main work.</p>
+  </div>
+  <div class="feedback-incorrect">
+    <p>Branches are the safest and fastest way to test new ideas.</p>
+  </div>
+</div>
+```
+
+## The .gitignore File
+
+Create a `.gitignore` file to avoid committing:
+- API keys / secrets  
+- Large datasets  
+- System files (`.DS_Store`, `Thumbs.db`)  
+- Virtual environments  
+
+Example:
+```
+__pycache__/
+venv/
+.env
+.DS_Store
+data/raw/*.csv
+```
+
+## Recovering from Mistakes
+
+```
+git restore filename.py
+git restore --staged filename.py
+git log --oneline
+git show <commit>:filename.py
+```
+
+## Quick Reference Card
+
+::: {.callout-tip}
+## Git Cheat Sheet
+- `git status` — check state  
+- `git add .` — stage all changes  
+- `git commit -m "msg"` — save  
+- `git push` / `git pull` — sync  
+- `git branch` / `git switch -c name` — branching  
+:::
+
+## Next Steps
+
+You’re ready for **Regular Expressions**, where you’ll learn to find patterns in text quickly and precisely.

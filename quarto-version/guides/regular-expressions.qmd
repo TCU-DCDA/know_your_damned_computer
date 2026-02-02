@@ -1,0 +1,207 @@
+---
+title: "Regular Expressions for Text Processing"
+subtitle: "Find patterns in text with precision for DH workflows."
+author: "Curt Rode"
+date: last-modified
+difficulty: intermediate
+time-estimate: "45 min"
+format:
+  html:
+    code-tools: false
+    toc: true
+    number-sections: true
+---
+
+Regular expressions (regex) are one of the most powerful tools for working with text. If you’ve ever needed to find all the dates in a document, extract email addresses, or clean messy OCR output, regex makes it possible at scale.
+
+::: {.callout-note appearance="minimal"}
+## Learning Objectives
+By the end of this guide, you will be able to:
+
+- Read basic regex patterns
+- Write patterns for common DH tasks
+- Use character classes and quantifiers
+- Apply regex in Python
+- Test and debug your patterns
+:::
+
+## Why Regex Matters
+
+```{=html}
+<div class="quiz" data-quiz="regex-why">
+  <h3>Quick Check: When to Use Regex</h3>
+  <p>You have 500 files with dates in different formats. What's the best approach?</p>
+  <label class="quiz-option">
+    <input type="radio" name="regex-quiz-1" value="manual">
+    Find each date manually
+  </label>
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="regex-quiz-1" value="regex">
+    Write regex patterns to match each format and extract them
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="regex-quiz-1" value="ai">
+    Ask AI to scan all files and summarize
+  </label>
+  <div class="feedback-correct">
+    <p><strong>Exactly!</strong> Regex is fast, precise, and repeatable at scale.</p>
+  </div>
+  <div class="feedback-incorrect">
+    <p>Regex gives you precise, reusable patterns for large-scale text tasks.</p>
+  </div>
+</div>
+```
+
+## The Basics
+
+### Literal Matching
+The pattern `cat` matches the exact characters “cat” wherever they appear — even inside other words like “catalog.”
+
+### Special Characters (Metacharacters)
+
+| Pattern | Meaning | Example |
+|---|---|---|
+| `.` | Any single character | `c.t` matches `cat`, `cot` |
+| `^` | Start of line | `^The` |
+| `$` | End of line | `end$` |
+| `\\d` | Any digit | `\\d\\d\\d` |
+| `\\w` | Word character | `\\w+` |
+| `\\s` | Whitespace | `\\s+` |
+
+### Quantifiers
+
+| Quantifier | Meaning | Example |
+|---|---|---|
+| `*` | Zero or more | `ab*c` |
+| `+` | One or more | `ab+c` |
+| `?` | Optional | `colou?r` |
+| `{n}` | Exactly n | `\\d{4}` |
+| `{n,m}` | Between n and m | `\\d{2,4}` |
+
+### Character Classes
+
+| Class | Meaning | Example |
+|---|---|---|
+| `[aeiou]` | Any vowel | |
+| `[A-Z]` | Any capital letter | |
+| `[^0-9]` | Not a digit | |
+
+```{=html}
+<div class="quiz" data-quiz="character-classes">
+  <h3>Quick Check: Character Classes</h3>
+  <p>Which pattern matches a capitalized word?</p>
+  <label class="quiz-option">
+    <input type="radio" name="cc-quiz" value="a">
+    <code>[A-Z]</code>
+  </label>
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="cc-quiz" value="b">
+    <code>[A-Z][a-z]+</code>
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="cc-quiz" value="c">
+    <code>[A-Z]+</code>
+  </label>
+  <div class="feedback-correct">
+    <p><strong>Correct!</strong> One capital followed by lowercase letters matches a typical capitalized word.</p>
+  </div>
+  <div class="feedback-incorrect">
+    <p><code>[A-Z]</code> is just one letter; <code>[A-Z]+</code> matches ALL CAPS.</p>
+  </div>
+</div>
+```
+
+## Practical DH Examples
+
+**Dates like “January 15, 1842”:**
+```
+(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+\d{4}
+```
+
+**Prices like “£450” or “$12.99”:**
+```
+[$£€]\d+(?:\.\d{2})?
+```
+
+**Names with titles:**
+```
+(Mr|Mrs|Miss|Ms|Dr|Rev|Prof)\.?\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?
+```
+
+## Regex in Python
+
+```python
+import re
+
+text = "Contact us at info@example.com or support@example.org"
+emails = re.findall(r'\S+@\S+', text)
+print(emails)
+```
+
+```{=html}
+<div class="quiz" data-quiz="python-regex">
+  <h3>Quick Check: Python Regex</h3>
+  <p>You want all 4-digit years in a document. Which is correct?</p>
+  <label class="quiz-option">
+    <input type="radio" name="py-quiz" value="a">
+    <code>re.search(r'\\d{4}', text)</code>
+  </label>
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="py-quiz" value="b">
+    <code>re.findall(r'\\b\\d{4}\\b', text)</code>
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="py-quiz" value="c">
+    <code>re.sub(r'\\d{4}', '', text)</code>
+  </label>
+  <div class="feedback-correct">
+    <p><strong>Correct!</strong> <code>findall</code> returns every match, and word boundaries avoid partial matches.</p>
+  </div>
+  <div class="feedback-incorrect">
+    <p><code>search</code> finds only the first match; <code>sub</code> replaces text.</p>
+  </div>
+</div>
+```
+
+## Testing and Debugging
+
+Recommended tools:
+- <https://regex101.com>
+- <https://regexr.com>
+- <https://pythex.org>
+
+Strategy:
+1. Start simple  
+2. Add complexity gradually  
+3. Test edge cases  
+
+## Practice Exercise
+
+Sample text:
+```
+London, January 15, 1842
+
+Dear Mr. Smith,
+
+The asking price of £450 seems reasonable,
+though Dr. Watson suggests we offer £400.
+```
+
+Try to extract:
+1. Dates  
+2. People with titles  
+3. Prices  
+
+<details>
+<summary>Show solutions</summary>
+
+```
+(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+\d{4}
+(Mr|Mrs|Dr)\.?\s+[A-Z][a-z]+
+£\d+
+```
+</details>
+
+## Next Steps
+
+Regex is a skill you refine with practice. Keep a personal “pattern library” and test with real data.
