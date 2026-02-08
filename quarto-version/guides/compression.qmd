@@ -435,7 +435,7 @@ Always test that archives extract properly:
 
 ## Next Steps
 
-Understanding compression prepares you for [working with different file formats]({{ site.baseurl }}/guides/file-formats/), where you'll learn about choosing the right format for different types of DH data and ensuring compatibility across platforms and tools.
+Understanding compression prepares you for [working with different file formats](file-formats.qmd), where you'll learn about choosing the right format for different types of DH data and ensuring compatibility across platforms and tools.
 
 ---
 

@@ -685,17 +685,17 @@ window.addEventListener('quarto:page-load', () => {
 
 
 
-// Add terminal-specific styles
+// Add terminal-specific styles (uses concrete values for Quarto/Bootstrap compatibility)
 const terminalStyles = `
 <style>
 .terminal-simulator {
     background-color: #1a1a1a;
     color: #00ff00;
-    font-family: var(--font-family-mono);
-    border-radius: var(--border-radius);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    border-radius: 0.375rem;
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
-    margin: var(--space-lg) 0;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    margin: 1.5rem 0;
     max-height: 500px;
     display: flex;
     flex-direction: column;
@@ -703,7 +703,7 @@ const terminalStyles = `
 
 .terminal-header {
     background-color: #333;
-    padding: var(--space-sm) var(--space-md);
+    padding: 0.5rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -718,17 +718,17 @@ const terminalStyles = `
 
 .terminal-controls {
     display: flex;
-    gap: var(--space-xs);
+    gap: 0.25rem;
 }
 
 .terminal-btn {
     background: none;
     border: 1px solid #555;
     color: #ccc;
-    padding: var(--space-xs);
-    border-radius: var(--border-radius-sm);
+    padding: 0.25rem;
+    border-radius: 0.25rem;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all 0.2s ease;
     font-size: 0.75rem;
     width: 24px;
     height: 24px;
@@ -746,7 +746,7 @@ const terminalStyles = `
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: var(--space-md);
+    padding: 1rem;
     overflow: hidden;
 }
 
@@ -754,7 +754,7 @@ const terminalStyles = `
     flex: 1;
     overflow-y: auto;
     white-space: pre-wrap;
-    margin-bottom: var(--space-sm);
+    margin-bottom: 0.5rem;
     scrollbar-width: thin;
     scrollbar-color: #555 #1a1a1a;
 }
@@ -781,7 +781,7 @@ const terminalStyles = `
     color: #00ff00;
 }
 
-.terminal-output {
+.terminal-output-text {
     color: #ffffff;
 }
 
@@ -797,12 +797,12 @@ const terminalStyles = `
     display: flex;
     align-items: center;
     border-top: 1px solid #333;
-    padding-top: var(--space-sm);
+    padding-top: 0.5rem;
 }
 
 .terminal-prompt {
     color: #00ff00;
-    margin-right: var(--space-sm);
+    margin-right: 0.5rem;
     white-space: nowrap;
     font-weight: 500;
 }
@@ -812,7 +812,7 @@ const terminalStyles = `
     background: transparent;
     border: none;
     color: #00ff00;
-    font-family: var(--font-family-mono);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     font-size: 1rem;
     outline: none;
     caret-color: #00ff00;
@@ -843,11 +843,11 @@ const terminalStyles = `
         max-height: 400px;
         font-size: 0.875rem;
     }
-    
+
     .terminal-input-line {
         flex-wrap: wrap;
     }
-    
+
     .terminal-prompt {
         font-size: 0.75rem;
     }
