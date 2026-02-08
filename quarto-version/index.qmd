@@ -25,16 +25,16 @@ format:
 
     <div class="hero-actions">
       <a href="#guides" class="btn-pill primary">
-        <i class="fas fa-terminal"></i> Start Learning
+        <i class="bi bi-terminal"></i> Start Learning
       </a>
       <a href="about.qmd" class="btn-pill secondary">
-        <i class="fas fa-book-open"></i> Read Manifesto
+        <i class="bi bi-book"></i> Read Manifesto
       </a>
     </div>
 
     <div class="stats-bar">
       <div class="stat-item">
-        <span class="value">6</span>
+        <span class="value">8</span>
         <span class="label">Modules</span>
       </div>
       <div class="stat-item">
@@ -126,6 +126,30 @@ format:
         <div class="card-meta">
           <span class="chip">Beginner</span>
           <span class="chip">Concepts</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 7 -->
+    <a href="guides/version-control.qmd" class="bento-card">
+      <div class="card-content">
+        <h3>Git &amp; Version Control</h3>
+        <p>Track changes, collaborate with others, and never lose your work again. Essential version control skills for DH projects.</p>
+        <div class="card-meta">
+          <span class="chip">Intermediate</span>
+          <span class="chip">Git/GitHub</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 8 -->
+    <a href="guides/regular-expressions.qmd" class="bento-card">
+      <div class="card-content">
+        <h3>Regular Expressions</h3>
+        <p>Find patterns in text like a pro. Search, match, and transform text data for research and data cleaning.</p>
+        <div class="card-meta">
+          <span class="chip">Advanced</span>
+          <span class="chip">Text Processing</span>
         </div>
       </div>
     </a>

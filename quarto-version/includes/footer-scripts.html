@@ -1,1 +1,18 @@
-<!-- Footer scripts are now handled by _quarto.yml js property -->
+<script>
+// Dynamically load JS assets from the correct path
+(function() {
+  var scripts = ['quiz-engine.js', 'terminal-sim.js', 'progress-tracking.js', 'reading-mode.js'];
+  // Find the site root by looking for a known Quarto resource
+  var base = '';
+  var links = document.querySelectorAll('link[href*="site_libs"]');
+  if (links.length > 0) {
+    var href = links[0].getAttribute('href');
+    base = href.substring(0, href.indexOf('site_libs'));
+  }
+  scripts.forEach(function(s) {
+    var el = document.createElement('script');
+    el.src = base + 'assets/js/' + s;
+    document.body.appendChild(el);
+  });
+})();
+</script>

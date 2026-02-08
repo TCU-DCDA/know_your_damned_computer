@@ -23,11 +23,6 @@ format:
     page-layout: full
     toc: true
     include-after-body: includes/footer-scripts.html
-    js:
-      - assets/js/quiz-engine.js
-      - assets/js/terminal-sim.js
-      - assets/js/progress-tracking.js
-      - assets/js/reading-mode.js
 
 website:
   title: "Know Your Damned Computer"
