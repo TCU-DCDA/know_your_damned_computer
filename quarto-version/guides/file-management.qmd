@@ -132,6 +132,11 @@ Your-DH-Project/
 └── 06-final-outputs/
 ```
 
+<div class="terminal-simulator" data-terminal="folder-practice">
+  <h4>🖥️ Practice Folder Management</h4>
+  <p>Try creating and navigating folder structures. Type <code>help</code> for available commands.</p>
+</div>
+
 #### Benefits of This Structure
 
 - **Numbered folders** ensure consistent ordering across platforms

@@ -4,57 +4,91 @@
 Migrate the Jekyll site to Quarto as the primary platform, achieving feature parity.
 
 ## Starting Point
-- Branch: `quarto-claude` or `quarto-codex` (from `2nd-edition`)
+- Branch: `quarto-claude` (worktree: `claude/worktree`)
 - Existing Quarto scaffold: `quarto-version/`
 - Reference Jekyll site: `docs/`
 
-## Phase 1: Content Parity
+---
+
+## Phase 1: Content Parity ✅
 Port missing guides to Quarto `.qmd` format:
-- [ ] Git/Version Control guide (source: `git-version-control.md` in repo root)
-- [ ] Regular Expressions guide (source: `regular-expressions.md` in repo root)
-- Update `_quarto.yml` navbar/sidebar
-- Fix any existing warnings (unclosed divs in command-line.qmd, file-paths.qmd)
+- [x] Git/Version Control guide (`guides/version-control.qmd`)
+- [x] Regular Expressions guide (`guides/regular-expressions.qmd`)
+- [x] Update `_quarto.yml` navbar/sidebar — all 8 guides listed
+- [x] Fix unclosed divs in command-line.qmd, file-paths.qmd
 
-## Phase 2: Interactive Features
+**Status:** All 8 guides present: file-management, file-paths, compression, file-formats, command-line, text-encoding, version-control, regular-expressions.
+
+## Phase 2: Interactive Features ✅
 Port or reimplement from Jekyll (`docs/assets/js/`):
-- [ ] Quiz engine — quizzes with immediate feedback (reference: `quiz-engine.js`)
-- [ ] Terminal simulator — command line practice (reference: `terminal-sim.js`; simplification encouraged if it improves stability)
-- [ ] Progress tracking (localStorage-based)
-- [ ] Reading mode overlay
+- [x] Quiz engine — 22 quizzes across all 8 guides (`quiz-engine.js`)
+- [x] Terminal simulator — embeds in 5 guides: command-line, file-paths, file-management, file-formats, compression (`terminal-sim.js`)
+- [x] Progress tracking — scroll-based with localStorage, sidebar completion badges, dynamic guide count (`progress-tracking.js`)
+- [x] Reading mode overlay — distraction-free view with font size controls, focus trapping, keyboard nav (`reading-mode.js`)
 
-Embed via raw HTML blocks in `.qmd` files where needed. Reimplementation with simpler approaches is acceptable if functionality is preserved.
+**Status:** All four interactive systems ported as modular JS files. Raw HTML blocks used for quiz and terminal embeds in `.qmd` files.
 
-## Phase 3: Native Feature Adoption
+## Phase 3: Native Feature Adoption ✅
 Replace custom JS with Quarto built-ins where possible:
-- TOC generation → native
-- Search → native
-- Dark mode → native theme toggle
-- Tabbed content → `{.panel-tabset}` for Mac/PC
+- [x] TOC generation → native (`toc: true` in `_quarto.yml`)
+- [x] Search → native (`search: true` in navbar)
+- [x] Dark mode → native theme toggle (cosmo/darkly dual theme)
+- [x] Tabbed content → `{.panel-tabset}` for Mac/PC (used in 4 guides)
 
-## Phase 4: Polish & Accessibility
-- Focus trapping in overlays
-- localStorage fallbacks (try/catch for private browsing)
-- Replace inline onclick handlers with JS listeners
-- Mobile TOC improvements
-- Keyboard navigation audit
+**Status:** All four native replacements in place. No custom JS needed for these features.
 
-## Phase 5: Deployment
-- GitHub Actions workflow for Quarto build
-- Configure `quarto publish gh-pages`
-- Update README with new workflow
+## Phase 4: Polish & Accessibility ✅
+- [x] Focus trapping in reading mode overlay (Tab/Shift+Tab cycling)
+- [x] localStorage fallbacks — all JS files use try/catch for private browsing
+- [x] Replace inline onclick handlers with JS listeners (exercise buttons use `addEventListener`)
+- [x] Mobile TOC improvements (sticky sidebar in `custom.scss`)
+- [x] Keyboard navigation — Escape to close reading mode, focus management
+- [x] `prefers-reduced-motion` support in SCSS
+- [x] `prefers-contrast: high` support for quiz elements
+- [x] Skip link for keyboard users
+- [x] Removed dead CSS classes (`.callout-dh`, `.difficulty-*`)
+- [x] Dynamic guide count in progress tracking (replaces hardcoded value)
+- [x] Fixed inclusive language in Jekyll version-control.md ("Master" → "Use")
+- [x] Updated copyright year to 2025 in footer
+- [x] Removed dead exercises navbar link (no exercises directory exists)
+
+**Status:** Comprehensive accessibility and polish pass complete.
+
+## Phase 5: Deployment ⏳
+- [ ] GitHub Actions workflow for Quarto build
+- [ ] Configure `quarto publish gh-pages`
+- [ ] Update README with new workflow
+
+**Status:** Not yet started. This is the final phase before the Quarto version can replace the Jekyll deployment.
+
+---
 
 ## Feature Parity Checklist
 The Quarto site must support:
-- [ ] Multiple-choice quizzes with immediate feedback
-- [ ] Terminal simulator for safe command practice
-- [ ] Progress tracking across sessions
-- [ ] Reading mode (distraction-free view)
-- [ ] Dark/light theme toggle
-- [ ] Responsive mobile layout
-- [ ] All 8 guides rendering without errors
+- [x] Multiple-choice quizzes with immediate feedback (22 quizzes across 8 guides)
+- [x] Terminal simulator for safe command practice (5 guides)
+- [x] Progress tracking across sessions (scroll-based + completion badges)
+- [x] Reading mode (distraction-free view with font controls)
+- [x] Dark/light theme toggle (native Quarto cosmo/darkly)
+- [x] Responsive mobile layout (sticky sidebar, Quarto responsive grid)
+- [x] All 8 guides rendering without errors
 
 ## Exit Criteria
-- All guides render without warnings
-- All checklist features functional
-- Clean GitHub Pages deployment
-- No regressions from Jekyll functionality
+- [x] All guides render without warnings
+- [x] All checklist features functional
+- [ ] Clean GitHub Pages deployment (Phase 5)
+- [x] No regressions from Jekyll functionality
+
+---
+
+## Remaining Work
+
+### Phase 5: Deployment (Priority)
+1. Create `.github/workflows/quarto-publish.yml` for automated build
+2. Configure `quarto publish gh-pages` settings
+3. Update project README with Quarto development/deployment instructions
+
+### Optional Enhancements
+- Add exercises section (currently removed from navbar; could be added later)
+- Cross-guide navigation (prev/next links at bottom of each guide)
+- Print/PDF export configuration for offline use

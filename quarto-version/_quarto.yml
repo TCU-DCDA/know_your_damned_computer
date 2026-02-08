@@ -59,8 +59,6 @@ website:
             href: guides/version-control.qmd
           - text: "Regular Expressions"
             href: guides/regular-expressions.qmd
-      - text: "Exercises"
-        href: exercises/index.qmd
       - text: "About"
         href: about.qmd
 
@@ -84,7 +82,7 @@ website:
             - guides/regular-expressions.qmd
 
   page-footer:
-    left: "© 2024 Curt Rode and TCU Digital Culture & Data Analytics Program"
+    left: "© 2025 Curt Rode and TCU Digital Culture & Data Analytics Program"
     center: "Licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
     right:
       - icon: github

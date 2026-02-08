@@ -184,6 +184,29 @@ If you're currently in `/Users/sarah/DH-Projects/novels/`:
 
 : Path Resolution Examples {#tbl-resolution}
 
+<div class="terminal-simulator" data-terminal="path-navigation">
+  <h4>🖥️ Practice Navigation</h4>
+  <p>Try these commands to practice path navigation:</p>
+  <div class="command-examples">
+    <div class="command-demo">
+      <code>pwd</code>
+      <span class="command-desc">← Shows current directory</span>
+    </div>
+    <div class="command-demo">
+      <code>ls .</code>
+      <span class="command-desc">← List current directory</span>
+    </div>
+    <div class="command-demo">
+      <code>ls ..</code>
+      <span class="command-desc">← List parent directory</span>
+    </div>
+    <div class="command-demo">
+      <code>cd ../</code>
+      <span class="command-desc">← Move to parent directory</span>
+    </div>
+  </div>
+</div>
+
 ## Paths in Programming and DH Tools
 
 ### Python Path Issues

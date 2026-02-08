@@ -8,7 +8,7 @@ time_estimate: "50 min"
 learning_objectives:
   - "Understand why version control is essential for DH research"
   - "Set up Git and configure it for your projects"
-  - "Master the basic Git workflow: add, commit, push, pull"
+  - "Use the basic Git workflow: add, commit, push, pull"
   - "Use GitHub to collaborate and share your work"
   - "Recover from common mistakes and conflicts"
 prev_guide:

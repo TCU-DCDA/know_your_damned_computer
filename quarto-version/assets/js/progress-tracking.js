@@ -231,13 +231,24 @@
             }
         }
 
+        // Count guides dynamically from sidebar links
+        static countGuides() {
+            const sidebarLinks = document.querySelectorAll('.sidebar-item a[href*="guides/"], .sidebar-navigation a[href*="guides/"]');
+            const uniqueGuides = new Set();
+            sidebarLinks.forEach(link => {
+                const match = link.getAttribute('href')?.match(/guides\/([^\/\.]+)/);
+                if (match) uniqueGuides.add(match[1]);
+            });
+            return uniqueGuides.size || 8; // fallback if sidebar not yet rendered
+        }
+
         // Static method to get overall progress
         static getOverallProgress() {
             try {
                 const progress = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
                 const completed = JSON.parse(localStorage.getItem(COMPLETED_KEY) || '[]');
 
-                const totalGuides = 8; // Total number of guides
+                const totalGuides = ProgressTracker.countGuides();
                 const completedCount = completed.length;
 
                 return {
@@ -247,7 +258,8 @@
                     details: progress
                 };
             } catch (e) {
-                return { completedGuides: 0, totalGuides: 8, percentage: 0, details: {} };
+                const fallback = ProgressTracker.countGuides();
+                return { completedGuides: 0, totalGuides: fallback, percentage: 0, details: {} };
             }
         }
 

@@ -126,6 +126,11 @@ PowerShell is more powerful and uses some Unix-like commands that work on Mac/Li
 3. **Navigate**: Type `cd Documents` then `cd ..` to go back
 :::
 
+<div class="terminal-simulator" data-terminal="navigation-practice">
+  <h4>🖥️ Practice Terminal</h4>
+  <p>Try the navigation commands above. Type <code>help</code> for available commands.</p>
+</div>
+
 ## File Operations
 
 ### Creating and Managing Files
