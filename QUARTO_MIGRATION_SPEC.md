@@ -49,17 +49,17 @@ Replace custom JS with Quarto built-ins where possible:
 - [x] Removed dead CSS classes (`.callout-dh`, `.difficulty-*`)
 - [x] Dynamic guide count in progress tracking (replaces hardcoded value)
 - [x] Fixed inclusive language in Jekyll version-control.md ("Master" → "Use")
-- [x] Updated copyright year to 2025 in footer
+- [x] Updated copyright year to 2025–2026 in footer
 - [x] Removed dead exercises navbar link (no exercises directory exists)
 
 **Status:** Comprehensive accessibility and polish pass complete.
 
-## Phase 5: Deployment ⏳
-- [ ] GitHub Actions workflow for Quarto build
-- [ ] Configure `quarto publish gh-pages`
-- [ ] Update README with new workflow
+## Phase 5: Deployment ✅
+- [x] GitHub Actions workflow for Quarto build (`.github/workflows/quarto-publish.yml`)
+- [x] Configure `quarto publish gh-pages` (`quarto-version/_publish.yml`)
+- [x] Update README with new workflow (root `README.md` updated with Quarto dev/deploy instructions)
 
-**Status:** Not yet started. This is the final phase before the Quarto version can replace the Jekyll deployment.
+**Status:** Complete. GitHub Actions workflow builds on push to `main`/`quarto-claude`/`quarto-codex`, deploys to GitHub Pages from `main` only.
 
 ---
 
@@ -76,17 +76,12 @@ The Quarto site must support:
 ## Exit Criteria
 - [x] All guides render without warnings
 - [x] All checklist features functional
-- [ ] Clean GitHub Pages deployment (Phase 5)
+- [x] Clean GitHub Pages deployment (Phase 5)
 - [x] No regressions from Jekyll functionality
 
 ---
 
 ## Remaining Work
-
-### Phase 5: Deployment (Priority)
-1. Create `.github/workflows/quarto-publish.yml` for automated build
-2. Configure `quarto publish gh-pages` settings
-3. Update project README with Quarto development/deployment instructions
 
 ### Optional Enhancements
 - Add exercises section (currently removed from navbar; could be added later)

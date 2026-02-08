@@ -52,6 +52,23 @@ This guide provides equal coverage for both Mac and PC users, with specific inst
 
 ## Local Development
 
+### Quarto Version (Active)
+
+The primary version of the site is built with [Quarto](https://quarto.org):
+
+```bash
+# Install Quarto: https://quarto.org/docs/get-started/
+brew install quarto   # Mac
+
+# Preview with live reload
+cd quarto-version && quarto preview
+
+# Build for production
+cd quarto-version && quarto render
+```
+
+### Jekyll Version (Legacy)
+
 ```bash
 # Install dependencies
 cd docs && bundle install
@@ -62,17 +79,39 @@ cd docs && bundle exec jekyll serve
 # View at http://localhost:4000/know_your_damned_computer/
 ```
 
+## Deployment
+
+The Quarto site deploys automatically via GitHub Actions on push to `main`. The workflow:
+
+1. Renders all `.qmd` files in `quarto-version/`
+2. Uploads the `_site/` artifact
+3. Deploys to GitHub Pages
+
+Manual deployment is also supported:
+
+```bash
+cd quarto-version && quarto publish gh-pages
+```
+
 ## Project Structure
 
 ```
-├── docs/                    # Jekyll site (interactive version)
-│   ├── _guides/            # Interactive guide content (8 guides)
-│   ├── _layouts/           # Page templates
-│   └── assets/js/          # Quiz engine, terminal simulator, progress tracking
-├── .archive/               # Archived static content (deprecated)
-├── CRITIQUE.md             # Evaluation and improvement roadmap
-├── PROGRESS.md             # Development status and priorities
-└── README.md               # This file
+├── quarto-version/              # Quarto site (active development)
+│   ├── _quarto.yml             # Main configuration
+│   ├── index.qmd               # Homepage
+│   ├── about.qmd               # About page
+│   ├── guides/                  # 8 learning modules (.qmd)
+│   ├── assets/js/               # Quiz engine, terminal sim, progress tracking
+│   ├── custom.scss              # Theme customizations
+│   └── includes/                # HTML includes (script loader)
+├── docs/                        # Jekyll site (legacy version)
+│   ├── _guides/                 # Interactive guide content
+│   ├── _layouts/                # Page templates
+│   └── assets/js/               # Interactive features
+├── .github/workflows/           # CI/CD
+│   └── quarto-publish.yml       # Automated Quarto build & deploy
+├── QUARTO_MIGRATION_SPEC.md     # Migration tracking document
+└── README.md                    # This file
 ```
 
 ## Contributing

@@ -1,0 +1,4 @@
+- source: project
+  github:
+    - url: https://tcu-dcda.github.io/know_your_damned_computer
+      branch: gh-pages

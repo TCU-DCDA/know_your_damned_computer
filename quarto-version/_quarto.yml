@@ -77,7 +77,7 @@ website:
             - guides/regular-expressions.qmd
 
   page-footer:
-    left: "© 2025 Curt Rode and TCU Digital Culture & Data Analytics Program"
+    left: "© 2025–2026 Curt Rode and TCU Digital Culture & Data Analytics Program"
     center: "Licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
     right:
       - icon: github
