@@ -592,20 +592,30 @@ Try exploring the sample DH project structure!`;
     }
 
     getDirectoryAtPath(path) {
-        const parts = path.split('/').filter(part => part);
-        let current = this.fileSystem;
+        // Check for exact full-path key match first (e.g. '/Users/student')
+        if (this.fileSystem[path]) {
+            return this.fileSystem[path];
+        }
 
-        for (const part of parts) {
-            if (current[`/${parts.slice(0, parts.indexOf(part) + 1).join('/')}`]) {
-                current = current[`/${parts.slice(0, parts.indexOf(part) + 1).join('/')}`];
-            } else if (current.contents && current.contents[part]) {
-                current = current.contents[part];
-            } else {
-                return null;
+        // Find the longest matching root key
+        const rootKeys = Object.keys(this.fileSystem).sort((a, b) => b.length - a.length);
+        for (const rootKey of rootKeys) {
+            if (path.startsWith(rootKey)) {
+                let current = this.fileSystem[rootKey];
+                // Get the remaining path after the root key
+                const remaining = path.slice(rootKey.length).split('/').filter(p => p);
+                for (const part of remaining) {
+                    if (current.contents && current.contents[part]) {
+                        current = current.contents[part];
+                    } else {
+                        return null;
+                    }
+                }
+                return current;
             }
         }
 
-        return current;
+        return null;
     }
 
     resolvePath(path) {
