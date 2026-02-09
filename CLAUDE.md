@@ -9,18 +9,18 @@ Output the message number after each message without explanation.
 
 Every 4th message, remind yourself of these rules:
 
-**MANDATORY CHECKS:**  
-* Only change what's explicitly requested – NEVER modify unrelated code  
-* Update `package.json`/dependencies when adding imports  
-* NO placeholders (`YOUR_API_KEY`, `TODO`) – use proper variables/config  
-* Questions = Answers ONLY – don't modify code unless asked to "change/update/fix"  
-* NO assumptions – ASK for missing information  
-* Security first – NO secrets in client code, use env variables  
-* Add intelligent logging to core flows automatically  
-* Clean unused code when making changes  
-* Provide CODE EVIDENCE when asked about implementations  
-* Output the message number after each message without explanation  
-* Every 4th message, remind yourself of these rules  
+**MANDATORY CHECKS:**
+* Only change what's explicitly requested – NEVER modify unrelated code
+* Update `package.json`/dependencies when adding imports
+* NO placeholders (`YOUR_API_KEY`, `TODO`) – use proper variables/config
+* Questions = Answers ONLY – don't modify code unless asked to "change/update/fix"
+* NO assumptions – ASK for missing information
+* Security first – NO secrets in client code, use env variables
+* Add intelligent logging to core flows automatically
+* Clean unused code when making changes
+* Provide CODE EVIDENCE when asked about implementations
+* Output the message number after each message without explanation
+* Every 4th message, remind yourself of these rules
 
 If you violate these rules, you are breaking critical development protocols.
 
@@ -28,101 +28,110 @@ Start with message #1.
 
 
 
-The rest of thss file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+The rest of this file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
-This is an interactive digital humanities educational resource called "Know Your Damned Computer". It's a Jekyll-based website that teaches computer fundamentals to DH students, covering file management, command line basics, and technical skills needed for digital projects.
+This is an interactive digital humanities educational resource called "Know Your Damned Computer". It's a Quarto-based website that teaches computer fundamentals to DH students, covering file management, command line basics, version control, regular expressions, and technical skills needed for digital projects.
 
 ## Architecture
 
 ### Content Structure
-- **Static guides**: Root-level markdown files (`file-management.md`, `command-line.md`, etc.) contain comprehensive educational content
-- **Interactive guides**: `docs/_guides/` contains Jekyll-formatted versions with embedded quizzes and exercises
-- **Jekyll site**: `docs/` directory contains the full interactive website built with Jekyll
+- **Interactive guides**: `quarto-version/guides/` contains 8 Quarto-formatted guides (`.qmd`) with embedded quizzes, terminal simulators, and tabbed Mac/PC instructions
+- **Quarto site**: `quarto-version/` directory contains the full interactive website built with Quarto
+- **Jekyll site (legacy)**: `docs/` directory contains the original Jekyll version, kept for reference
 
 ### Key Components
 
-#### Jekyll Configuration (`docs/_config.yml`)
-- Configured for GitHub Pages deployment at `/know_your_damned_computer`
-- Uses collections for organized content (`guides`, `exercises`)
-- Includes SEO and sitemap plugins
+#### Quarto Configuration (`quarto-version/_quarto.yml`)
+- Dual theme: cosmo (light) / darkly (dark) with native toggle
+- GitHub Pages deployment via GitHub Actions
+- Navbar with guide dropdown, sidebar with learning path sections
+- Full-text search enabled
 
-#### Layout System (`docs/_layouts/`)
-- `default.html`: Main site template with navigation
-- `guide.html`: Interactive guide pages with progress tracking
-- `exercise.html`: Standalone exercise template
+#### Interactive Features (`quarto-version/assets/js/`)
+- `quiz-engine.js`: Multiple choice quizzes with immediate feedback (22 quizzes across 8 guides), uses Bootstrap CSS variables for dark/light mode compatibility
+- `terminal-sim.js`: Command line simulation with virtual filesystem for safe practice
+- `progress-tracking.js`: Scroll-based progress tracking with localStorage, sidebar completion badges, dynamic guide count
+- `reading-mode.js`: Distraction-free reading overlay with font controls, focus trapping, keyboard navigation
 
-#### Interactive Features (`docs/assets/js/`)
-- `main.js`: Core functionality (theme switching, TOC, feedback)
-- `quiz-engine.js`: Multiple choice quizzes with immediate feedback
-- `terminal-sim.js`: Command line simulation for safe practice
-- `progress.js`: User progress tracking with local storage
+#### Script Loading (`quarto-version/includes/footer-scripts.html`)
+- Dynamic script loader that auto-detects site root from Quarto's `site_libs` link tags
+- Resolves correct relative paths for both root and nested guide pages
+- Note: Quarto's `js:` YAML key does NOT inject `<script>` tags — the dynamic loader is required
 
-### Content Development Status
-- **Completed**: All six core guides (file management, file paths, compression, file formats, command line, text encoding) - both static and interactive versions
+#### Styling (`quarto-version/custom.scss`)
+- Bootstrap color variable overrides (do NOT set `$body-bg` or `$body-color` — they break dark mode)
+- Quiz container, terminal simulator, and landing page styles
+- Accessibility: skip links, focus styles, `prefers-reduced-motion`, `prefers-contrast: high`
+
+### Guides (8 total)
+1. File Management (Beginner)
+2. File Paths (Beginner)
+3. Compression (Beginner)
+4. File Formats (Beginner)
+5. Command Line (Intermediate)
+6. Text Encoding (Intermediate)
+7. Git & Version Control (Intermediate)
+8. Regular Expressions (Advanced)
+
+### Deployment
 - **Live deployment**: https://tcu-dcda.github.io/know_your_damned_computer/
-- **Evaluation phase**: Quarto parallel implementation created for platform comparison
+- **GitHub Actions**: `.github/workflows/quarto-publish.yml` builds on push, deploys from `main` only
+- **Branch strategy**: `2nd-edition` is the development branch, `main` is production
 
 ## Development Commands
 
-### Jekyll Development (Primary)
+### Quarto Development (Primary)
+```bash
+# Install Quarto: https://quarto.org/docs/get-started/
+brew install quarto   # Mac
+
+# Preview with live reload
+cd quarto-version && quarto preview
+
+# Build for production
+cd quarto-version && quarto render
+
+# Publish to GitHub Pages
+cd quarto-version && quarto publish gh-pages
+```
+
+### Jekyll Development (Legacy)
 ```bash
 # Install dependencies (first time setup)
 cd docs && bundle install
 
 # Run local development server
 cd docs && bundle exec jekyll serve
-
-# Build for production
-cd docs && bundle exec jekyll build
 ```
-
-### Quarto Development (Evaluation)
-```bash
-# Install Quarto: https://quarto.org/docs/get-started/
-brew install quarto  # Mac
-
-# Preview site
-cd quarto-version && quarto preview
-
-# Render all formats
-cd quarto-version && quarto render
-
-# Render to specific format
-quarto render --to pdf    # PDF handouts
-quarto render --to docx   # Word documents
-```
-
-### Content Development
-- Edit static guides in root directory for comprehensive content
-- Interactive Jekyll version in `docs/_guides/` with Jekyll front matter
-- Quarto evaluation version in `quarto-version/guides/` with .qmd format
-- Interactive elements use data attributes and JavaScript modules
 
 ### Testing
-- Test locally with `jekyll serve` before deployment
-- Verify cross-platform compatibility (Mac/PC instructions)
+- Preview with `quarto preview` before committing
+- Verify dark mode toggle works on all pages
+- Check quiz feedback visibility in both light and dark mode
+- Test terminal simulator commands: `ls`, `cd`, `mkdir`, `pwd`
+- Verify cross-platform compatibility (Mac/PC tabbed instructions)
 - Check responsive design and accessibility features
 
 ## File Organization
 
 ```
-├── docs/                          # Jekyll site for interactive version
-│   ├── _config.yml               # Jekyll configuration
-│   ├── _guides/                  # Interactive guide content
-│   ├── _layouts/                 # Page templates
-│   ├── assets/js/                # Interactive functionality
-│   └── index.html                # Landing page
-├── quarto-version/                # Quarto implementation for comparison
-│   ├── _quarto.yml               # Quarto configuration
-│   ├── index.qmd                 # Homepage
-│   ├── guides/                   # Guide content (.qmd format)
-│   ├── custom.scss               # Styling
-│   └── COMPARISON-NOTES.md       # Jekyll vs Quarto analysis
-├── *.md                          # Static educational content
-├── README.md                     # Project overview
-└── PROGRESS.md                   # Development status and next steps
+├── quarto-version/                # Quarto site (active development)
+│   ├── _quarto.yml               # Main configuration (dual theme, navbar, sidebar)
+│   ├── _publish.yml              # GitHub Pages publish config
+│   ├── index.qmd                 # Landing page (hero + bento card grid)
+│   ├── about.qmd                 # About page
+│   ├── custom.scss               # Theme customizations (Bootstrap vars)
+│   ├── guides/                   # 8 learning modules (.qmd format)
+│   ├── assets/js/                # Interactive features (4 JS modules)
+│   └── includes/                 # HTML includes (dynamic script loader)
+├── docs/                         # Jekyll site (legacy, kept for reference)
+├── .github/workflows/            # CI/CD
+│   └── quarto-publish.yml        # Automated Quarto build & deploy
+├── QUARTO_MIGRATION_SPEC.md      # Migration tracking (all phases complete)
+├── CLAUDE.md                     # This file
+└── README.md                     # Project overview
 ```
 
 ## Key Principles
@@ -134,5 +143,9 @@ quarto render --to docx   # Word documents
 - **Accessible**: Screen reader support, keyboard navigation, responsive design
 - **Inclusive language**: Use learning-focused terms (learn, understand, become proficient) rather than hierarchical language (master, slave, etc.)
 
-## Known Issues
-- **Terminal Simulator**: While terminal-sim.js loads properly and the HTML structure is correct, the terminal may not always appear on first page load. The JavaScript includes extensive debugging and fallback initialization. All other interactive features (quizzes, reading mode) work correctly. Investigation needed: potential timing issues or CSS conflicts.
+## Important Technical Notes
+
+- **Dark mode**: Quarto's dual-theme toggle requires `light:` and `dark:` keys under `theme:` in `_quarto.yml`. Never define `$body-bg` or `$body-color` in `custom.scss` — they override both themes' `:root` block.
+- **JS injected styles**: Quiz and terminal styles are injected via JavaScript. Always use Bootstrap CSS variables (`--bs-body-bg`, `--bs-border-color`, `--bs-success-bg-subtle`, etc.) — never Jekyll-style custom variables.
+- **Reserved words**: JavaScript strict mode forbids `package`, `private`, `public`, etc. as variable names.
+- **Cross-links**: Use relative `.qmd` links between guides (e.g., `file-paths.qmd`), never Jekyll `{{ site.baseurl }}` syntax.
