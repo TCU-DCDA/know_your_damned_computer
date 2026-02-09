@@ -12,6 +12,8 @@ This guide is specifically designed for DH students who need to understand their
 
 - **Interactive quizzes** with immediate feedback
 - **Terminal simulator** for safe command line practice
+- **Progress tracking** across sessions with completion badges
+- **Reading mode** for distraction-free study
 - **Dark mode** support
 - **Mobile-friendly** responsive design
 - **Accessibility-first** with ARIA labels, keyboard navigation, and reduced motion support

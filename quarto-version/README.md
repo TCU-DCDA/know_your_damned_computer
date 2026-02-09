@@ -26,10 +26,8 @@ This is the Quarto implementation of the "Know Your Damned Computer" educational
 - Callout blocks (tip, note, warning, important)
 - Cross-references and section navigation
 
-### Multi-Format Output
-- HTML (primary)
-- PDF via LaTeX (for handouts)
-- Word documents (on request)
+### Output
+- HTML (primary, deployed to GitHub Pages)
 
 ## Development
 
@@ -88,7 +86,6 @@ quarto-version/
 │   ├── text-encoding.qmd
 │   ├── version-control.qmd
 │   └── regular-expressions.qmd
-├── exercises/            # Practice exercises
 ├── assets/
 │   └── js/               # Interactive features
 │       ├── quiz-engine.js
@@ -146,4 +143,4 @@ quarto publish quarto-pub
 
 ## License
 
-Licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+MIT License - see LICENSE file for details.

@@ -73,12 +73,20 @@ $info: #0891b2;
 
 /* Landing page: Hero section */
 .refresh-hero {
-  background: linear-gradient(135deg, $primary 0%, darken($primary, 15%) 100%);
+  position: relative;
+  background: #0a0a14;
   color: white;
-  padding: 4rem 2rem;
   text-align: center;
   border-radius: 0.75rem;
   margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+.hero-banner {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.6;
 }
 
 .refresh-hero h1 {
@@ -89,8 +97,10 @@ $info: #0891b2;
 }
 
 .hero-content {
+  position: relative;
   max-width: 800px;
   margin: 0 auto;
+  padding: 2rem 2rem 3rem;
 }
 
 .hero-content .subtitle {
@@ -229,6 +239,35 @@ $info: #0891b2;
   background: rgba($primary, 0.1);
   color: $primary;
   border-radius: 9999px;
+}
+
+/* Dark mode overrides */
+.quarto-dark {
+  .chip {
+    background: rgba(lighten($primary, 20%), 0.2);
+    color: lighten($primary, 25%);
+  }
+
+  .bento-card {
+    border-color: var(--bs-border-color);
+
+    &:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-image {
+      background: var(--bs-tertiary-bg);
+    }
+  }
+
+  .section-title {
+    color: var(--bs-body-color);
+  }
+
+  .exercise-box {
+    background: rgba($info, 0.1);
+    border-color: lighten($info, 10%);
+  }
 }
 
 /* Accessibility improvements */

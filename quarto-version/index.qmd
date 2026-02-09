@@ -14,12 +14,12 @@ format:
 
 ```{=html}
 <div class="refresh-hero">
+  <img src="images/hero_kydc.jpg" class="hero-banner" alt="Digital brain made of hardware reaching toward a glowing laptop with streaming binary code">
   <div class="hero-content">
     <div class="hero-title-group">
       <h1>Know Your Damned Computer</h1>
       <p class="subtitle">
         Bridging the gap between traditional humanities and modern computing.
-
       </p>
     </div>
 

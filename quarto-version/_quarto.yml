@@ -78,7 +78,7 @@ website:
 
   page-footer:
     left: "© 2025–2026 Curt Rode and TCU Digital Culture & Data Analytics Program"
-    center: "Licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
+    center: "Licensed under the [MIT License](https://opensource.org/licenses/MIT)"
     right:
       - icon: github
         href: https://github.com/TCU-DCDA/know_your_damned_computer
