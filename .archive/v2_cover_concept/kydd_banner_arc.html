@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYDC Banner (Arc SVG)</title>
+
+  <!-- Optional: better condensed poster font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="kydd_banner_arc.css" />
+</head>
+<body>
+
+<header class="kydd-banner">
+  <div class="kydd-banner-inner" role="img" aria-label="Know Your Damned Computer!">
+    <svg class="kydd-svg" viewBox="0 0 1200 360" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <!-- Gentle arcs -->
+        <path id="arcTop" d="M140,140 Q600,55 1060,140" />
+        <path id="arcMain" d="M90,255 Q600,330 1110,255" />
+
+        <!-- Subtle drop shadow to mimic print poster depth -->
+        <filter id="titleShadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="2" dy="2" stdDeviation="0.6" flood-color="#2b2b2b" flood-opacity="1"/>
+          <feDropShadow dx="5" dy="5" stdDeviation="1.2" flood-color="#000000" flood-opacity="0.14"/>
+        </filter>
+      </defs>
+
+      <!-- Top line -->
+      <text class="kydd-text kydd-top" filter="url(#titleShadow)">
+        <textPath href="#arcTop" startOffset="50%" text-anchor="middle">
+          KNOW YOUR
+        </textPath>
+      </text>
+
+      <!-- Main line -->
+      <text class="kydd-text kydd-main" filter="url(#titleShadow)">
+        <textPath href="#arcMain" startOffset="50%" text-anchor="middle">
+          DAMNED COMPUTER!
+        </textPath>
+      </text>
+    </svg>
+  </div>
+</header>
+
+<main class="demo">
+  <p>Resize your browser: the SVG stays crisp and responsive.</p>
+</main>
+
+</body>
+</html>

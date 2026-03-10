@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYDC Banner (Slant version)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Banner container */
+    .kydd-banner {
+      background: #e8dcc7;
+      padding: clamp(1.5rem, 5vw, 4rem) 1.25rem;
+      border-bottom: 4px solid #2b2b2b;
+    }
+
+    .kydd-banner-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .kydd-title {
+      margin: 0;
+      line-height: 1;
+    }
+
+    .kydd-line {
+      display: block;
+      font-family: "Oswald", "Anton", "Impact", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .kydd-top {
+      font-size: clamp(1.6rem, 5vw, 3.5rem);
+      color: #d6b25e;
+      margin-bottom: 0.3em;
+      display: inline-block;
+      text-shadow:
+        1px 1px 0 #2b2b2b,
+        2px 2px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .kydd-main {
+      font-size: clamp(2.8rem, 10vw, 7rem);
+      color: #c94b3a;
+      display: inline-block;
+      /* Downward slant - opposite direction for dynamic tension */
+      transform: rotate(-3deg);
+      text-shadow:
+        2px 2px 0 #2b2b2b,
+        4px 4px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 480px) {
+      .kydd-main { transform: rotate(-2deg); }
+    }
+  </style>
+</head>
+<body>
+
+<header class="kydd-banner">
+  <div class="kydd-banner-inner">
+    <h1 class="kydd-title" role="img" aria-label="Know Your Damned Computer!">
+      <span class="kydd-line kydd-top">Know Your</span>
+      <span class="kydd-line kydd-main">Damned Computer!</span>
+    </h1>
+  </div>
+</header>
+
+</body>
+</html>

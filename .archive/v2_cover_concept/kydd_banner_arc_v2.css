@@ -1,0 +1,41 @@
+/* Banner container */
+.kydd-banner {
+  background: #e8dcc7;
+  padding: clamp(1.5rem, 5vw, 4rem) 1.25rem;
+  border-bottom: 4px solid #2b2b2b;
+}
+
+.kydd-banner-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.kydd-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+  /* Ensure text outside viewBox is still rendered */
+  overflow: visible;
+}
+
+.kydd-text {
+  font-family: "Oswald", "Anton", "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.kydd-top {
+  font-size: 86px;
+  fill: #d6b25e;
+}
+
+.kydd-main {
+  font-size: 150px;
+  fill: #c94b3a;
+}
+
+@media (max-width: 420px) {
+  .kydd-top { font-size: 78px; }
+  .kydd-main { font-size: 130px; }
+}

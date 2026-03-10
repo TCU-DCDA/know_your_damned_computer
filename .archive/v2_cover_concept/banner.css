@@ -1,0 +1,46 @@
+/* Banner container */
+.kydd-banner {
+  background: #e8dcc7; /* parchment */
+  padding: clamp(2rem, 6vw, 5rem) 1.5rem;
+  text-align: center;
+  border-bottom: 4px solid #2b2b2b;
+}
+
+/* Title wrapper */
+.kydd-title {
+  margin: 0;
+  line-height: 1;
+}
+
+/* Shared title styles */
+.kydd-title .line {
+  display: block;
+  font-family: "Oswald", "Anton", "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Top line */
+.kydd-title .line-top {
+  font-size: clamp(1.4rem, 4vw, 2.6rem);
+  color: #d6b25e; /* dusty yellow */
+  margin-bottom: 0.4em;
+}
+
+/* Main title */
+.kydd-title .line-main {
+  font-size: clamp(2.6rem, 9vw, 6rem);
+  color: #c94b3a; /* brick red */
+  display: inline-block;
+  transform: rotate(-1.5deg);
+  text-shadow:
+    1px 1px 0 #2b2b2b,
+    2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile tweak */
+@media (max-width: 480px) {
+  .kydd-title .line-main {
+    transform: rotate(-1deg);
+  }
+}
