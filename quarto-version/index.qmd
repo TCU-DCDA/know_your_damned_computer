@@ -55,7 +55,7 @@ format:
   <div class="bento-grid">
     <!-- Card 1 -->
     <a href="guides/file-management.qmd" class="bento-card">
-      <img src="images/folders.png" class="card-image" alt="File Management">
+      <img src="images/card-file-management.svg" class="card-image" alt="File Management">
       <div class="card-content">
         <h3>File Management</h3>
         <p>Stop losing your thesis. Learn how file systems actually work, absolute vs. relative paths, and how to organize your digital life.</p>
@@ -68,7 +68,7 @@ format:
 
     <!-- Card 2 -->
     <a href="guides/command-line.qmd" class="bento-card">
-      <img src="images/terminal.png" class="card-image" alt="Command Line">
+      <img src="images/card-command-line.svg" class="card-image" alt="Command Line">
       <div class="card-content">
         <h3>The Command Line</h3>
         <p>Unlock the true power of your computer. Navigate directories, manipulate files, and run scripts without a mouse.</p>
@@ -81,7 +81,7 @@ format:
 
     <!-- Card 3 -->
     <a href="guides/text-encoding.qmd" class="bento-card">
-      <img src="images/ascii.png" class="card-image" alt="Plain Text">
+      <img src="images/card-text-encoding.svg" class="card-image" alt="Plain Text">
       <div class="card-content">
         <h3>Plain Text & Encoding</h3>
         <p>Why did your Word doc turn into gibberish? Understand ASCII, UTF-8, and why plain text is the scholar's best friend.</p>
@@ -94,7 +94,7 @@ format:
 
     <!-- Card 4 -->
     <a href="guides/file-paths.qmd" class="bento-card">
-      <img src="images/folders.png" class="card-image" alt="File Paths">
+      <img src="images/card-file-paths.svg" class="card-image" alt="File Paths">
       <div class="card-content">
         <h3>File Paths</h3>
         <p>Navigate your file system with precision. Understand absolute vs. relative paths and never get 'File Not Found' again.</p>
@@ -107,7 +107,7 @@ format:
 
     <!-- Card 5 -->
     <a href="guides/compression.qmd" class="bento-card">
-      <img src="images/environment.png" class="card-image" alt="Compression">
+      <img src="images/card-compression.svg" class="card-image" alt="Compression">
       <div class="card-content">
         <h3>Compression</h3>
         <p>Zip, Tar, Gzip? Learn how file compression works, why it matters, and how to archive your research data.</p>
@@ -120,6 +120,7 @@ format:
 
     <!-- Card 6 -->
     <a href="guides/file-formats.qmd" class="bento-card">
+      <img src="images/card-file-formats.svg" class="card-image" alt="File Formats">
       <div class="card-content">
         <h3>File Formats</h3>
         <p>From DOCX to PDF to Markdown. Understanding file extensions, magic numbers, and long-term preservation.</p>
@@ -132,6 +133,7 @@ format:
 
     <!-- Card 7 -->
     <a href="guides/version-control.qmd" class="bento-card">
+      <img src="images/card-version-control.svg" class="card-image" alt="Version Control">
       <div class="card-content">
         <h3>Git &amp; Version Control</h3>
         <p>Track changes, collaborate with others, and never lose your work again. Essential version control skills for DH projects.</p>
@@ -144,6 +146,7 @@ format:
 
     <!-- Card 8 -->
     <a href="guides/regular-expressions.qmd" class="bento-card">
+      <img src="images/card-regular-expressions.svg" class="card-image" alt="Regular Expressions">
       <div class="card-content">
         <h3>Regular Expressions</h3>
         <p>Find patterns in text like a pro. Search, match, and transform text data for research and data cleaning.</p>
