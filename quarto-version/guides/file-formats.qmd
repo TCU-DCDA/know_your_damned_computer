@@ -63,6 +63,7 @@ Understanding file formats is crucial for DH work, especially when you'll be usi
 
 ### Plain Text (.txt) - The Foundation
 
+```{=html}
 <div class="format-showcase">
   <div class="format-info">
     <h4>📄 Plain Text</h4>
@@ -88,6 +89,7 @@ Understanding file formats is crucial for DH work, especially when you'll be usi
     </div>
   </div>
 </div>
+```
 
 ### Markdown (.md) - Structured Text
 
@@ -154,10 +156,11 @@ MS001,Book of Kells,800,Latin</pre>
 
 ### JSON (JavaScript Object Notation) - Structured Data
 
+```{=html}
 <div class="format-comparison">
   <div class="format-example">
     <h4>📊 Same Data, Different Formats:</h4>
-    
+
     <div class="format-tabs">
       <div class="tab-content csv-tab">
         <h5>CSV Format:</h5>
@@ -165,21 +168,21 @@ MS001,Book of Kells,800,Latin</pre>
 "Pride and Prejudice","Jane Austen",1813,"Romance"
 "Frankenstein","Mary Shelley",1818,"Gothic"</pre>
       </div>
-      
+
       <div class="format-tabs json-tab">
         <h5>JSON Format:</h5>
         <pre>{
   "novels": [
     {
       "title": "Pride and Prejudice",
-      "author": "Jane Austen", 
+      "author": "Jane Austen",
       "year": 1813,
       "genre": "Romance"
     },
     {
       "title": "Frankenstein",
       "author": "Mary Shelley",
-      "year": 1818, 
+      "year": 1818,
       "genre": "Gothic"
     }
   ]
@@ -188,6 +191,7 @@ MS001,Book of Kells,800,Latin</pre>
     </div>
   </div>
 </div>
+```
 
 **When to use JSON:**
 - **Nested data**: Books with multiple authors, chapters, etc.
@@ -300,10 +304,11 @@ with open('clean_file.txt', 'w', encoding='utf-8') as file:
 
 ### Command Line Conversion
 
+```{=html}
 <div class="terminal-simulator" data-terminal="format-conversion">
   <h4>🖥️ Practice Format Conversion</h4>
   <p>Try these conversion commands:</p>
-  
+
   <div class="command-examples">
     <div class="command-demo">
       <code>pandoc notes.md -o notes.pdf</code>
@@ -319,6 +324,7 @@ with open('clean_file.txt', 'w', encoding='utf-8') as file:
     </div>
   </div>
 </div>
+```
 
 ### Python Conversion
 
@@ -346,9 +352,10 @@ df.to_csv('converted_data.csv', index=False)
 
 ## Real-World DH Workflow
 
+```{=html}
 <div class="workflow-example">
   <h4>📚 Case Study: Digital Edition Project</h4>
-  
+
   <div class="workflow-steps">
     <div class="step">
       <div class="step-number">1</div>
@@ -358,7 +365,7 @@ df.to_csv('converted_data.csv', index=False)
         <p><strong>Challenge:</strong> Not machine-readable</p>
       </div>
     </div>
-    
+
     <div class="step">
       <div class="step-number">2</div>
       <div class="step-content">
@@ -367,7 +374,7 @@ df.to_csv('converted_data.csv', index=False)
         <p><strong>Issue:</strong> OCR errors, inconsistent formatting</p>
       </div>
     </div>
-    
+
     <div class="step">
       <div class="step-number">3</div>
       <div class="step-content">
@@ -376,7 +383,7 @@ df.to_csv('converted_data.csv', index=False)
         <p><strong>Benefit:</strong> Structure + human readability</p>
       </div>
     </div>
-    
+
     <div class="step">
       <div class="step-number">4</div>
       <div class="step-content">
@@ -385,7 +392,7 @@ df.to_csv('converted_data.csv', index=False)
         <p><strong>Ready for:</strong> Python analysis, NLP tools</p>
       </div>
     </div>
-    
+
     <div class="step">
       <div class="step-number">5</div>
       <div class="step-content">
@@ -396,11 +403,13 @@ df.to_csv('converted_data.csv', index=False)
     </div>
   </div>
 </div>
+```
 
 ## Troubleshooting Common Issues
 
 ### Problem 1: "File won't open in Python"
 
+```{=html}
 <div class="troubleshooting-card">
   <h5>🚨 Error Messages:</h5>
   <ul>
@@ -408,41 +417,53 @@ df.to_csv('converted_data.csv', index=False)
     <li><code>PermissionError</code></li>
     <li><code>pandas.errors.EmptyDataError</code></li>
   </ul>
-  
+
   <h5>✅ Solutions:</h5>
-  ```python
-  # Try different encodings
-  encodings = ['utf-8', 'latin-1', 'cp1252']
-  for encoding in encodings:
-      try:
-          with open('problematic_file.txt', 'r', encoding=encoding) as f:
-              text = f.read()
-          print(f"Success with {encoding}")
-          break
-      except UnicodeDecodeError:
-          print(f"Failed with {encoding}")
-  ```
+```
+
+```python
+# Try different encodings
+encodings = ['utf-8', 'latin-1', 'cp1252']
+for encoding in encodings:
+    try:
+        with open('problematic_file.txt', 'r', encoding=encoding) as f:
+            text = f.read()
+        print(f"Success with {encoding}")
+        break
+    except UnicodeDecodeError:
+        print(f"Failed with {encoding}")
+```
+
+```{=html}
 </div>
+```
 
 ### Problem 2: "Garbled characters"
 
+```{=html}
 <div class="troubleshooting-card">
   <h5>🔧 Character Fixing:</h5>
-  ```python
-  # Fix common encoding issues
-  import ftfy
-  
-  garbled_text = "caf√©"
-  fixed_text = ftfy.fix_text(garbled_text)
-  print(fixed_text)  # Output: "café"
-  ```
+```
+
+```python
+# Fix common encoding issues
+import ftfy
+
+garbled_text = "caf√©"
+fixed_text = ftfy.fix_text(garbled_text)
+print(fixed_text)  # Output: "café"
+```
+
+```{=html}
 </div>
+```
 
 ## Best Practices Summary
 
+```{=html}
 <div class="best-practices">
   <h4>📋 DH File Format Guidelines</h4>
-  
+
   <div class="practice-categories">
     <div class="practice-category">
       <h5>📝 Text & Notes</h5>
@@ -452,7 +473,7 @@ df.to_csv('converted_data.csv', index=False)
         <li><strong>Documentation:</strong> Markdown or plain text</li>
       </ul>
     </div>
-    
+
     <div class="practice-category">
       <h5>📊 Data & Analysis</h5>
       <ul>
@@ -461,7 +482,7 @@ df.to_csv('converted_data.csv', index=False)
         <li><strong>Large datasets:</strong> Parquet or HDF5</li>
       </ul>
     </div>
-    
+
     <div class="practice-category">
       <h5>🔧 Technical</h5>
       <ul>
@@ -472,6 +493,7 @@ df.to_csv('converted_data.csv', index=False)
     </div>
   </div>
 </div>
+```
 
 ```{=html}
 <div class="quiz" data-quiz="formats-proficiency">

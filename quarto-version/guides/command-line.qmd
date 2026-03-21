@@ -62,53 +62,46 @@ By the end of this guide, you will be able to:
 - **Version control**: `git add .` and `git commit -m "Updated analysis"`
 ## Getting Started by Platform
 
+::::::{.panel-tabset}
+
+### 🍎 Mac: Terminal
+
+#### Opening Terminal:
+- **Spotlight Search:** ⌘+Space, type "Terminal"
+- **Applications:** Applications → Utilities → Terminal
+- **Launchpad:** Look for Terminal icon
+
+#### What you'll see:
+
 ```{=html}
-<div class="platform-tabs">
-  <div class="tab-buttons">
-    <button class="tab-btn active" data-tab="mac">Mac</button>
-    <button class="tab-btn" data-tab="pc">PC</button>
-  </div>
-  
-  <div class="tab-content mac active">
-    <h3>🍎 Mac: Terminal</h3>
-    
-    <h4>Opening Terminal:</h4>
-    <ul>
-      <li><strong>Spotlight Search:</strong> ⌘+Space, type "Terminal"</li>
-      <li><strong>Applications:</strong> Applications → Utilities → Terminal</li>
-      <li><strong>Launchpad:</strong> Look for Terminal icon</li>
-    </ul>
-    
-    <h4>What you'll see:</h4>
-    <div class="terminal-example">
-      <pre>YourName@YourMac ~ %</pre>
-      <p>This is your "prompt" - it's waiting for commands.</p>
-    </div>
-  </div>
-  
-  <div class="tab-content pc">
-    <h3>🪟 PC: PowerShell (Recommended)</h3>
-    
-    <h4>Opening PowerShell:</h4>
-    <ul>
-      <li><strong>Start Menu:</strong> Type "PowerShell"</li>
-      <li><strong>Windows Key + X:</strong> Select "Windows PowerShell"</li>
-      <li><strong>File Explorer:</strong> Shift+Right-click in any folder → "Open PowerShell window here"</li>
-    </ul>
-    
-    <h4>What you'll see:</h4>
-    <div class="terminal-example">
-      <pre>PS C:\Users\YourName></pre>
-      <p>This is your PowerShell prompt.</p>
-    </div>
-    
-    <div class="pro-tip">
-      <p><strong>💡 Why PowerShell over Command Prompt?</strong></p>
-      <p>PowerShell is more powerful and uses some Unix-like commands that work on Mac/Linux too.</p>
-    </div>
-  </div>
+<div class="terminal-example">
+  <pre>YourName@YourMac ~ %</pre>
+  <p>This is your "prompt" - it's waiting for commands.</p>
 </div>
 ```
+
+### 🪟 PC: PowerShell (Recommended)
+
+#### Opening PowerShell:
+- **Start Menu:** Type "PowerShell"
+- **Windows Key + X:** Select "Windows PowerShell"
+- **File Explorer:** Shift+Right-click in any folder → "Open PowerShell window here"
+
+#### What you'll see:
+
+```{=html}
+<div class="terminal-example">
+  <pre>PS C:\Users\YourName></pre>
+  <p>This is your PowerShell prompt.</p>
+</div>
+```
+
+::: {.callout-tip}
+## Why PowerShell over Command Prompt?
+PowerShell is more powerful and uses some Unix-like commands that work on Mac/Linux too.
+:::
+
+::::::
 
 ## Essential Navigation Commands
 

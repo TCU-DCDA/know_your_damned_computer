@@ -124,40 +124,40 @@ A **relative path** gives the location relative to where you currently are (your
 - Root directory is `/`
 
 ### Windows Paths
-```{=html}
 - Start with drive letter (C:, D:, etc.)
 - Use `\` (backslash) to separate folders
 - Case-insensitive
 - Root directory is drive letter (`C:\`)
 
+```{=html}
 <div class="quiz" data-quiz="platform-paths">
   <h3>Quick Check: Platform Recognition</h3>
   <p>Which path belongs to a Windows computer?</p>
-  
+
   <label class="quiz-option">
     <input type="radio" name="platform-quiz" value="mac">
     <code>/Users/student/Documents/thesis.docx</code>
   </label>
-  
+
   <label class="quiz-option" data-correct>
     <input type="radio" name="platform-quiz" value="windows">
     <code>C:\Users\student\Documents\thesis.docx</code>
   </label>
-  
+
   <label class="quiz-option">
     <input type="radio" name="platform-quiz" value="linux">
     <code>/home/student/Documents/thesis.docx</code>
   </label>
-  
+
   <div class="feedback-correct">
     <p><strong>Exactly!</strong> The `C:\` at the beginning and the backslashes (`\`) are distinctive features of Windows file paths.</p>
   </div>
-```
-  
+
   <div class="feedback-incorrect">
     <p>Look for the telltale signs: Windows paths start with a drive letter like `C:\` and use backslashes (`\`) to separate folders.</p>
   </div>
 </div>
+```
 
 ## Special Path Symbols
 
@@ -175,7 +175,7 @@ If you're currently in `/Users/sarah/DH-Projects/novels/`:
   <div class="current-location">
     <strong>You are here:</strong> <code>/Users/sarah/DH-Projects/novels/</code>
   </div>
-  
+
   <div class="relative-examples">
     <div class="example">
       <code>.</code> → <code>/Users/sarah/DH-Projects/novels/</code>
@@ -197,6 +197,7 @@ If you're currently in `/Users/sarah/DH-Projects/novels/`:
 </div>
 ```
 
+```{=html}
 <div class="terminal-simulator" data-terminal="path-navigation">
   <h4>🖥️ Practice Navigation</h4>
   <p>Try these commands to practice path navigation:</p>
@@ -215,6 +216,7 @@ If you're currently in `/Users/sarah/DH-Projects/novels/`:
     </div>
   </div>
 </div>
+```
 
 ## Paths in Programming and DH Tools
 
@@ -328,6 +330,7 @@ df = pd.read_csv(data_path)</code></pre>
 
 ### Common Error Messages and Solutions
 
+```{=html}
 <div class="error-solutions">
   <div class="error-case">
     <h4>🚨 "FileNotFoundError" or "No such file or directory"</h4>
@@ -341,7 +344,7 @@ df = pd.read_csv(data_path)</code></pre>
       </ul>
     </div>
   </div>
-  
+
   <div class="error-case">
     <h4>🚨 "Permission denied"</h4>
     <div class="solutions">
@@ -354,7 +357,7 @@ df = pd.read_csv(data_path)</code></pre>
       </ul>
     </div>
   </div>
-  
+
   <div class="error-case">
     <h4>🚨 Paths with spaces causing issues</h4>
     <div class="solutions">
@@ -368,6 +371,7 @@ df = pd.read_csv(data_path)</code></pre>
     </div>
   </div>
 </div>
+```
 
 ## Hands-On Practice
 
@@ -491,10 +495,8 @@ Some useful environment variables for paths:
 
 ### Path Libraries in Python
 
-```{=html}
-<div class="python-libraries">
-  <h4>🐍 Modern Python Path Handling</h4>
-  <pre><code class="python">from pathlib import Path
+```python
+from pathlib import Path
 
 # Create path objects
 project_root = Path.home() / 'DH-Research'
@@ -511,8 +513,7 @@ data_dir = data_file.parent
 filename = data_file.name
 
 # Cross-platform path building
-output_file = project_root / 'results' / 'analysis.txt'</code></pre>
-</div>
+output_file = project_root / 'results' / 'analysis.txt'
 ```
 
 ## Knowledge Check
@@ -765,7 +766,7 @@ document.addEventListener('change', function(e) {
   padding: var(--space-sm) 0;
   border-bottom: 1px solid var(--border-color);
 }
-```
+
 .relative-examples .example:last-child {
   border-bottom: none;
 }
@@ -774,8 +775,6 @@ document.addEventListener('change', function(e) {
   color: var(--color-secondary);
   font-style: italic;
 }
-</style>
-```
 
 .terminal-commands .command-example {
   display: flex;

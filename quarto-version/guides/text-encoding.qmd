@@ -26,10 +26,11 @@ Text encoding problems are one of the most frustrating issues in digital humanit
 
 ## What Is Text Encoding?
 
+```{=html}
 <div class="encoding-analogy">
   <h4>🔤 The Translation Problem</h4>
   <p>Think of text encoding like a secret code between you and your computer:</p>
-  
+
   <div class="analogy-grid">
     <div class="analogy-step">
       <div class="step-icon">📝</div>
@@ -47,9 +48,10 @@ Text encoding problems are one of the most frustrating issues in digital humanit
       <p><code>"café"</code> or <code>"caf�"</code>?</p>
     </div>
   </div>
-  
+
   <p>The <strong>encoding</strong> determines how those numbers get converted back to characters. Use the wrong encoding, and you get garbled text!</p>
 </div>
+```
 
 ```{=html}
 <div class="quiz" data-quiz="encoding-basics">
@@ -82,6 +84,7 @@ Text encoding problems are one of the most frustrating issues in digital humanit
 
 ### ASCII - The Foundation (1963)
 
+```{=html}
 <div class="encoding-card ascii">
   <div class="encoding-header">
     <h4>🔤 ASCII</h4>
@@ -95,9 +98,11 @@ Text encoding problems are one of the most frustrating issues in digital humanit
     </div>
   </div>
 </div>
+```
 
 ### UTF-8 - The Modern Solution
 
+```{=html}
 <div class="encoding-card utf8">
   <div class="encoding-header">
     <h4>🌍 UTF-8</h4>
@@ -114,13 +119,15 @@ Text encoding problems are one of the most frustrating issues in digital humanit
     </div>
   </div>
 </div>
+```
 
 ## Visual Encoding Problem Examples
 
+```{=html}
 <div class="interactive-exercise" data-exercise="encoding-problems">
   <h4>🔍 Spot the Encoding Issues</h4>
   <p>Can you identify what's wrong with these text samples?</p>
-  
+
   <div class="problem-examples">
     <div class="text-example">
       <h5>Example 1: French Literature</h5>
@@ -136,7 +143,7 @@ Text encoding problems are one of the most frustrating issues in digital humanit
         <strong>Problem:</strong> UTF-8 text read as Windows-1252
       </div>
     </div>
-    
+
     <div class="text-example">
       <h5>Example 2: Spanish Historical Text</h5>
       <div class="problematic-text">
@@ -151,7 +158,7 @@ Text encoding problems are one of the most frustrating issues in digital humanit
         <strong>Problem:</strong> Encoding unknown, showing replacement characters
       </div>
     </div>
-    
+
     <div class="text-example">
       <h5>Example 3: German Academic Text</h5>
       <div class="problematic-text">
@@ -168,14 +175,16 @@ Text encoding problems are one of the most frustrating issues in digital humanit
     </div>
   </div>
 </div>
+```
 
 ## Python Encoding Solutions
 
 ### The Right Way to Open Files
 
+```{=html}
 <div class="code-showcase">
   <h4>🐍 Python Encoding Best Practices</h4>
-  
+
   <div class="code-comparison">
     <div class="code-bad">
       <h5>❌ Common Mistakes</h5>
@@ -187,7 +196,7 @@ with open('french_texts.txt') as file:
 with open('data.csv', 'r') as file:
     content = file.read()  # Inconsistent across platforms</code></pre>
     </div>
-    
+
     <div class="code-good">
       <h5>✅ Always Specify Encoding</h5>
       <pre><code># DO: Always specify UTF-8
@@ -200,12 +209,14 @@ with open('mystery_file.txt', 'r', encoding='utf-8', errors='replace') as file:
     </div>
   </div>
 </div>
+```
 
 ### Encoding Detection and Conversion
 
+```{=html}
 <div class="diagnostic-tools">
   <h4>🔧 Encoding Diagnostic Tools</h4>
-  
+
   <div class="tool-showcase">
     <div class="tool-card">
       <h5>1. Detect Unknown Encoding</h5>
@@ -224,7 +235,7 @@ print(f"Confidence: {result['confidence']}")
 with open('mystery_file.txt', 'r', encoding=result['encoding']) as file:
     text = file.read()</code></pre>
     </div>
-    
+
     <div class="tool-card">
       <h5>2. Fix Garbled Text</h5>
       <pre><code>import ftfy
@@ -239,7 +250,7 @@ double_encoded = "Ã¢â‚¬Å"smart quotesÃ¢â‚¬Â"
 fixed = ftfy.fix_text(double_encoded)
 print(fixed)  # Output: ""smart quotes""</code></pre>
     </div>
-    
+
     <div class="tool-card">
       <h5>3. Convert Between Encodings</h5>
       <pre><code># Read in one encoding, save in another
@@ -261,6 +272,7 @@ for filename in os.listdir('old_texts/'):
     </div>
   </div>
 </div>
+```
 
 ## Interactive Encoding Lab
 
@@ -351,6 +363,7 @@ df.to_csv('clean_archive.csv', encoding='utf-8', index=False)</code></pre>
 
 ## Platform-Specific Encoding Behavior
 
+```{=html}
 <div class="platform-encoding">
   <div class="platform-grid">
     <div class="platform-card mac">
@@ -365,7 +378,7 @@ df.to_csv('clean_archive.csv', encoding='utf-8', index=False)</code></pre>
         <strong>Mac Tip:</strong> Use <code>file -I filename</code> to check encoding
       </div>
     </div>
-    
+
     <div class="platform-card pc">
       <h4>🪟 PC Encoding</h4>
       <ul class="platform-features">
@@ -380,12 +393,14 @@ df.to_csv('clean_archive.csv', encoding='utf-8', index=False)</code></pre>
     </div>
   </div>
 </div>
+```
 
 ## Real-World DH Workflow
 
+```{=html}
 <div class="workflow-case-study">
   <h4>📚 Case Study: Multilingual Corpus Processing</h4>
-  
+
   <div class="workflow-timeline">
     <div class="timeline-step">
       <div class="step-marker">1</div>
@@ -403,7 +418,7 @@ for file in corpus_files:
         </div>
       </div>
     </div>
-    
+
     <div class="timeline-step">
       <div class="step-marker">2</div>
       <div class="step-content">
@@ -416,7 +431,7 @@ def convert_to_utf8(input_file, detected_encoding):
     try:
         with open(input_file, 'r', encoding=detected_encoding) as f:
             text = f.read()
-        
+
         # Validate by checking for common characters
         if validate_text(text):
             with open(f'utf8/{input_file}', 'w', encoding='utf-8') as f:
@@ -428,7 +443,7 @@ def convert_to_utf8(input_file, detected_encoding):
         </div>
       </div>
     </div>
-    
+
     <div class="timeline-step">
       <div class="step-marker">3</div>
       <div class="step-content">
@@ -440,27 +455,29 @@ def validate_corpus_encoding(corpus_dir):
     suspicious_files = []
     for file in os.listdir(corpus_dir):
         text = read_utf8_file(file)
-        
+
         # Check for encoding artifacts
         if '�' in text or 'Ã' in text:
             suspicious_files.append(file)
-        
+
         # Check character distribution
         if analyze_char_frequencies(text):
             suspicious_files.append(file)
-    
+
     return suspicious_files</code></pre>
         </div>
       </div>
     </div>
   </div>
 </div>
+```
 
 ## Common Encoding Error Patterns
 
+```{=html}
 <div class="error-patterns">
   <h4>🚨 Encoding Error Reference</h4>
-  
+
   <div class="error-grid">
     <div class="error-pattern">
       <h5>UTF-8 → Latin-1</h5>
@@ -473,7 +490,7 @@ def validate_corpus_encoding(corpus_dir):
         <strong>Fix:</strong> Open with encoding='utf-8'
       </div>
     </div>
-    
+
     <div class="error-pattern">
       <h5>UTF-8 → Windows-1252</h5>
       <div class="error-example">
@@ -485,7 +502,7 @@ def validate_corpus_encoding(corpus_dir):
         <strong>Fix:</strong> Use ftfy library or specify encoding
       </div>
     </div>
-    
+
     <div class="error-pattern">
       <h5>Unknown Characters</h5>
       <div class="error-example">
@@ -496,7 +513,7 @@ def validate_corpus_encoding(corpus_dir):
         <strong>Fix:</strong> Use chardet to detect, then re-read
       </div>
     </div>
-    
+
     <div class="error-pattern">
       <h5>Double Encoding</h5>
       <div class="error-example">
@@ -509,13 +526,15 @@ def validate_corpus_encoding(corpus_dir):
     </div>
   </div>
 </div>
+```
 
 ## Hands-On Exercise: Encoding Rescue Mission
 
+```{=html}
 <div class="rescue-exercise">
   <h4>🚑 Exercise: Fix the Corrupted Corpus</h4>
   <p>You've inherited a digital humanities corpus with encoding problems. Let's fix it step by step:</p>
-  
+
   <div class="exercise-steps">
     <div class="rescue-step">
       <input type="checkbox" id="rescue1">
@@ -524,7 +543,7 @@ def validate_corpus_encoding(corpus_dir):
         <code>pip install chardet ftfy</code>
       </label>
     </div>
-    
+
     <div class="rescue-step">
       <input type="checkbox" id="rescue2">
       <label for="rescue2">
@@ -545,7 +564,7 @@ def analyze_corpus(directory):
     return encodings</code></pre>
       </div>
     </div>
-    
+
     <div class="rescue-step">
       <input type="checkbox" id="rescue3">
       <label for="rescue3">
@@ -561,27 +580,27 @@ def repair_text_file(input_path, output_path):
         lambda: open(input_path, 'r', encoding='latin-1').read(),
         lambda: open(input_path, 'r', encoding='cp1252').read(),
     ]
-    
+
     for i, strategy in enumerate(strategies):
         try:
             text = strategy()
             # Apply ftfy to fix common issues
             fixed_text = ftfy.fix_text(text)
-            
+
             # Save repaired version
             with open(output_path, 'w', encoding='utf-8') as f:
                 f.write(fixed_text)
-            
+
             print(f"Repaired {input_path} using strategy {i+1}")
             return True
         except UnicodeDecodeError:
             continue
-    
+
     print(f"Could not repair {input_path}")
     return False</code></pre>
       </div>
     </div>
-    
+
     <div class="rescue-step">
       <input type="checkbox" id="rescue4">
       <label for="rescue4">
@@ -591,25 +610,27 @@ def repair_text_file(input_path, output_path):
         <pre><code>def validate_repair(original_path, repaired_path):
     with open(repaired_path, 'r', encoding='utf-8') as f:
         text = f.read()
-    
+
     # Check for common encoding artifacts
     problems = []
     if '�' in text:
         problems.append("Replacement characters found")
     if 'Ã' in text and len([c for c in text if ord(c) > 127]) > len(text) * 0.1:
         problems.append("Possible UTF-8/Latin-1 mix")
-    
+
     return problems</code></pre>
       </div>
     </div>
   </div>
 </div>
+```
 
 ## Best Practices Summary
 
+```{=html}
 <div class="best-practices-encoding">
   <h4>📋 Encoding Best Practices for DH</h4>
-  
+
   <div class="practices-grid">
     <div class="practice-category">
       <h5>🛡️ Prevention</h5>
@@ -620,7 +641,7 @@ def repair_text_file(input_path, output_path):
         <li><strong>Document encoding decisions</strong> for collaborators</li>
       </ul>
     </div>
-    
+
     <div class="practice-category">
       <h5>🔍 Detection</h5>
       <ul>
@@ -630,7 +651,7 @@ def repair_text_file(input_path, output_path):
         <li><strong>Keep samples</strong> of known-good text for comparison</li>
       </ul>
     </div>
-    
+
     <div class="practice-category">
       <h5>🚑 Recovery</h5>
       <ul>
@@ -640,7 +661,7 @@ def repair_text_file(input_path, output_path):
         <li><strong>Document successful fixes</strong> for similar files</li>
       </ul>
     </div>
-    
+
     <div class="practice-category">
       <h5>🤝 Collaboration</h5>
       <ul>
@@ -652,11 +673,13 @@ def repair_text_file(input_path, output_path):
     </div>
   </div>
 </div>
+```
 
+```{=html}
 <div class="quiz" data-quiz="encoding-proficiency">
   <h3>Final Challenge: Encoding Mastery</h3>
   <p>You're working with a multilingual corpus (French, German, Spanish) from various digitization projects. Some files show garbled characters, others look fine. What's your BEST first step?</p>
-  
+
   <label class="quiz-option">
     <input type="radio" name="final-quiz" value="convert-all">
     Convert everything to UTF-8 immediately
@@ -673,7 +696,7 @@ def repair_text_file(input_path, output_path):
     <input type="radio" name="final-quiz" value="manual-fix">
     Manually fix each problem file as you encounter it
   </label>
-  
+
   <div class="feedback-correct">
     <p><strong>Excellent approach!</strong> Understanding the scope of encoding issues across your entire corpus lets you:</p>
     <ul>
@@ -683,17 +706,19 @@ def repair_text_file(input_path, output_path):
       <li>Avoid making assumptions that could corrupt good files</li>
     </ul>
   </div>
-  
+
   <div class="feedback-incorrect">
     <p>The <strong>systematic approach</strong> is better: detect first, understand the scope of problems, then apply appropriate fixes. This prevents accidentally corrupting files that are already correct.</p>
   </div>
 </div>
+```
 
 ## Tools and Resources
 
+```{=html}
 <div class="tools-resources">
   <h4>🛠️ Essential Encoding Tools</h4>
-  
+
   <div class="tools-grid">
     <div class="tool-resource">
       <h5>Python Libraries</h5>
@@ -704,7 +729,7 @@ def repair_text_file(input_path, output_path):
         <li><strong>codecs:</strong> Low-level encoding operations</li>
       </ul>
     </div>
-    
+
     <div class="tool-resource">
       <h5>Command Line Tools</h5>
       <ul>
@@ -714,7 +739,7 @@ def repair_text_file(input_path, output_path):
         <li><strong>uchardet:</strong> Command-line encoding detection</li>
       </ul>
     </div>
-    
+
     <div class="tool-resource">
       <h5>Online Resources</h5>
       <ul>
@@ -726,6 +751,7 @@ def repair_text_file(input_path, output_path):
     </div>
   </div>
 </div>
+```
 
 ---
 
