@@ -148,17 +148,31 @@ Goal: Get the existing six guides to a clean, shippable state.
 
 ### Phase 2: New Content (Priority: Medium)
 
-Goal: Expand from six to eight or nine guides with second-edition material.
+Goal: Expand from six to nine guides. KYDC is a tool for newbies, not a DH methods book. New content stays foundational.
 
-Candidates (from PROGRESS.md roadmap):
+**Revised guide list (9 total):**
 
-| Guide | Why | Difficulty |
-|-------|-----|-----------|
-| **Version Control (Git)** | Already partially written in Jekyll `_site/guides/version-control`; critical for DH workflow | Intermediate |
-| **Regular Expressions** | Already partially written in Jekyll `_site/guides/regular-expressions`; core text analysis skill | Intermediate |
-| **Working with APIs** | Data collection for DH projects; web scraping basics | Advanced |
+| # | Guide | Status | Notes |
+|---|-------|--------|-------|
+| 1 | File Management Fundamentals | Existing — **deepen** | Add cloud storage/sync section (Google Drive, Dropbox, iCloud vs. local files vs. Git) |
+| 2 | Understanding File Paths | Existing | |
+| 3 | Working with Compressed Files | Existing | |
+| 4 | Essential File Formats for DH | Existing | |
+| 5 | Command Line Basics | Existing — **deepen** | Add package managers (pip, conda) and virtual environments section |
+| 6 | Text Encoding & Character Sets | Existing | |
+| 7 | **Environment Setup** | **New** | "Chapter 0" — installing Python, VS Code, terminal basics, Git. The guide students do first. |
+| 8 | **Version Control with Git** | **New** | Partially written in Jekyll `_site/guides/version-control`. Critical for all DCDA courses. |
+| 9 | **Introduction to Regular Expressions** | **New** | Partially written in Jekyll `_site/guides/regular-expressions`. Intro-level, pattern-matching focused, no deep theory. |
 
-These should follow the established pattern: concept → real examples → common mistakes → practice exercises.
+**Dropped from earlier plan:**
+- Working with APIs — belongs in course-specific material (WRIT20833), not foundational computing
+- DH-specific content (TEI XML, Dublin Core, metadata standards, digital archive workflows, corpus preparation) — belongs in course-specific material, not KYDC
+
+**Also add across all guides:**
+- AI callouts: one "Why this matters when you're working with AI" callout per guide (see Audience & Framing section above for examples)
+- Troubleshooting/debugging content woven into each guide rather than as a standalone guide; each guide already has troubleshooting sections, deepen them
+
+All new guides follow the established pattern: concept → real examples → common mistakes → practice exercises.
 
 ### Phase 3: Enhanced Interactivity (Priority: Medium)
 
@@ -167,12 +181,34 @@ These should follow the established pattern: concept → real examples → commo
 3. File drag-and-drop exercises for file management guide.
 4. Interactive path resolution tool with step-by-step validation.
 
-### Phase 4: Publishing & Deployment (Priority: High, after Phase 1)
+### Phase 4: Integrated Chatbot (Priority: Medium — Provisional)
+
+KYDC is deployed as self-paced pre-work before courses start. No instructor is available when students get stuck. An integrated chatbot serves as the teaching assistant for a resource that has no teaching assistant.
+
+**Approach:** Embed a context-aware chat widget directly in the guide pages, not a standalone chatbot page. The chatbot should know which guide the student is on so they don't have to explain what they're working on.
+
+**Scope (provisional — needs further scoping before implementation):**
+- Trained on KYDC guide content so answers use the vocabulary students just learned
+- Context-aware: knows the current guide and section
+- Focused on troubleshooting: "my file path doesn't work," "the terminal says permission denied," "my text looks garbled"
+- Not a general-purpose AI assistant — scoped to KYDC topics
+- Implementation options: custom JS widget with API backend, or integration with existing MALA/WRIT chatbot architecture
+
+**Open questions:**
+- API backend: OpenAI, Anthropic, or university-provided?
+- Cost model: per-student usage, institutional license, or free tier?
+- Privacy: student data handling, conversation logging
+- Fallback: what happens when the chatbot can't help? Escalation path?
+
+This is marked provisional. Scope further before committing development time.
+
+### Phase 5: Publishing & Deployment (Priority: High, after Phase 1)
 
 1. Deploy Quarto version to GitHub Pages (replaces Jekyll version at same URL).
 2. Generate PDF handouts for each guide (`quarto render --to pdf`).
 3. Set up GitHub Actions for automated render + publish on push.
 4. Decide: keep Jekyll version accessible at an archive URL, or retire it.
+5. Add lightweight, privacy-friendly analytics (Plausible or GoatCounter — no cookies, GDPR-compliant, free for open source). One line in the Quarto `_quarto.yml` include-in-header. Tracks page views, unique visitors, and per-guide engagement to inform content priorities.
 
 ---
 
