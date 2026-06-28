@@ -22,6 +22,11 @@ By the end of this guide, you will be able to:
 - Troubleshoot common compression problems
 :::
 
+::: {.callout-tip appearance="simple"}
+## Why This Matters When You're Working with AI
+When AI tells you to "untar the dataset" or "extract the archive," you need to know what that means and how to do it. AI tools routinely generate instructions that assume you understand compression — downloading model files, unpacking datasets, bundling project folders for sharing. This guide gives you that foundation.
+:::
+
 Compressed files (like ZIP archives) are everywhere in digital humanities work. You'll encounter them when downloading datasets, sharing research materials, backing up projects, and working with many DH tools. This guide will help you understand and confidently work with compressed files on both Mac and PC.
 
 ## Why Compression Matters in DH

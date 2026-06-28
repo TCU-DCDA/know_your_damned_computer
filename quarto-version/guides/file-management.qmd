@@ -22,6 +22,11 @@ By the end of this guide, you will be able to:
 - Navigate files efficiently on Mac and PC
 :::
 
+::: {.callout-tip appearance="simple"}
+## Why This Matters When You're Working with AI
+A messy file system confuses you and the AI equally. When you ask an AI tool to "open that CSV from last week" or "find the analysis script," it can only help if your files are named clearly and organized logically. The habits you build here make every tool you use — including AI — more effective.
+:::
+
 ## Why File Management Matters for DH Students
 
 File management is the foundation of effective digital humanities work. Poor file organization leads to lost research, duplicated effort, and frustration. This guide will help you develop habits that will serve you throughout your academic and professional career.

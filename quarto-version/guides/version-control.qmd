@@ -1,0 +1,475 @@
+---
+title: "Git & Version Control"
+subtitle: "Track every change, undo mistakes, and collaborate with confidence. The safety net every DH project needs."
+author: "Curt Rode"
+date: last-modified
+difficulty: intermediate
+time-estimate: "50 min"
+format:
+  html:
+    code-tools: false
+    toc: true
+    number-sections: true
+---
+
+::: {.callout-note appearance="minimal"}
+## Learning Objectives
+By the end of this guide, you will be able to:
+
+- Explain why version control matters for digital humanities work
+- Set up and configure Git on your computer
+- Use the core Git workflow: add, commit, push, pull
+- Connect a local repository to GitHub
+- Recover from common mistakes using Git
+:::
+
+::: {.callout-tip appearance="simple"}
+## Why This Matters When You're Working with AI
+AI tools can generate code, suggest changes, and refactor your work — but they can also break things. Git is your undo button. When an AI-suggested change goes wrong, `git diff` shows you exactly what changed and `git restore` takes you back. Without version control, you're one bad suggestion away from losing hours of work.
+:::
+
+You've been here before: `final_paper.docx`, `final_paper_v2.docx`, `final_paper_FINAL.docx`, `final_paper_FINAL_really_final.docx`. Version control solves this problem permanently. Git tracks every change you make, lets you rewind to any previous version, and makes collaboration possible without emailing files back and forth.
+
+## Why Version Control Matters for DH
+
+```{=html}
+<div class="quiz" data-quiz="vc-motivation">
+  <h3>Reality Check: Why Use Version Control?</h3>
+  <p>You're working on a text analysis project. You try a new approach to cleaning your data, but it makes everything worse. Without version control, what do you do?</p>
+
+  <label class="quiz-option">
+    <input type="radio" name="vc-quiz" value="wrong1">
+    Manually undo every change you can remember
+  </label>
+
+  <label class="quiz-option">
+    <input type="radio" name="vc-quiz" value="wrong2">
+    Hope you saved an older copy somewhere
+  </label>
+
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="vc-quiz" value="correct">
+    Run one command to restore the previous working version
+  </label>
+</div>
+```
+
+### Real DH Use Cases
+
+Version control isn't just for software engineers. DH scholars use it for:
+
+- **Code development:** Track changes to Python scripts for text analysis, visualization, and data processing
+- **Collaboration:** Multiple researchers working on the same corpus, dataset, or digital edition
+- **Digital editions:** Track revisions to TEI-encoded texts, annotations, and metadata
+- **Reproducible research:** Document exactly how your analysis evolved, so others can verify and build on it
+
+## Prerequisites
+
+Before starting this guide, you should:
+
+- Be comfortable with basic terminal commands (`cd`, `ls`, `mkdir`) — see the [Command Line Basics](command-line.qmd) guide
+- Have Git installed — see the [Environment Setup](environment-setup.qmd) guide
+- Have a GitHub account — also covered in [Environment Setup](environment-setup.qmd)
+
+## The Git Mental Model
+
+Git tracks your files through three states:
+
+1. **Working Directory** — the files you see and edit on your computer
+2. **Staging Area** — files you've marked as ready to save (using `git add`)
+3. **Repository** — the permanent record of saved snapshots (created by `git commit`)
+
+Think of it like packing a box:
+
+- You make changes to files (working directory)
+- You decide which changes to include (staging area — like putting items in the box)
+- You seal and label the box (commit — a permanent snapshot with a message)
+
+```
+Working Directory  →  Staging Area  →  Repository
+   (your files)      (git add)       (git commit)
+                                          ↓
+                                       GitHub
+                                      (git push)
+```
+
+## Your First Git Repository
+
+Let's create a repository from scratch.
+
+### Step 1: Create a Project Folder
+
+::::{.panel-tabset}
+
+### Mac
+
+```bash
+mkdir ~/Documents/my-first-repo
+cd ~/Documents/my-first-repo
+```
+
+### PC
+
+```powershell
+mkdir C:\Users\YourName\Documents\my-first-repo
+cd C:\Users\YourName\Documents\my-first-repo
+```
+
+::::
+
+### Step 2: Initialize Git
+
+```bash
+git init
+```
+
+You'll see: `Initialized empty Git repository in .../my-first-repo/.git/`
+
+This creates a hidden `.git` folder that stores all the tracking information. You never need to touch this folder directly.
+
+### Step 3: Create Some Files
+
+```bash
+echo "# My First Repository" > README.md
+echo "This is a test file." > notes.txt
+```
+
+### Step 4: Check the Status
+
+```bash
+git status
+```
+
+Git will show your new files as "untracked" — it sees them but isn't tracking changes yet.
+
+### Step 5: Stage and Commit
+
+```bash
+git add README.md notes.txt
+git commit -m "Initial commit: add README and notes"
+```
+
+That's it. You've saved your first snapshot. The `-m` flag lets you add a message describing what you did.
+
+## The Core Git Workflow
+
+After the initial setup, your daily workflow is four steps:
+
+1. **Make changes** — edit files, add new ones, delete what you don't need
+2. **Review** — `git status` shows what changed; `git diff` shows the details
+3. **Stage** — `git add` marks files for the next commit
+4. **Commit** — `git commit -m "description"` saves a permanent snapshot
+
+```bash
+# 1. Check what's changed
+git status
+
+# 2. See the details of changes
+git diff
+
+# 3. Stage specific files
+git add file1.py file2.py
+
+# 4. Commit with a descriptive message
+git commit -m "Add sentiment analysis function and test data"
+```
+
+::: {.callout-tip}
+## Commit Often, Commit Small
+A good commit captures one logical change. "Add sentiment analysis function" is a good commit message. "Did a bunch of stuff" is not. Small, frequent commits make it easy to find and undo specific changes later.
+:::
+
+## Essential Commands Reference
+
+| Command | What It Does |
+|---------|-------------|
+| `git status` | Show which files have changed |
+| `git add <file>` | Stage a file for the next commit |
+| `git add .` | Stage all changed files |
+| `git commit -m "message"` | Save a snapshot with a description |
+| `git log --oneline` | Show commit history (compact view) |
+| `git diff` | Show what changed since the last commit |
+| `git restore <file>` | Undo changes to a file (go back to last commit) |
+
+## Writing Good Commit Messages
+
+Your future self will thank you for clear commit messages.
+
+**Bad messages:**
+
+- `"update"`
+- `"fixed stuff"`
+- `"asdfasdf"`
+- `"changes"`
+
+**Good messages:**
+
+- `"Add word frequency analysis for corpus A"`
+- `"Fix encoding error in French text processing"`
+- `"Remove duplicate entries from metadata CSV"`
+- `"Update README with project description and setup instructions"`
+
+**The formula:** Start with a verb (Add, Fix, Update, Remove, Refactor). Describe what changed and why in under 50 characters.
+
+```{=html}
+<div class="quiz" data-quiz="commit-messages">
+  <h3>Commit Message Check</h3>
+  <p>Which is the best commit message for adding a function that counts word frequencies?</p>
+
+  <label class="quiz-option">
+    <input type="radio" name="commit-quiz" value="wrong1">
+    "updates"
+  </label>
+
+  <label class="quiz-option">
+    <input type="radio" name="commit-quiz" value="wrong2">
+    "I added a new function to count how many times each word appears in the text files and also fixed some formatting"
+  </label>
+
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="commit-quiz" value="correct">
+    "Add word frequency counter for corpus analysis"
+  </label>
+
+  <label class="quiz-option">
+    <input type="radio" name="commit-quiz" value="wrong3">
+    "word stuff"
+  </label>
+</div>
+```
+
+## Working with GitHub
+
+GitHub stores your repositories online. This gives you:
+
+- **Backup** — your work exists in two places
+- **Collaboration** — share code with classmates and colleagues
+- **Publishing** — host websites for free with GitHub Pages
+- **Portfolio** — show your work to employers and peers
+
+### Connecting Your Local Repository to GitHub
+
+1. Go to [github.com](https://github.com) and click **New Repository**
+2. Name it `my-first-repo` (match your local folder name)
+3. **Do not** check "Add a README file" — you already have one locally
+4. Click **Create Repository**
+5. GitHub will show you commands to run. Use the "push an existing repository" option:
+
+```bash
+git remote add origin https://github.com/YOUR-USERNAME/my-first-repo.git
+git branch -M main
+git push -u origin main
+```
+
+Refresh the GitHub page — your files are now online.
+
+### The Push/Pull Workflow
+
+Once connected to GitHub:
+
+```bash
+# Send your local commits to GitHub
+git push
+
+# Get changes from GitHub (e.g., a collaborator's work)
+git pull
+```
+
+```
+Your Computer          GitHub
+     ↑                   ↑
+     |    git push →     |
+     |                   |
+     |    ← git pull     |
+     ↓                   ↓
+```
+
+## Branching: Safe Experimentation
+
+Branches let you try something new without affecting your main work. If the experiment works, you merge it in. If it doesn't, you delete the branch and nothing is lost.
+
+```bash
+# Create and switch to a new branch
+git checkout -b experiment-new-analysis
+
+# ... make changes, commit them ...
+
+# Switch back to main
+git checkout main
+
+# If the experiment worked, merge it in
+git merge experiment-new-analysis
+
+# If it didn't, just delete the branch
+git branch -d experiment-new-analysis
+```
+
+```{=html}
+<div class="quiz" data-quiz="branching">
+  <h3>Branching Scenario</h3>
+  <p>You want to try a completely different approach to cleaning your dataset, but you're not sure it will work. What should you do?</p>
+
+  <label class="quiz-option">
+    <input type="radio" name="branch-quiz" value="wrong1">
+    Make a copy of the entire project folder
+  </label>
+
+  <label class="quiz-option" data-correct>
+    <input type="radio" name="branch-quiz" value="correct">
+    Create a new Git branch, experiment there, merge or delete when done
+  </label>
+
+  <label class="quiz-option">
+    <input type="radio" name="branch-quiz" value="wrong2">
+    Just make the changes and hope for the best
+  </label>
+</div>
+```
+
+## The .gitignore File
+
+Some files shouldn't be tracked by Git: temporary files, API keys, large datasets, system files. A `.gitignore` file tells Git to skip them.
+
+Create a file called `.gitignore` in your project root:
+
+```text
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Sensitive data
+.env
+*.key
+passwords.txt
+
+# Large data files
+data/raw/*.csv
+*.zip
+```
+
+::: {.callout-important}
+## Never Commit Passwords or API Keys
+If you accidentally commit a file with sensitive information, deleting the file in a later commit doesn't remove it from the history. Git remembers everything. Use `.gitignore` to prevent this from happening in the first place.
+:::
+
+## Recovering from Mistakes
+
+This is where Git earns its keep.
+
+### "I changed a file and want to undo it"
+
+```bash
+git restore filename.py
+```
+
+This reverts the file to the last committed version. Uncommitted changes are gone.
+
+### "I staged a file by accident"
+
+```bash
+git restore --staged filename.py
+```
+
+The file is still changed, but it's no longer staged for the next commit.
+
+### "I made a bad commit and want to undo it"
+
+```bash
+git revert HEAD
+```
+
+This creates a new commit that undoes the previous one. The history is preserved — you can see that a mistake was made and corrected.
+
+### "I want to see what a file looked like three commits ago"
+
+```bash
+git log --oneline          # find the commit hash
+git show abc1234:filename.py   # view the file at that commit
+```
+
+## A Practical DH Workflow
+
+Here's what a typical week looks like using Git for a text analysis project:
+
+**Monday:** Start a new analysis branch
+
+```bash
+git checkout -b sentiment-analysis
+```
+
+**Tuesday:** Make progress, commit at the end of the day
+
+```bash
+git add analysis.py data/cleaned_corpus.csv
+git commit -m "Add VADER sentiment scoring for corpus"
+```
+
+**Wednesday:** Hit a dead end, try a different approach
+
+```bash
+git commit -m "WIP: attempt regex-based cleaning (not working yet)"
+```
+
+**Thursday:** Get it working, merge to main
+
+```bash
+git commit -m "Fix regex cleaning, all tests pass"
+git checkout main
+git merge sentiment-analysis
+git push
+```
+
+## Quick Reference
+
+### Setup (do once)
+
+```bash
+git init                              # create new repository
+git clone <url>                       # copy existing repository
+git config --global user.name "You"   # set your name
+git config --global user.email "you@email.com"
+```
+
+### Daily commands
+
+```bash
+git status                  # what's changed?
+git add <file>              # stage for commit
+git commit -m "message"     # save snapshot
+git push                    # send to GitHub
+git pull                    # get from GitHub
+```
+
+### Branching
+
+```bash
+git checkout -b <branch>    # create and switch
+git checkout main           # switch to main
+git merge <branch>          # merge branch into current
+git branch -d <branch>      # delete branch
+```
+
+### History and undo
+
+```bash
+git log --oneline           # compact history
+git diff                    # see unstaged changes
+git restore <file>          # undo file changes
+git revert HEAD             # undo last commit (safely)
+```
+
+## What's Next
+
+You now have the foundation for professional file management with Git. As you work through DH projects, you'll develop muscle memory for the add-commit-push cycle. It becomes as natural as saving a file.
+
+For more on using the command line effectively with Git and other tools, see the [Command Line Basics](command-line.qmd) guide.
+
+---
+
+*Version control is the difference between "I think I had a working version somewhere" and "I know exactly when it worked and I can go back to it." Start using Git now, even for small projects. Your future self will thank you.*

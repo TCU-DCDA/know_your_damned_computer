@@ -22,6 +22,11 @@ By the end of this guide, you will be able to:
 - Convert between formats effectively for cross-platform compatibility
 :::
 
+::: {.callout-tip appearance="simple"}
+## Why This Matters When You're Working with AI
+AI-generated code assumes a file format. If it writes a script expecting CSV but your data is TSV, or it reads JSON when you have XML, the code will break — and the error message won't say "wrong format." You need to recognize what format you're working with and catch the mismatch yourself.
+:::
+
 Understanding file formats is crucial for DH work, especially when you'll be using Python for text analysis, data visualization, and mapping. This guide focuses on the formats you'll encounter most often and how to work with them effectively.
 
 ## Why File Formats Matter in DH

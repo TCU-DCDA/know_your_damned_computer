@@ -25,6 +25,11 @@ By the end of this guide, you will be able to:
 - Use basic Git commands for version control
 :::
 
+::: {.callout-tip appearance="simple"}
+## Why This Matters When You're Working with AI
+AI will give you terminal commands. Copy-pasting them without understanding what they do is how you accidentally delete files, install the wrong package, or run something with elevated privileges you didn't intend. Every command AI suggests — `pip install`, `git push`, `rm -rf` — you need to know what it does before you hit Enter.
+:::
+
 ## Why Learn the Command Line?
 
 ```{=html}

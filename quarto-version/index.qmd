@@ -34,7 +34,7 @@ format:
 
     <div class="stats-bar">
       <div class="stat-item">
-        <span class="value">6</span>
+        <span class="value">9</span>
         <span class="label">Modules</span>
       </div>
       <div class="stat-item">
@@ -52,13 +52,29 @@ format:
 <section id="guides">
   <h2 class="section-title">Interactive Learning Guides</h2>
   
+  <h3 class="section-subtitle">Getting Started</h3>
   <div class="bento-grid">
-    <!-- Card 1 -->
+    <!-- Environment Setup -->
+    <a href="guides/environment-setup.qmd" class="bento-card">
+      <div class="card-content">
+        <h3>Environment Setup</h3>
+        <p>Install Python, VS Code, and Git. Configure your terminal. Verify everything works. Do this first — every other guide assumes it's done.</p>
+        <div class="card-meta">
+          <span class="chip">Beginner</span>
+          <span class="chip">Start Here</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <h3 class="section-subtitle">Fundamentals</h3>
+  <div class="bento-grid">
+    <!-- File Management -->
     <a href="guides/file-management.qmd" class="bento-card">
       <img src="images/folders.png" class="card-image" alt="File Management">
       <div class="card-content">
         <h3>File Management</h3>
-        <p>Stop losing your thesis. Learn how file systems actually work, absolute vs. relative paths, and how to organize your digital life.</p>
+        <p>Stop losing your thesis. Naming conventions, folder structures, backup strategies, and cloud storage — organize your digital life.</p>
         <div class="card-meta">
           <span class="chip">Beginner</span>
           <span class="chip">macOS/Win</span>
@@ -66,38 +82,12 @@ format:
       </div>
     </a>
 
-    <!-- Card 2 -->
-    <a href="guides/command-line.qmd" class="bento-card">
-      <img src="images/terminal.png" class="card-image" alt="Command Line">
-      <div class="card-content">
-        <h3>The Command Line</h3>
-        <p>Unlock the true power of your computer. Navigate directories, manipulate files, and run scripts without a mouse.</p>
-        <div class="card-meta">
-          <span class="chip">Intermediate</span>
-          <span class="chip">Bash/Zsh</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Card 3 -->
-    <a href="guides/text-encoding.qmd" class="bento-card">
-      <img src="images/ascii.png" class="card-image" alt="Plain Text">
-      <div class="card-content">
-        <h3>Plain Text & Encoding</h3>
-        <p>Why did your Word doc turn into gibberish? Understand ASCII, UTF-8, and why plain text is the scholar's best friend.</p>
-        <div class="card-meta">
-          <span class="chip">Advanced</span>
-          <span class="chip">Theory</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Card 4 -->
+    <!-- File Paths -->
     <a href="guides/file-paths.qmd" class="bento-card">
       <img src="images/folders.png" class="card-image" alt="File Paths">
       <div class="card-content">
         <h3>File Paths</h3>
-        <p>Navigate your file system with precision. Understand absolute vs. relative paths and never get 'File Not Found' again.</p>
+        <p>Navigate your file system with precision. Understand absolute vs. relative paths and never get "File Not Found" again.</p>
         <div class="card-meta">
           <span class="chip">Beginner</span>
           <span class="chip">Core Concept</span>
@@ -105,7 +95,7 @@ format:
       </div>
     </a>
 
-    <!-- Card 5 -->
+    <!-- Compression -->
     <a href="guides/compression.qmd" class="bento-card">
       <img src="images/environment.png" class="card-image" alt="Compression">
       <div class="card-content">
@@ -118,14 +108,68 @@ format:
       </div>
     </a>
 
-    <!-- Card 6 -->
+    <!-- File Formats -->
     <a href="guides/file-formats.qmd" class="bento-card">
       <div class="card-content">
         <h3>File Formats</h3>
-        <p>From DOCX to PDF to Markdown. Understanding file extensions, magic numbers, and long-term preservation.</p>
+        <p>From DOCX to PDF to Markdown. Understanding file extensions, choosing the right format for Python analysis.</p>
         <div class="card-meta">
           <span class="chip">Beginner</span>
           <span class="chip">Concepts</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <h3 class="section-subtitle">Tools & Techniques</h3>
+  <div class="bento-grid">
+    <!-- Command Line -->
+    <a href="guides/command-line.qmd" class="bento-card">
+      <img src="images/terminal.png" class="card-image" alt="Command Line">
+      <div class="card-content">
+        <h3>Command Line</h3>
+        <p>Unlock the true power of your computer. Navigate directories, install packages, manage virtual environments, and run scripts.</p>
+        <div class="card-meta">
+          <span class="chip">Intermediate</span>
+          <span class="chip">Bash/Zsh</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Text Encoding -->
+    <a href="guides/text-encoding.qmd" class="bento-card">
+      <img src="images/ascii.png" class="card-image" alt="Plain Text">
+      <div class="card-content">
+        <h3>Text Encoding</h3>
+        <p>Why did your text turn into gibberish? Understand ASCII, UTF-8, and handle multilingual and historical texts correctly.</p>
+        <div class="card-meta">
+          <span class="chip">Intermediate</span>
+          <span class="chip">Theory</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Version Control -->
+    <a href="guides/version-control.qmd" class="bento-card">
+      <img src="images/version.png" class="card-image" alt="Version Control">
+      <div class="card-content">
+        <h3>Git & Version Control</h3>
+        <p>Track every change, undo mistakes, and collaborate with confidence. The safety net every DH project needs.</p>
+        <div class="card-meta">
+          <span class="chip">Intermediate</span>
+          <span class="chip">Git/GitHub</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Regular Expressions -->
+    <a href="guides/regular-expressions.qmd" class="bento-card">
+      <div class="card-content">
+        <h3>Regular Expressions</h3>
+        <p>Find patterns in text like a pro. Search, clean, and extract data from messy real-world documents.</p>
+        <div class="card-meta">
+          <span class="chip">Intermediate</span>
+          <span class="chip">Python</span>
         </div>
       </div>
     </a>

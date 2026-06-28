@@ -22,6 +22,11 @@ By the end of this guide, you will be able to:
 - Use paths effectively in Python and VS Code
 :::
 
+::: {.callout-tip appearance="simple"}
+## Why This Matters When You're Working with AI
+AI can't find your file if you can't describe where it is. When you tell an AI assistant "open my data file" and it asks for the path, you need to know the answer. When AI-generated code throws `FileNotFoundError`, you need to understand why the path is wrong and how to fix it. This is the single most common error students hit when working with AI coding tools.
+:::
+
 File paths are like addresses for your files—they tell your computer exactly where to find something. Understanding paths is crucial for working with Python scripts, VS Code projects, and any command-line tools in digital humanities.
 
 ## What Are File Paths?

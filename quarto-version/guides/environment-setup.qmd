@@ -1,0 +1,390 @@
+---
+title: "Setting Up Your Development Environment"
+subtitle: "Install the tools you need for digital humanities work. Python, VS Code, Git, and your terminal — set up once, use everywhere."
+author: "Curt Rode"
+date: last-modified
+difficulty: beginner
+time-estimate: "30 min"
+format:
+  html:
+    code-tools: false
+    toc: true
+    number-sections: true
+---
+
+::: {.callout-note appearance="minimal"}
+## Learning Objectives
+By the end of this guide, you will have:
+
+- Installed Python on your computer
+- Set up VS Code as your code editor
+- Installed and configured Git for version control
+- Verified that everything works together
+- Run your first Python script from the terminal
+:::
+
+::: {.callout-tip appearance="simple"}
+## Why This Matters When You're Working with AI
+AI coding tools assume you have a working development environment. When an AI says "run this in your terminal" or "open this in VS Code," it expects these tools to be installed and configured. Getting your environment right once means every AI-assisted workflow starts from a working foundation instead of a frustrating guessing game about what's missing.
+:::
+
+This guide walks you through setting up the core tools you'll use across all your DH courses. Do this once at the beginning, and you won't have to think about it again. Every other guide in this book assumes you've completed this setup.
+
+If you already have some of these tools installed, skip to the [Verify Your Setup](#verify-your-setup) section at the end to confirm everything is working.
+
+## What You're Installing (and Why)
+
+| Tool | What It Does | Why You Need It |
+|------|-------------|-----------------|
+| **Python** | Programming language | Runs your analysis scripts, text processing, data visualization |
+| **VS Code** | Code editor | Where you write, edit, and organize your code and files |
+| **Git** | Version control | Tracks changes, lets you undo mistakes, syncs with GitHub |
+| **Terminal** | Command line interface | Already on your computer — you just need to know where it is |
+
+These four tools work together. You write code in VS Code, run it with Python through the terminal, and track your changes with Git. Every tool in the DH ecosystem builds on this foundation.
+
+## Step 1: Install Python
+
+::::{.panel-tabset}
+
+### Mac
+
+Your Mac comes with an older version of Python, but you need a current one. The cleanest way to install it:
+
+**Option A: Official Installer (Recommended for Beginners)**
+
+1. Go to [python.org/downloads](https://www.python.org/downloads/)
+2. Click the big yellow "Download Python 3.x" button
+3. Open the downloaded `.pkg` file
+4. Click through the installer — the defaults are fine
+5. **Important:** On the final screen, click "Install Certificates" if it appears
+
+**Option B: Homebrew (If You Already Use It)**
+
+If you already have Homebrew installed (you'll know if you do), you can run:
+
+```bash
+brew install python
+```
+
+#### Verify Python installed correctly:
+
+Open **Terminal** (Applications → Utilities → Terminal) and type:
+
+```bash
+python3 --version
+```
+
+You should see something like `Python 3.12.4` (the exact version number may differ). If you see `command not found`, the installation didn't complete — try the installer again.
+
+::: {.callout-warning}
+## Mac Note: `python3` vs `python`
+On Mac, always type `python3` (not `python`). The plain `python` command may point to an old system version or not exist at all. This trips up a lot of students and a lot of AI-generated instructions.
+:::
+
+### PC
+
+**Option A: Official Installer (Recommended)**
+
+1. Go to [python.org/downloads](https://www.python.org/downloads/)
+2. Click the big yellow "Download Python 3.x" button
+3. **Critical:** On the first installer screen, check the box that says **"Add python.exe to PATH"** before clicking Install
+4. Click "Install Now"
+5. When it finishes, click "Disable path length limit" if that option appears
+
+::: {.callout-important}
+## Do Not Skip the PATH Checkbox
+If you miss the "Add python.exe to PATH" checkbox, Python will install but your terminal won't be able to find it. This is the #1 setup problem on Windows. If you already installed without it, uninstall Python and reinstall with the box checked.
+:::
+
+**Option B: Microsoft Store**
+
+You can also install Python from the Microsoft Store. Search for "Python 3.12" (or the latest version). This method handles PATH automatically.
+
+#### Verify Python installed correctly:
+
+Open **PowerShell** (Start Menu → type "PowerShell") and type:
+
+```powershell
+python --version
+```
+
+You should see something like `Python 3.12.4`. If you see an error or it opens the Microsoft Store, the PATH wasn't set correctly — reinstall with the checkbox.
+
+::::
+
+## Step 2: Install VS Code
+
+VS Code is a free code editor from Microsoft. It's the standard tool for web development and increasingly for DH work.
+
+::::{.panel-tabset}
+
+### Mac
+
+1. Go to [code.visualstudio.com](https://code.visualstudio.com/)
+2. Click "Download for macOS"
+3. Open the downloaded `.zip` file — it will extract `Visual Studio Code.app`
+4. Drag it to your **Applications** folder
+5. Open VS Code from Applications
+
+**Add the `code` command to your terminal:**
+
+This lets you open files and folders from the command line — very useful.
+
+1. Open VS Code
+2. Press `Cmd+Shift+P` to open the Command Palette
+3. Type "shell command" and select **"Shell Command: Install 'code' command in PATH"**
+4. Restart your terminal
+
+Now you can type `code .` in any folder to open it in VS Code.
+
+### PC
+
+1. Go to [code.visualstudio.com](https://code.visualstudio.com/)
+2. Click "Download for Windows"
+3. Run the installer
+4. **Recommended:** Check these boxes during installation:
+   - "Add to PATH" (lets you open VS Code from the terminal)
+   - "Register Code as an editor for supported file types"
+   - "Add 'Open with Code' action to Windows Explorer file context menu"
+   - "Add 'Open with Code' action to Windows Explorer directory context menu"
+5. Click through the rest of the installer
+
+::::
+
+### Essential VS Code Extensions
+
+Once VS Code is installed, add these extensions. They make working with Python and web technologies much easier.
+
+1. Open VS Code
+2. Click the Extensions icon in the left sidebar (it looks like four squares)
+3. Search for and install each of these:
+
+| Extension | Why |
+|-----------|-----|
+| **Python** (by Microsoft) | Syntax highlighting, debugging, IntelliSense for Python |
+| **Jupyter** (by Microsoft) | Run Jupyter notebooks inside VS Code |
+| **Live Server** (by Ritwick Dey) | Preview HTML files with auto-refresh |
+| **GitLens** (by GitKraken) | See who changed what in your code and when |
+
+::: {.callout-tip}
+## Don't Go Extension-Crazy
+Start with just these four. You can always add more later. Too many extensions slow down VS Code and create conflicts.
+:::
+
+## Step 3: Install Git
+
+Git tracks every change you make to your files. Think of it as an unlimited undo button that also lets you sync your work to the cloud (GitHub).
+
+::::{.panel-tabset}
+
+### Mac
+
+**Option A: Xcode Command Line Tools (Easiest)**
+
+Open Terminal and type:
+
+```bash
+git --version
+```
+
+If Git isn't installed, macOS will prompt you to install the Xcode Command Line Tools. Click "Install" and wait — it takes a few minutes.
+
+**Option B: Official Installer**
+
+Go to [git-scm.com/download/mac](https://git-scm.com/download/mac) and follow the instructions.
+
+### PC
+
+1. Go to [git-scm.com/download/win](https://git-scm.com/download/win)
+2. Download the installer
+3. Run it — the defaults are fine for most options
+4. **When asked about the default editor:** Select "Use Visual Studio Code as Git's default editor" instead of Vim
+5. **When asked about PATH:** Select "Git from the command line and also from 3rd-party software"
+6. Click through the remaining options with defaults
+
+::::
+
+### Configure Git (Both Platforms)
+
+After installing, tell Git who you are. Open your terminal and run these two commands, replacing the placeholder text with your actual name and email:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@university.edu"
+```
+
+This information appears in your commit history — it's not a login, just an identifier.
+
+### Create a GitHub Account
+
+If you don't have one already:
+
+1. Go to [github.com](https://github.com) and click "Sign Up"
+2. Use your university email — you may qualify for the free GitHub Education pack
+3. Choose a professional username (you'll use this in your portfolio and on assignments)
+
+::: {.callout-note}
+## GitHub vs. Git
+**Git** is the tool on your computer that tracks changes. **GitHub** is a website that stores your Git repositories online and lets you share them. You need both — Git for tracking, GitHub for collaboration and publishing.
+:::
+
+## Step 4: Find Your Terminal
+
+You don't install the terminal — it's already on your computer. You just need to know where it is and how to open it.
+
+::::{.panel-tabset}
+
+### Mac
+
+Your terminal is called **Terminal**. Three ways to open it:
+
+1. **Spotlight Search:** Press `Cmd+Space`, type "Terminal", hit Enter
+2. **Applications:** Open Finder → Applications → Utilities → Terminal
+3. **From VS Code:** Press `` Ctrl+` `` (backtick) to open the built-in terminal
+
+When you open Terminal, you'll see something like:
+
+```
+yourname@YourMac ~ %
+```
+
+That's the **prompt** — it's waiting for you to type a command. The `~` means you're in your home directory.
+
+### PC
+
+Your terminal is called **PowerShell**. Three ways to open it:
+
+1. **Start Menu:** Type "PowerShell" and click "Windows PowerShell"
+2. **Right-click Start:** Press `Win+X` and select "Windows PowerShell"
+3. **From VS Code:** Press `` Ctrl+` `` (backtick) to open the built-in terminal
+
+When you open PowerShell, you'll see something like:
+
+```
+PS C:\Users\YourName>
+```
+
+That's the **prompt**. `C:\Users\YourName` is your current location (your home directory).
+
+::: {.callout-tip}
+## Use PowerShell, Not Command Prompt
+Windows has two terminal programs. PowerShell is the modern one — it supports more commands and shares some syntax with Mac/Linux terminals. If you see `cmd.exe` or "Command Prompt," close it and open PowerShell instead.
+:::
+
+::::
+
+## Verify Your Setup {#verify-your-setup}
+
+Run through this checklist to confirm everything is working. Open your terminal and run each command:
+
+### 1. Python
+
+::::{.panel-tabset}
+
+### Mac
+
+```bash
+python3 --version
+```
+
+Expected: `Python 3.x.x` (any version 3.9 or higher is fine)
+
+### PC
+
+```powershell
+python --version
+```
+
+Expected: `Python 3.x.x` (any version 3.9 or higher is fine)
+
+::::
+
+### 2. pip (Python's Package Manager)
+
+::::{.panel-tabset}
+
+### Mac
+
+```bash
+pip3 --version
+```
+
+Expected: `pip 23.x.x from ...` (version number will vary)
+
+### PC
+
+```powershell
+pip --version
+```
+
+Expected: `pip 23.x.x from ...` (version number will vary)
+
+::::
+
+### 3. Git
+
+```bash
+git --version
+```
+
+Expected: `git version 2.x.x` (any recent version is fine)
+
+### 4. VS Code (from terminal)
+
+```bash
+code --version
+```
+
+Expected: A version number like `1.85.1`. If this doesn't work, you need to add the `code` command to your PATH (see the VS Code installation section above).
+
+### 5. Run a Test Script
+
+Create a quick test to make sure Python actually runs:
+
+::::{.panel-tabset}
+
+### Mac
+
+```bash
+python3 -c "print('Your environment is ready!')"
+```
+
+### PC
+
+```powershell
+python -c "print('Your environment is ready!')"
+```
+
+::::
+
+If you see `Your environment is ready!` printed back, you're all set.
+
+::: {.callout-important}
+## If Something Didn't Work
+Don't panic. The most common issues:
+
+- **"command not found"** → The tool isn't in your PATH. Reinstall and make sure you check the PATH option.
+- **Wrong Python version** → You may have multiple Python installations. On Mac, make sure you're using `python3`, not `python`.
+- **Permission errors** → On Mac, you may need to prefix commands with `sudo`. On PC, try running PowerShell as Administrator.
+- **VS Code `code` command not found** → Run the "Shell Command: Install 'code' command in PATH" step from inside VS Code.
+
+If you're still stuck, check the [Command Line Basics](command-line.qmd) guide for more detailed troubleshooting, or bring your specific error message to class.
+:::
+
+## What's Next?
+
+Your development environment is ready. You have:
+
+- **Python** for running analysis scripts
+- **VS Code** for writing and organizing code
+- **Git** for tracking changes and collaborating
+- **A terminal** for running commands directly
+
+Now you're ready to start learning. The recommended order:
+
+1. [File Management Fundamentals](file-management.qmd) — organize your digital workspace
+2. [Understanding File Paths](file-paths.qmd) — navigate your computer confidently
+3. [Command Line Basics](command-line.qmd) — use your terminal effectively
+
+These three guides build the foundation for everything else.

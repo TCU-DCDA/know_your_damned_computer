@@ -22,6 +22,11 @@ By the end of this guide, you will be able to:
 - Handle encoding issues in Python scripts and data analysis
 :::
 
+::: {.callout-tip appearance="simple"}
+## Why This Matters When You're Working with AI
+AI won't tell you your corpus is UTF-16 when your script expects UTF-8. It will generate code that opens files with a default encoding, and when your historical French texts or multilingual dataset come back as garbled nonsense, the AI will confidently suggest fixes that don't address the root cause. You need to recognize encoding problems yourself — they're invisible to tools that don't know what the text is supposed to look like.
+:::
+
 Text encoding problems are one of the most frustrating issues in digital humanities work. You've probably seen mysterious characters like � or strange symbols where accented letters should be. Understanding encoding will save you hours of frustration and ensure your text analysis projects work correctly with diverse languages and historical texts.
 
 ## What Is Text Encoding?

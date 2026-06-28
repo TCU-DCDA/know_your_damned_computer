@@ -37,20 +37,29 @@ website:
     left:
       - text: "Guides"
         menu:
+          - text: "Getting Started"
+          - text: "Environment Setup"
+            href: guides/environment-setup.qmd
+          - text: "---"
+          - text: "Fundamentals"
           - text: "File Management"
             href: guides/file-management.qmd
           - text: "File Paths"
             href: guides/file-paths.qmd
           - text: "Compression"
             href: guides/compression.qmd
-          - text: "---"
-          - text: "Command Line"
-            href: guides/command-line.qmd
-          - text: "---"
-          - text: "Text Encoding"
-            href: guides/text-encoding.qmd
           - text: "File Formats"
             href: guides/file-formats.qmd
+          - text: "---"
+          - text: "Tools & Techniques"
+          - text: "Command Line"
+            href: guides/command-line.qmd
+          - text: "Text Encoding"
+            href: guides/text-encoding.qmd
+          - text: "Version Control (Git)"
+            href: guides/version-control.qmd
+          - text: "Regular Expressions"
+            href: guides/regular-expressions.qmd
       - text: "Exercises"
         href: exercises/index.qmd
       - text: "About"
@@ -60,18 +69,21 @@ website:
     - title: "Learning Path"
       style: "docked"
       contents:
+        - section: "Getting Started"
+          contents:
+            - guides/environment-setup.qmd
         - section: "Fundamentals"
           contents:
             - guides/file-management.qmd
             - guides/file-paths.qmd
             - guides/compression.qmd
-        - section: "Command Line"
+            - guides/file-formats.qmd
+        - section: "Tools & Techniques"
           contents:
             - guides/command-line.qmd
-        - section: "Advanced Topics"
-          contents:
             - guides/text-encoding.qmd
-            - guides/file-formats.qmd
+            - guides/version-control.qmd
+            - guides/regular-expressions.qmd
 
   page-footer:
     left: "© 2026 Curt Rode and TCU Digital Culture & Data Analytics Program"
